@@ -1,0 +1,21 @@
+{
+  "name": "wedding-invitation-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node tests/browser.mjs",
+    "audit:source": "node tests/audit.mjs"
+  },
+  "devDependencies": {
+    "vite": "8.3.5",
+    "@playwright/test": "1.56.1"
+  },
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "5.2.8",
+    "@fontsource/manrope": "5.2.8"
+  }
+}

@@ -1,0 +1,2182 @@
+/* Invitation compositions: independent page structures share a small type system. */
+.invitation {
+  --serif: "Cormorant Garamond", Georgia, serif;
+  container-type: inline-size;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+  line-height: 1.65;
+  overflow: hidden;
+}
+.invitation * {
+  box-sizing: border-box;
+}
+.invitation img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.invitation h1,
+.invitation h2,
+.invitation h3,
+.invitation blockquote {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.03;
+  margin: 0;
+}
+.invitation h1 {
+  font-size: clamp(58px, 10cqw, 132px);
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+.invitation h1 i {
+  font-size: 0.65em;
+  display: block;
+  line-height: 1.05;
+  font-weight: 400;
+}
+.invitation h2 {
+  font-size: clamp(40px, 5cqw, 70px);
+  letter-spacing: -0.025em;
+}
+.invitation h3 {
+  font-size: clamp(28px, 3cqw, 38px);
+  letter-spacing: -0.015em;
+}
+.invitation p {
+  font-size: clamp(15px, 1.35cqw, 18px);
+  line-height: 1.85;
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+.invitation button,
+.invitation input,
+.invitation select {
+  font: inherit;
+}
+.invite-kicker {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+.invite-cover {
+  position: relative;
+}
+.invite-title {
+  text-align: center;
+  position: relative;
+}
+.invite-title .invite-kicker {
+  max-width: 340px;
+  margin: 0 auto 36px;
+}
+.cover-description {
+  max-width: 350px;
+  margin: 25px auto !important;
+}
+.invite-date {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 30px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}
+.invite-date strong {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+}
+.invite-date > span:first-child {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.signature {
+  font-family: var(--serif);
+  font-size: 32px !important;
+  font-style: italic;
+}
+.signature i {
+  font-size: 24px;
+}
+.invite-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  padding: 80px 8%;
+  align-items: start;
+}
+.story-prose {
+  max-width: 530px;
+}
+.story-prose > p:first-child {
+  margin-top: 0;
+}
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+.countdown strong {
+  font-family: var(--serif);
+  font-size: 90px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+.countdown > span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+.invite-programme {
+  padding: 70px 8%;
+}
+.invite-programme > .invite-kicker {
+  margin-bottom: 16px;
+}
+.event-list {
+  margin-top: 40px;
+}
+.event {
+  display: grid;
+  grid-template-columns: 95px 1fr;
+  gap: 25px;
+  padding: 28px 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink), transparent 75%);
+}
+.event-time {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 7px;
+}
+.event-time > span {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.event-time strong {
+  font-size: 23px;
+  font-weight: 400;
+}
+.event-content {
+  position: relative;
+}
+.event-content h3 {
+  padding-right: 30px;
+}
+.event-number {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 11px;
+  opacity: 0.65;
+}
+.event p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+.event .event-venue {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.invite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  font-size: 12px !important;
+  letter-spacing: 0.03em;
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1px solid currentColor;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 14px;
+  text-decoration: none;
+}
+.invite-button:hover {
+  background: color-mix(in srgb, var(--ink), transparent 92%);
+}
+.invite-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+.time-note {
+  font-size: 12px !important;
+  opacity: 0.8;
+  margin-top: 25px !important;
+}
+.invite-quote {
+  text-align: center;
+  padding: 60px 10%;
+  margin: 0;
+}
+.invite-quote > span {
+  font-family: var(--serif);
+  font-size: 65px;
+  line-height: 0.5;
+  display: block;
+  opacity: 0.6;
+}
+.invite-quote blockquote {
+  font-size: clamp(35px, 4cqw, 60px);
+  font-style: italic;
+  max-width: 850px;
+  margin: 20px auto 0;
+  line-height: 1.12;
+}
+.invite-gallery {
+  padding: 65px 8%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+}
+.gallery-heading {
+  grid-column: 1/-1;
+  max-width: 570px;
+  margin-bottom: 10px;
+}
+.gallery-heading p {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+.invite-gallery figure {
+  margin: 0;
+}
+.invite-gallery img {
+  height: 420px;
+}
+.invite-gallery figure:last-child {
+  margin-top: 80px;
+}
+.invite-gallery figure:last-child img {
+  height: 330px;
+  object-fit: cover;
+  width: 100%;
+  object-position: right;
+}
+.invite-gallery figcaption {
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  margin-top: 12px;
+}
+.guest-notes {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10%;
+  padding: 65px 8%;
+  border-top: 1px solid color-mix(in srgb, var(--ink), transparent 80%);
+}
+.guest-notes h3 {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 25px;
+}
+.guest-notes h3:first-child {
+  margin-top: 0;
+}
+.guest-notes p {
+  font-size: 15px;
+  margin: 12px 0;
+}
+.fiction-note {
+  font-size: 12px !important;
+  opacity: 0.8;
+}
+.invite-rsvp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  padding: 75px 8%;
+  background: color-mix(in srgb, var(--ink), transparent 95%);
+}
+.invite-rsvp h2 {
+  max-width: 480px;
+}
+.invite-rsvp > div > p {
+  font-size: 14px;
+}
+.invite-rsvp form {
+  align-self: center;
+  text-align: left;
+}
+.invite-rsvp label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.invite-rsvp input,
+.invite-rsvp select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink), transparent 30%);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  padding: 12px 0;
+  font-size: 15px;
+}
+.invite-rsvp select option {
+  background: var(--paper);
+  color: var(--ink);
+}
+.invite-rsvp #rsvp-status {
+  font-size: 14px;
+}
+.invite-end {
+  display: block;
+  text-align: center;
+  max-width: none;
+  margin: 0;
+  padding: 70px 20px 45px;
+  color: inherit;
+}
+.invite-end p {
+  max-width: 650px;
+  margin: 25px auto;
+}
+.invite-end .signature {
+  font-size: 43px !important;
+}
+.invite-end small {
+  display: block;
+  font-size: 11px;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+.monogram {
+  font-family: var(--serif);
+  font-size: 30px;
+  display: inline-grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border: 1px solid color-mix(in srgb, var(--ink), transparent 50%);
+  border-radius: 50%;
+  letter-spacing: -0.12em;
+  padding-right: 4px;
+}
+/* 01 / Garden: a full-bleed scene, paired with an architectural title panel. */
+.courtyard-cover {
+  display: grid;
+  grid-template-columns: 1.22fr 1fr;
+  min-height: 720px;
+}
+.courtyard-cover > .invite-art {
+  height: 100%;
+  min-height: 720px;
+  object-position: 45% center;
+}
+.courtyard-cover > .invite-title {
+  padding: 90px 10%;
+  align-self: center;
+}
+.garden-welcome {
+  padding-bottom: 50px;
+}
+.garden-welcome .invite-story {
+  padding-bottom: 35px;
+}
+.garden-welcome .countdown {
+  justify-content: flex-start;
+  margin-left: 8%;
+}
+.garden-gallery {
+  background: #e6e6d7;
+}
+.garden-gallery figure:first-of-type img {
+  border-radius: 250px 250px 0 0;
+  object-position: 20% center;
+}
+.garden-events .event-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+.garden-events .event {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.garden-events .event-time {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.garden-events .event-content h3 {
+  font-size: 35px;
+}
+/* 02 / Letters: photograph + real paper geometry, then a long-form personal letter. */
+.letter-cover {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 65px 7%;
+  align-items: center;
+  gap: 0;
+  background: #e5d9cc;
+}
+.letter-photo img {
+  height: 620px;
+  object-position: 30% center;
+}
+.letter-stationery {
+  background: #fff9ed;
+  padding: 65px 35px;
+  margin-left: -35px;
+  box-shadow: 8px 15px 30px #422f2617;
+  transform: rotate(2deg);
+  position: relative;
+  clip-path: polygon(
+    0 1%,
+    9% 0,
+    20% 1%,
+    30% 0,
+    40% 1%,
+    50% 0,
+    60% 1%,
+    70% 0,
+    80% 1%,
+    90% 0,
+    100% 1%,
+    100% 99%,
+    91% 100%,
+    80% 99%,
+    70% 100%,
+    60% 99%,
+    50% 100%,
+    40% 99%,
+    30% 100%,
+    20% 99%,
+    10% 100%,
+    0 99%
+  );
+}
+.letter-stationery h1 {
+  font-size: clamp(55px, 7cqw, 100px);
+}
+.postmark {
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  transform: rotate(-13deg);
+  font-size: 8px;
+  border: 1px solid #9e7c78;
+  border-radius: 50%;
+  padding: 13px 8px;
+  color: #987771;
+  letter-spacing: 0.1em;
+}
+.letter-body {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 9%;
+}
+.personal-letter {
+  display: block;
+  padding: 55px 0 0;
+}
+.personal-letter .invite-kicker {
+  display: none;
+}
+.personal-letter h2 {
+  font-style: italic;
+  margin-bottom: 30px;
+}
+.personal-letter .story-prose {
+  max-width: none;
+}
+.personal-letter .story-prose > p:first-child:first-letter {
+  font-size: 65px;
+  font-family: var(--serif);
+  float: left;
+  line-height: 0.8;
+  padding: 8px 8px 0 0;
+}
+.letter-body .invite-quote {
+  padding: 40px 0;
+}
+.diary-events {
+  padding: 35px 0 60px;
+}
+.diary-events h2 {
+  font-size: 45px;
+}
+.diary-events .event {
+  grid-template-columns: 80px 1fr;
+}
+.letter-keepsakes {
+  background: #e9e2d7;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+}
+.letter-keepsakes .gallery-heading {
+  grid-column: 1;
+  align-self: center;
+}
+.letter-keepsakes figure:first-of-type {
+  transform: rotate(-4deg);
+  border: 12px solid #fff9ed;
+  box-shadow: 0 10px 25px #30261b12;
+}
+.letter-keepsakes figure:last-child {
+  grid-column: 1/-1;
+  max-width: 70%;
+  margin: -20px 0 0 3%;
+  transform: rotate(2deg);
+}
+.letter-keepsakes figure:last-child img {
+  height: 260px;
+}
+.reply-card {
+  margin: 70px 7% 0;
+  border: 1px solid #bea6a0;
+  background: #fff9ed;
+  padding: 50px 6%;
+}
+/* 03 / First light: a cinematic sunrise and a time-led ceremony itinerary. */
+.sunrise-cover {
+  min-height: 730px;
+  display: flex;
+  align-items: flex-end;
+  padding: 70px 8%;
+  color: #fff3e1;
+  isolation: isolate;
+}
+.sunrise-cover > .invite-art {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  z-index: -2;
+  object-position: 65% center;
+}
+.sunrise-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, #282c3277, transparent 80%),
+    linear-gradient(0deg, #20282980, transparent 80%);
+}
+.sunrise-cover .invite-title {
+  text-align: left;
+  max-width: 650px;
+}
+.sunrise-cover .invite-kicker {
+  margin-left: 0;
+}
+.sunrise-cover h1 i {
+  display: inline;
+}
+.sunrise-cover .cover-description {
+  margin-left: 0 !important;
+}
+.sunrise-cover .invite-date {
+  display: block;
+}
+.sunrise-cover .invite-date strong {
+  display: block;
+  margin: 8px 0;
+}
+.dawn-heading {
+  padding: 40px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c4b3a2;
+}
+.dawn-heading .invite-kicker {
+  margin: 0;
+}
+.dawn-heading .countdown strong {
+  font-size: 65px;
+}
+.daylight-timeline {
+  max-width: 1000px;
+  margin: auto;
+}
+.daylight-timeline .event-list {
+  border-left: 1px solid #aa8b6a;
+  margin-left: 50px;
+  padding-left: 40px;
+}
+.daylight-timeline .event {
+  position: relative;
+  border: 0;
+  padding-bottom: 40px;
+}
+.daylight-timeline .event::before {
+  content: "";
+  position: absolute;
+  left: -46px;
+  top: 35px;
+  background: #a68764;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+}
+.dawn-story-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #d8d8d3;
+}
+.dawn-detail {
+  height: 100%;
+  min-height: 480px;
+  object-position: right !important;
+}
+.dawn-story-panel .invite-story {
+  display: block;
+  padding: 65px 12%;
+}
+.dawn-story-panel .story-prose {
+  margin-top: 30px;
+}
+/* 04 / Herbarium: modern botanical specimen book, asymmetric image rhythm. */
+.botanical-cover {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 5%;
+  padding: 65px 7%;
+}
+.botanical-cover .invite-title {
+  text-align: left;
+}
+.botanical-cover .invite-kicker {
+  margin-left: 0;
+}
+.botanical-cover .cover-description {
+  margin-left: 0 !important;
+}
+.botanical-cover h1 {
+  font-size: clamp(58px, 8cqw, 110px);
+}
+.botanical-picture img {
+  height: 660px;
+  border-radius: 48% 48% 0 0;
+}
+.botanical-picture > span {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding-top: 15px;
+}
+.botanical-specimens {
+  grid-template-columns: 1.1fr 0.7fr 0.9fr;
+  align-items: center;
+  background: #dfe6d6;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.botanical-specimens .gallery-heading {
+  grid-column: auto;
+}
+.botanical-specimens h2 {
+  font-size: 48px;
+}
+.botanical-specimens figure:last-child {
+  margin-top: 60px;
+}
+.botanical-specimens img {
+  height: 360px !important;
+}
+.botanical-specimens figure:last-child img {
+  border-radius: 150px 150px 0 0;
+}
+.botanical-story {
+  padding-top: 95px;
+}
+.garden-party .event-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+.garden-party .event {
+  display: block;
+  border: 0;
+  padding: 25px;
+  background: #e1e8d8;
+  border-radius: 100px 100px 0 0;
+  text-align: center;
+}
+.garden-party .event-time {
+  margin: 15px 0 25px;
+}
+.garden-party .event-number {
+  display: none;
+}
+.garden-party .event h3 {
+  padding: 0;
+  font-size: 32px;
+}
+.botanical-note {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+}
+.botanical-note .invite-quote {
+  padding: 35px 12% 65px;
+}
+/* 05 / Afterglow: typography-led evening poster and a restaurant-style programme. */
+.velvet-cover {
+  text-align: center;
+  padding: 55px 7% 0;
+}
+.salon-label {
+  font-size: 11px;
+  letter-spacing: 0.5em;
+}
+.velvet-cover .invite-title {
+  padding: 25px 0 35px;
+}
+.velvet-cover .invite-kicker {
+  display: none;
+}
+.velvet-cover h1 {
+  font-size: clamp(64px, 10cqw, 140px);
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+.velvet-cover h1 i {
+  display: inline;
+  font-size: 0.5em;
+  text-transform: none;
+}
+.velvet-cover .cover-description {
+  display: none;
+}
+.velvet-cover .invite-date {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.velvet-cover .invite-date > span:first-child {
+  display: none;
+}
+.velvet-cover .invite-date strong {
+  font-size: 24px;
+}
+.velvet-scene {
+  height: 540px;
+  border-radius: 350px 350px 0 0;
+}
+.salon-foot {
+  font-size: 10px;
+  letter-spacing: 0.23em;
+  padding: 22px;
+  border-bottom: 1px solid #a28a6855;
+}
+.salon-programme {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 7%;
+}
+.salon-programme .event-list {
+  text-align: left;
+  border-bottom: 1px solid #a28a6855;
+}
+.salon-programme .event {
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+}
+.salon-programme .event-time strong {
+  font-family: var(--serif);
+  font-size: 40px;
+}
+.salon-programme .event-content h3 {
+  font-size: 43px;
+}
+.velvet-interlude {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  background: #261520;
+}
+.velvet-interlude .invite-quote {
+  padding: 65px 12%;
+}
+.velvet-detail {
+  height: 480px;
+  object-position: right !important;
+}
+.velvet-story {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.salon-reply {
+  background: #4b2d3a;
+}
+/* 06 / Stillwater: travel masthead, horizontal postcard and four-part itinerary. */
+.travel-cover {
+  padding: 35px 6% 0;
+}
+.travel-masthead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #8b9b9f;
+}
+.travel-cover .invite-title {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  text-align: left;
+  align-items: center;
+  padding: 45px 0;
+  gap: 15px 30px;
+}
+.travel-cover .invite-kicker {
+  grid-column: 1/-1;
+  margin: 0;
+}
+.travel-cover h1 {
+  font-size: clamp(65px, 9cqw, 125px);
+  grid-row: 2/4;
+}
+.travel-cover h1 i {
+  display: inline;
+}
+.travel-cover .cover-description {
+  display: none;
+}
+.travel-cover .invite-date {
+  margin: 0;
+  align-self: center;
+}
+.travel-photo {
+  height: 480px;
+}
+.travel-caption {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-style: italic;
+  padding: 18px 0;
+  border-bottom: 1px solid #8b9b9f;
+}
+.travel-itinerary .event-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 50px;
+}
+.travel-itinerary .event {
+  grid-template-columns: 85px 1fr;
+}
+.travel-itinerary .event-time strong {
+  font-size: 21px;
+}
+.travel-postcard {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: #d1dedb;
+  padding: 55px 6%;
+  gap: 6%;
+  align-items: center;
+}
+.travel-postcard > img {
+  height: 520px;
+  border: 14px solid #f8f6ed;
+  transform: rotate(-3deg);
+  box-shadow: 0 6px 25px #364a3f12;
+}
+.travel-postcard .invite-quote {
+  padding: 0 0 35px;
+  text-align: left;
+}
+.travel-postcard .invite-quote > span {
+  display: none;
+}
+.travel-postcard .invite-quote blockquote {
+  font-size: 55px;
+  margin: 0;
+}
+.travel-postcard .invite-story {
+  display: block;
+  padding: 0;
+}
+.travel-postcard .invite-story h2 {
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+.travel-postcard .invite-kicker {
+  display: none;
+}
+/* 07 / Sanctuary: architecture, ceremony first, then family and hospitality. */
+.sanctuary-cover {
+  padding: 60px 7%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 7%;
+}
+.sanctuary-image img {
+  height: 680px;
+  border-radius: 320px 320px 0 0;
+  border: 1px solid #a18c6477;
+  padding: 10px;
+}
+.sanctuary-cover h1 {
+  font-size: clamp(60px, 8cqw, 105px);
+}
+.sanctuary-cover .invite-kicker {
+  font-size: 10px;
+}
+.ceremony-focus {
+  text-align: center;
+  margin: 0 8%;
+  padding: 55px 5%;
+  border: 3px double #ae9d7466;
+}
+.line-ornament {
+  display: block;
+  font-size: 40px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+.ceremony-focus h2 {
+  font-size: clamp(44px, 6cqw, 80px);
+}
+.ceremony-focus p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+.ceremony-focus .invite-kicker {
+  margin-bottom: 15px;
+}
+.ritual-programme .event-list {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+.ritual-programme > h2,
+.ritual-programme > .invite-kicker {
+  text-align: center;
+}
+.ritual-programme .event-time {
+  border-right: 1px solid #a9956455;
+}
+.family-blessing {
+  background: #d9d2b8;
+  color: #294434;
+}
+.sanctuary-gallery .gallery-heading {
+  max-width: none;
+  text-align: center;
+}
+.sanctuary-gallery {
+  grid-template-columns: 1.5fr 1fr;
+}
+.sanctuary-gallery figure:first-of-type img {
+  height: 420px;
+}
+.sanctuary-gallery figure:last-child {
+  margin-top: 50px;
+}
+.sanctuary-gallery figure:last-child img {
+  height: 310px;
+  object-position: left;
+}
+/* 08 / Earth & Ember: numbered editorial folio with generous asymmetric type. */
+.editorial-cover {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 35px 7% 60px;
+  align-items: center;
+}
+.edition-mark {
+  grid-column: 1/-1;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid #a9836b;
+  padding-bottom: 20px;
+}
+.edition-mark.bottom {
+  border: 0;
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+.editorial-cover .invite-title {
+  text-align: left;
+  padding: 30px 0;
+}
+.editorial-cover .invite-kicker {
+  margin-left: 0;
+  font-size: 10px;
+}
+.editorial-cover h1 {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(55px, 7cqw, 95px);
+  letter-spacing: -0.075em;
+  font-weight: 500;
+}
+.editorial-cover h1 i {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 10px 0;
+}
+.editorial-cover .cover-description {
+  margin-left: 0 !important;
+}
+.editorial-photo {
+  height: 610px;
+  border-radius: 250px 250px 0 0;
+}
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  border-block: 1px solid #b68d75;
+  margin: 0 7%;
+}
+.editorial-intro {
+  padding: 55px 8% 55px 0;
+  border-right: 1px solid #b68d75;
+}
+.editorial-intro h2 {
+  font-size: clamp(40px, 5cqw, 68px);
+}
+.editorial-intro .countdown {
+  justify-content: flex-start;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.editorial-schedule {
+  padding: 55px 0 45px 9%;
+}
+.editorial-schedule > .invite-kicker {
+  display: none;
+}
+.editorial-schedule h2 {
+  font-size: 35px;
+}
+.editorial-schedule .event-list {
+  margin-top: 25px;
+}
+.editorial-schedule .event {
+  grid-template-columns: 70px 1fr;
+  gap: 15px;
+}
+.editorial-story {
+  padding: 70px 7%;
+}
+.editorial-story .invite-story {
+  padding: 15px 0 0;
+}
+.editorial-story .invite-story .invite-kicker {
+  display: none;
+}
+.editorial-story .invite-quote {
+  padding: 45px 12% 0;
+}
+.editorial-objects {
+  background: #d9b49b;
+  grid-template-columns: 1fr 1fr;
+}
+.editorial-objects .gallery-heading {
+  grid-column: 1;
+  align-self: center;
+}
+.editorial-objects figure:first-of-type img {
+  border-radius: 50%;
+  height: 450px;
+}
+.editorial-objects figure:last-child {
+  grid-column: 1/-1;
+  width: 65%;
+  margin-top: -60px;
+}
+.editorial-objects figure:last-child img {
+  height: 280px;
+}
+/* 09 / Moon: a photograph beside a pearl title, without padding-based collisions. */
+.moon-cover {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4%;
+  align-items: center;
+  position: relative;
+  padding: 55px 6%;
+}
+.moon-photo img {
+  height: 630px;
+  border-radius: 280px 280px 0 0;
+  border: 1px solid #a4a38b55;
+  padding: 8px;
+}
+.moon-cover .invite-title {
+  padding: 40px 20px;
+}
+.moon-cover h1 {
+  font-size: clamp(62px, 8cqw, 105px);
+}
+.moon-orbit {
+  position: absolute;
+  right: 10%;
+  bottom: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #e6dfc933;
+  pointer-events: none;
+}
+.moon-promise {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+  align-items: center;
+  padding: 55px 8%;
+  background: #1c3743;
+  border-block: 1px solid #9fa99d44;
+}
+.moon-promise > .invite-kicker {
+  grid-column: 1/-1;
+  margin-bottom: 5px;
+}
+.moon-promise .invite-quote {
+  text-align: left;
+  padding: 10px 10% 10px 0;
+}
+.moon-promise .invite-quote > span {
+  display: none;
+}
+.moon-promise .invite-quote blockquote {
+  font-size: clamp(38px, 4cqw, 60px);
+  margin: 0;
+}
+.moon-promise .countdown {
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+.moon-gatherings .event-list {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 35px;
+}
+.moon-gatherings .event:first-child {
+  grid-row: span 2;
+  background: #1e3b47;
+  padding: 35px;
+  display: block;
+  border-radius: 170px 170px 0 0;
+  text-align: center;
+}
+.moon-gatherings .event:first-child .event-time {
+  margin-bottom: 30px;
+}
+.moon-gatherings .event:first-child .event-time strong {
+  font-family: var(--serif);
+  font-size: 50px;
+}
+.moon-gatherings .event:first-child .event-number {
+  display: none;
+}
+.moon-gatherings .event:first-child h3 {
+  padding: 0;
+  font-size: 47px;
+}
+.moon-arch-story {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  margin: 0 8% 60px;
+  gap: 6%;
+}
+.moon-arch-story .invite-story {
+  display: block;
+  padding: 0;
+}
+.moon-arch-story .story-prose {
+  margin-top: 30px;
+}
+.moon-detail {
+  height: 450px;
+  border-radius: 220px 220px 0 0;
+}
+/* 10 / Woven: a textile banner, family album and an accordion-like day grid. */
+.tapestry-cover {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  align-items: center;
+  position: relative;
+  gap: 5%;
+  padding: 0 7% 0 0;
+}
+.tapestry-strip img {
+  height: 720px;
+  object-position: 30% center;
+}
+.tapestry-cover .invite-title {
+  padding: 50px 0;
+}
+.tapestry-cover h1 {
+  font-size: clamp(65px, 8cqw, 110px);
+}
+.woven-stitch {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ad6a3c 0 8px,
+    transparent 8px 18px
+  );
+}
+.family-album {
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px 6%;
+  align-items: center;
+}
+.family-album .invite-story {
+  display: block;
+  padding: 0;
+}
+.family-album .story-prose {
+  margin-top: 30px;
+}
+.album-photo {
+  height: 460px;
+  border: 14px solid #fff5dd;
+  transform: rotate(4deg);
+  box-shadow: 0 8px 25px #5f372619;
+}
+.family-album .invite-quote {
+  grid-column: 1/-1;
+  padding: 30px 12% 0;
+}
+.celebration-days {
+  background: #e8cba1;
+}
+.celebration-days .event-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+.celebration-days .event {
+  border: 1px dashed #a76e4d;
+  padding: 25px;
+  grid-template-columns: 70px 1fr;
+  gap: 20px;
+}
+.celebration-days .event-time strong {
+  font-size: 20px;
+}
+.woven-count {
+  text-align: center;
+  padding: 50px 20px;
+  border-top: 10px double #b8794c;
+}
+.family-reply {
+  background: #d8ad7f;
+}
+/* 11 / Silk: a bordered almanac, central title and material diptych. */
+.silk-cover {
+  padding: 0 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0 6%;
+  border-inline: 25px solid #2c5952;
+}
+.silk-border {
+  grid-column: 1/-1;
+  height: 25px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ac9766 0 2px,
+    transparent 2px 9px
+  );
+  border-block: 3px double #ac9766;
+  margin: 25px 0;
+}
+.silk-cover .invite-title {
+  padding: 50px 0;
+}
+.silk-cover h1 {
+  font-size: clamp(63px, 8cqw, 105px);
+}
+.silk-still-life img {
+  height: 550px;
+  object-position: 38% center;
+}
+.silk-almanac {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  margin: 0 7%;
+  gap: 6%;
+  padding: 65px 0;
+}
+.almanac-events {
+  padding: 0;
+}
+.almanac-events h2 {
+  font-size: 48px;
+}
+.almanac-events .event {
+  grid-template-columns: 80px 1fr;
+}
+.silk-almanac > aside {
+  border: 3px double #a7976e;
+  padding: 40px 25px;
+  align-self: start;
+  text-align: center;
+}
+.silk-almanac > aside .countdown {
+  flex-direction: column;
+  gap: 10px;
+}
+.silk-almanac > aside .invite-quote {
+  padding: 40px 0 0;
+}
+.silk-almanac > aside .invite-quote blockquote {
+  font-size: 36px;
+}
+.silk-details {
+  background: #ded9bf;
+}
+.silk-details .gallery-heading {
+  grid-column: 1/-1;
+  text-align: center;
+  max-width: none;
+}
+.silk-details figure {
+  margin-top: 0 !important;
+}
+.silk-details img {
+  height: 350px !important;
+}
+.silk-details figure:first-of-type img {
+  object-position: left;
+}
+.silk-details figure:last-child img {
+  object-position: right;
+}
+.silk-story {
+  padding-block: 80px;
+}
+/* Each preview is a container: the editor and standalone page share real responsive layouts. */
+@container (max-width:680px) {
+  .invitation h1 {
+    font-size: 64px;
+  }
+  .invite-kicker {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  .invite-title .invite-kicker {
+    max-width: 280px;
+    margin-bottom: 25px;
+  }
+  .invite-date {
+    font-size: 13px;
+  }
+  .invite-date strong {
+    font-size: 25px;
+  }
+  .invite-story {
+    display: block;
+    padding: 48px 7%;
+  }
+  .story-prose {
+    margin-top: 25px;
+  }
+  .invitation h2 {
+    font-size: 42px;
+  }
+  .invitation p {
+    font-size: 15px;
+  }
+  .invite-programme {
+    padding: 48px 7%;
+  }
+  .event {
+    gap: 18px;
+    grid-template-columns: 70px 1fr;
+  }
+  .event-time {
+    font-size: 12px;
+  }
+  .event-time strong {
+    font-size: 20px;
+  }
+  .event h3 {
+    font-size: 30px;
+  }
+  .event p {
+    font-size: 14px;
+  }
+  .invite-gallery {
+    padding: 45px 7%;
+    gap: 22px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery-heading {
+    grid-column: 1/-1 !important;
+  }
+  .invite-gallery img {
+    height: 260px !important;
+  }
+  .invite-gallery figure:last-child {
+    margin-top: 45px;
+  }
+  .invite-gallery figure:last-child img {
+    height: 210px !important;
+  }
+  .invite-gallery figcaption {
+    font-size: 10px;
+  }
+  .guest-notes {
+    display: block;
+    padding: 45px 7%;
+  }
+  .guest-notes > div + div {
+    margin-top: 30px;
+  }
+  .invite-rsvp {
+    display: block;
+    padding: 48px 7%;
+  }
+  .invite-rsvp form {
+    margin-top: 30px;
+  }
+  .invite-end {
+    padding: 50px 7% 35px;
+  }
+  .invite-end small {
+    font-size: 11px;
+  }
+  .invite-quote {
+    padding: 45px 8%;
+  }
+  .invite-quote blockquote {
+    font-size: 37px;
+  }
+  .countdown strong {
+    font-size: 75px;
+  }
+  .countdown > span {
+    font-size: 10px;
+  }
+  .courtyard-cover {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .courtyard-cover > .invite-art {
+    min-height: 0;
+    height: 340px;
+    object-position: center;
+  }
+  .courtyard-cover > .invite-title {
+    width: 100%;
+    padding: 40px 7%;
+  }
+  .courtyard-cover h1 i {
+    display: inline;
+  }
+  .garden-welcome .invite-story {
+    padding-bottom: 20px;
+  }
+  .garden-welcome .countdown {
+    margin-left: 7%;
+  }
+  .garden-events .event-list {
+    display: block;
+  }
+  .garden-events .event {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 20px;
+  }
+  .garden-events .event-time {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+  .garden-events .event-content h3 {
+    font-size: 30px;
+  }
+  .letter-cover {
+    display: block;
+    padding: 0 7% 35px;
+  }
+  .letter-photo {
+    margin: 0 -8%;
+  }
+  .letter-photo img {
+    height: 280px;
+    object-position: center;
+  }
+  .letter-stationery {
+    margin: -30px 0 0;
+    padding: 45px 20px;
+    transform: rotate(1deg);
+  }
+  .letter-stationery h1 {
+    font-size: 62px;
+  }
+  .letter-stationery h1 i {
+    display: inline;
+  }
+  .letter-body {
+    padding: 0 7%;
+  }
+  .personal-letter {
+    padding: 45px 0 0;
+  }
+  .personal-letter .story-prose {
+    margin-top: 0;
+  }
+  .diary-events {
+    padding: 35px 0 40px;
+  }
+  .letter-keepsakes {
+    gap: 25px;
+  }
+  .letter-keepsakes figure:first-of-type {
+    grid-column: 2;
+  }
+  .letter-keepsakes .gallery-heading {
+    grid-column: 1/-1;
+  }
+  .letter-keepsakes figure:last-child {
+    max-width: 80%;
+    margin-top: -80px;
+  }
+  .reply-card {
+    margin: 40px 5% 0;
+    padding: 35px 7%;
+  }
+  .sunrise-cover {
+    min-height: 640px;
+    padding: 40px 7%;
+  }
+  .sunrise-cover > .invite-art {
+    object-position: 62% center;
+  }
+  .sunrise-cover .invite-title h1 {
+    font-size: 70px;
+  }
+  .sunrise-cover .invite-title h1 i {
+    display: block;
+  }
+  .sunrise-cover .invite-title .invite-kicker {
+    max-width: 240px;
+  }
+  .dawn-heading {
+    padding: 30px 7%;
+    gap: 25px;
+  }
+  .dawn-heading > .invite-kicker {
+    font-size: 9px;
+    max-width: 130px;
+  }
+  .dawn-heading .countdown {
+    gap: 13px;
+  }
+  .dawn-heading .countdown strong {
+    font-size: 55px;
+  }
+  .dawn-heading .countdown span {
+    font-size: 9px;
+  }
+  .daylight-timeline .event-list {
+    margin-left: 10px;
+    padding-left: 25px;
+  }
+  .daylight-timeline .event::before {
+    left: -31px;
+  }
+  .daylight-timeline .event {
+    grid-template-columns: 65px 1fr;
+    gap: 15px;
+  }
+  .dawn-story-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  .dawn-detail {
+    height: 270px;
+    min-height: 0;
+  }
+  .dawn-story-panel .invite-story {
+    padding: 40px 7%;
+  }
+  .botanical-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 7%;
+    gap: 25px;
+  }
+  .botanical-cover .invite-title {
+    width: 100%;
+  }
+  .botanical-cover h1 {
+    font-size: 62px;
+  }
+  .botanical-cover h1 i {
+    display: inline;
+  }
+  .botanical-cover .invite-kicker {
+    font-size: 9px;
+  }
+  .botanical-cover .invite-date {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    align-items: center;
+  }
+  .botanical-cover .invite-date > span:first-child {
+    display: none;
+  }
+  .botanical-picture {
+    width: 100%;
+  }
+  .botanical-picture img {
+    height: 370px;
+    border-radius: 180px 180px 0 0;
+  }
+  .botanical-specimens {
+    grid-template-columns: 1fr 1fr;
+  }
+  .botanical-specimens .gallery-heading {
+    grid-column: 1/-1;
+  }
+  .garden-party .event-list {
+    display: block;
+  }
+  .garden-party .event {
+    padding: 30px 25px;
+    border-radius: 0;
+    margin: 15px 0;
+    text-align: left;
+  }
+  .garden-party .event-time {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 18px;
+  }
+  .botanical-note {
+    display: block;
+  }
+  .botanical-note .invite-quote {
+    padding: 30px 8%;
+  }
+  .botanical-note .countdown {
+    padding-bottom: 35px;
+  }
+  .velvet-cover {
+    padding: 35px 6% 0;
+  }
+  .velvet-cover .invite-title {
+    padding: 20px 0 30px;
+  }
+  .velvet-cover h1 {
+    font-size: 50px;
+  }
+  .velvet-cover .invite-date {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .velvet-scene {
+    height: 390px;
+    border-radius: 180px 180px 0 0;
+  }
+  .salon-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+  }
+  .salon-foot {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+  }
+  .salon-programme {
+    padding: 45px 7%;
+  }
+  .salon-programme .event {
+    grid-template-columns: 70px 1fr;
+    gap: 18px;
+  }
+  .salon-programme .event-time strong {
+    font-size: 30px;
+  }
+  .salon-programme .event-content h3 {
+    font-size: 30px;
+  }
+  .velvet-interlude {
+    display: flex;
+    flex-direction: column;
+  }
+  .velvet-interlude .invite-quote {
+    padding: 45px 8%;
+  }
+  .velvet-detail {
+    height: 280px;
+  }
+  .travel-cover {
+    padding: 25px 6% 0;
+  }
+  .travel-masthead {
+    font-size: 8px;
+    gap: 15px;
+    letter-spacing: 0.08em;
+    padding-bottom: 18px;
+  }
+  .travel-cover .invite-title {
+    display: block;
+    padding: 30px 0;
+  }
+  .travel-cover h1 {
+    font-size: 61px;
+    margin: 20px 0;
+  }
+  .travel-cover .invite-kicker {
+    font-size: 9px;
+  }
+  .travel-cover .invite-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .travel-cover .invite-date strong {
+    font-size: 22px;
+  }
+  .travel-cover .invite-date > span:first-child {
+    display: none;
+  }
+  .travel-photo {
+    height: 310px;
+  }
+  .travel-caption {
+    font-size: 17px;
+    gap: 15px;
+  }
+  .travel-itinerary .event-list {
+    display: block;
+  }
+  .travel-itinerary .event {
+    grid-template-columns: 70px 1fr;
+  }
+  .travel-postcard {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 7%;
+    gap: 35px;
+  }
+  .travel-postcard > img {
+    height: 300px;
+    border-width: 10px;
+  }
+  .travel-postcard .invite-quote blockquote {
+    font-size: 45px;
+  }
+  .travel-postcard .invite-story h2 {
+    font-size: 32px;
+  }
+  .sanctuary-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 7%;
+    gap: 35px;
+  }
+  .sanctuary-image {
+    width: 100%;
+  }
+  .sanctuary-image img {
+    height: 380px;
+    border-radius: 200px 200px 0 0;
+    padding: 7px;
+  }
+  .sanctuary-cover h1 {
+    font-size: 57px;
+  }
+  .sanctuary-cover h1 i {
+    display: inline;
+  }
+  .sanctuary-cover .invite-title {
+    padding: 0;
+  }
+  .ceremony-focus {
+    margin: 0 6%;
+    padding: 35px 5%;
+  }
+  .ceremony-focus h2 {
+    font-size: 42px;
+  }
+  .ceremony-focus p {
+    font-size: 14px;
+  }
+  .ritual-programme .event-time {
+    padding-right: 10px;
+  }
+  .sanctuary-gallery {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+  }
+  .sanctuary-gallery figure:last-child {
+    margin-top: 40px;
+  }
+  .editorial-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 7% 35px;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .edition-mark {
+    font-size: 9px;
+    padding-bottom: 14px;
+  }
+  .editorial-cover .invite-title {
+    padding: 0;
+  }
+  .editorial-cover h1 {
+    font-size: 57px;
+  }
+  .editorial-cover h1 i {
+    display: inline;
+  }
+  .editorial-cover .invite-kicker {
+    font-size: 9px;
+  }
+  .editorial-cover .cover-description {
+    font-size: 14px;
+  }
+  .editorial-cover .invite-date {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    align-items: center;
+  }
+  .editorial-cover .invite-date > span:first-child {
+    display: none;
+  }
+  .editorial-cover .invite-date strong {
+    font-size: 22px;
+  }
+  .editorial-photo {
+    height: 340px;
+    border-radius: 170px 170px 0 0;
+  }
+  .edition-mark.bottom {
+    font-size: 8px;
+    padding-top: 0;
+  }
+  .editorial-grid {
+    display: block;
+    margin: 0 7%;
+  }
+  .editorial-intro {
+    padding: 35px 0;
+    border-right: 0;
+    border-bottom: 1px solid #b68d75;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+  }
+  .editorial-intro .invite-kicker {
+    grid-column: 1/-1;
+  }
+  .editorial-intro h2 {
+    font-size: 38px;
+  }
+  .editorial-intro .countdown {
+    margin-top: 0;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .editorial-intro .countdown strong {
+    font-size: 58px;
+  }
+  .editorial-schedule {
+    padding: 35px 0;
+  }
+  .editorial-schedule h2 {
+    font-size: 36px;
+  }
+  .editorial-story {
+    padding: 40px 7%;
+  }
+  .editorial-story .invite-story {
+    padding: 0;
+  }
+  .editorial-story .invite-quote {
+    padding: 30px 0 0;
+  }
+  .editorial-objects .gallery-heading {
+    grid-column: 1/-1;
+  }
+  .editorial-objects figure:first-of-type {
+    grid-column: 2;
+  }
+  .editorial-objects figure:first-of-type img {
+    height: 200px !important;
+  }
+  .editorial-objects figure:last-child {
+    width: 85%;
+    margin-top: -75px;
+  }
+  .moon-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 7% 40px;
+    gap: 30px;
+  }
+  .moon-photo {
+    width: 100%;
+  }
+  .moon-photo img {
+    height: 360px;
+    border-radius: 180px 180px 0 0;
+    padding: 6px;
+  }
+  .moon-cover .invite-title {
+    padding: 0;
+  }
+  .moon-cover h1 {
+    font-size: 62px;
+  }
+  .moon-cover h1 i {
+    display: inline;
+  }
+  .moon-cover .invite-kicker {
+    font-size: 10px;
+  }
+  .moon-orbit {
+    display: none;
+  }
+  .moon-promise {
+    display: block;
+    padding: 35px 7%;
+  }
+  .moon-promise .invite-quote {
+    padding: 10px 0 30px;
+  }
+  .moon-promise .invite-quote blockquote {
+    font-size: 40px;
+  }
+  .moon-promise .countdown {
+    flex-direction: row;
+    text-align: left;
+    gap: 20px;
+  }
+  .moon-gatherings .event-list {
+    display: block;
+  }
+  .moon-gatherings .event:first-child {
+    padding: 35px 25px;
+    margin-bottom: 25px;
+  }
+  .moon-gatherings .event:first-child h3 {
+    font-size: 40px;
+  }
+  .moon-arch-story {
+    display: flex;
+    flex-direction: column;
+    margin: 0 7% 40px;
+    gap: 25px;
+  }
+  .moon-detail {
+    height: 340px;
+    border-radius: 160px 160px 0 0;
+  }
+  .tapestry-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 0 7% 40px;
+  }
+  .tapestry-strip {
+    margin: 0 -8%;
+    width: 116%;
+  }
+  .tapestry-strip img {
+    height: 300px;
+  }
+  .tapestry-cover .invite-title {
+    padding: 35px 0 0;
+  }
+  .tapestry-cover h1 {
+    font-size: 61px;
+  }
+  .tapestry-cover h1 i {
+    display: inline;
+  }
+  .family-album {
+    display: flex;
+    flex-direction: column;
+    padding: 45px 7%;
+    gap: 30px;
+  }
+  .family-album .invite-story {
+    padding: 0;
+  }
+  .album-photo {
+    height: 330px;
+    border-width: 10px;
+    max-width: 93%;
+  }
+  .family-album .invite-quote {
+    padding: 20px 0 0;
+  }
+  .celebration-days .event-list {
+    display: block;
+  }
+  .celebration-days .event {
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    grid-template-columns: 60px 1fr;
+    gap: 15px;
+  }
+  .woven-count {
+    padding: 35px 7%;
+  }
+  .silk-cover {
+    display: flex;
+    flex-direction: column;
+    border-inline-width: 12px;
+    padding: 0 6%;
+  }
+  .silk-border {
+    width: 100%;
+    margin: 18px 0;
+    height: 18px;
+  }
+  .silk-cover .invite-title {
+    padding: 20px 0;
+  }
+  .silk-cover h1 {
+    font-size: 61px;
+  }
+  .silk-cover h1 i {
+    display: inline;
+  }
+  .silk-cover .invite-kicker {
+    font-size: 9px;
+  }
+  .silk-still-life {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .silk-still-life img {
+    height: 300px;
+  }
+  .silk-almanac {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 30px;
+    margin: 0 7%;
+  }
+  .almanac-events {
+    padding: 0;
+    width: 100%;
+  }
+  .almanac-events h2 {
+    font-size: 40px;
+  }
+  .almanac-events .event {
+    grid-template-columns: 70px 1fr;
+  }
+  .silk-almanac > aside {
+    width: 100%;
+    padding: 30px 7%;
+  }
+  .silk-almanac > aside .countdown {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .silk-almanac > aside .invite-quote {
+    padding-top: 30px;
+  }
+  .silk-details img {
+    height: 230px !important;
+  }
+  .silk-details figure:last-child {
+    margin-top: 35px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.invite-arrow {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  margin-left: 4px;
+}
+.invite-arrow::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 1px;
+  right: -1px;
+  top: -1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: right center;
+}
+@container (max-width:680px) {
+  .letter-keepsakes figure:first-of-type {
+    grid-column: 1/-1;
+    width: 75%;
+    justify-self: end;
+  }
+  .letter-keepsakes figure:last-child {
+    width: 85%;
+    max-width: 85%;
+    margin-top: 15px;
+  }
+  .letter-keepsakes figure:last-child img {
+    height: 230px !important;
+  }
+  .editorial-objects figure:last-child {
+    margin-top: 15px;
+  }
+  .editorial-objects figure:first-of-type {
+    grid-column: 1/-1;
+    width: 70%;
+    justify-self: end;
+  }
+  .editorial-objects figure:first-of-type img {
+    height: 240px !important;
+  }
+  .silk-almanac > aside .invite-quote {
+    border: 0;
+    margin: 0;
+    width: auto;
+  }
+}
