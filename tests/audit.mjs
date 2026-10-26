@@ -14,10 +14,12 @@ const forbidden =
   /(google-analytics|googletagmanager|facebook\.net|hotjar|clarity\.ms|segment\.com|mixpanel|posthog|sentry|sendBeacon|document\.cookie|new WebSocket|<iframe|https?:\/\/)/gi;
 const hits = [];
 for (const f of files) {
-  const text = (await fs.readFile(f, "utf8")).replaceAll(
+  let text = (await fs.readFile(f, "utf8")).replaceAll(
     "http://www.w3.org/2000/svg",
     "",
   );
+  if(f === "src/sales.js") text=text.replace("https://wa.me/", "");
+  if(f === "public/admin.js") text=text.replace("https://${esc(current.slug)}.${esc(session.domain)}/", "");
   for (const m of text.matchAll(forbidden)) hits.push({ file: f, match: m[0] });
 }
 const report = {
@@ -25,9 +27,9 @@ const report = {
   filesScanned: files.length,
   externalUrlsOrTrackingMarkers: hits,
   allowedNetworkOperation:
-    "Same-origin artwork and font fetches only on explicit HTML export.",
+    "Same-origin fonts/art; configured WhatsApp only on explicit choice. Staff API requests are same-origin.",
   storage:
-    "Explicit local draft save/delete only; no cookies or RSVP persistence.",
+    "Public gallery writes no drafts or RSVP data. Existing local drafts untouched. Server admin uses Access and persistent D1/R2.",
 };
 await fs.mkdir("evidence/v2", { recursive: true });
 await fs.writeFile(

@@ -1,32 +1,29 @@
 # Vow & Verse
 
-An original, tracker-free wedding invitation studio with an understated ink, warm-ivory and muted-brass identity. Eleven fictional celebrations have eleven independently composed pages, original generated imagery, personalised stories, multi-day programmes and distinct opening sequences.
+An original, tracker-free wedding invitation collection with an assisted WhatsApp-first business workflow. Customers browse eleven full invitation experiences; staff handle personalization in a protected Cloudflare-ready portal.
 
-## Run locally
+## Run the gallery
 
-Requires Node.js 22.12 or later.
+Node.js 22.12+ runs Vite; the SQLite backend test adapter requires Node.js 24.
 
 ```sh
 npm ci
 npm run dev
-```
-
-Production build and local preview:
-
-```sh
 npm run build
-npm run preview -- --port 4173
+npm run preview -- --port 4175
 ```
 
-Hash routes work without server-side routing. Asset URLs assume the website is served from a domain root. The repository is connected to the owner’s Netlify preview at https://avyuab.netlify.app. No backend or third-party application service is configured.
+The owner's Netlify preview at https://avyuab.netlify.app remains a static gallery. Cloudflare deployment is not required to browse it. No Cloudflare account, domain, database, bucket or Access configuration is supplied or activated.
 
-The name is a creative identity; no trademark or domain availability is claimed. Existing invitation URLs and saved browser drafts remain compatible.
+## Customer journey
 
-## Illustrated invitation direction
+Browse and filter the collection, open an immersive full-viewport preview, and choose a design. `VITE_WHATSAPP_NUMBER` is intentionally unset. Until the business owner supplies it, choosing a design displays an honest non-sending notice. When configured, the link opens WhatsApp with only the selected design name/ID; the customer decides whether to send.
 
-The homepage presents the composed invitation collection as a fan of stationery rather than a venue-photo hero. Each preview opens through a material-specific object: garden gates, paper seals, carved doors, painted shutters, a star screen, stitched cloth or a drawn kolam. Twelve original local painted assets and six vector illustration systems carry through the covers, families, date keepsakes and programmes. Names remain live text within the compositions.
+There are no public personalization forms, customer editor routes, brief builder, checkout or HTML exports. Earlier browser drafts remain untouched. Stable invitation links still work. Sample RSVP controls remain explicitly demonstration-only; no guest response is sent or saved. No prices or delivery promises are invented.
 
-Preview dates can be uncovered by actually scratching the foil, tapping it, or using the keyboard-accessible reveal button. Reduced motion skips opening choreography, parallax and ambient movement, and exposes the date directly. Exports intentionally open directly to the invitation and show the date; they contain no scripts or RSVP form. The generated people are fictional artwork, not personalised portraits.
+## Invitation craft
+
+Twelve original local painted assets and six vector illustration systems form garden gates, paper seals, carved doors, shutters, star screens, embroidered cloth and kolam. The names remain editable text composed within the artwork. True pointer scratching has tap and keyboard alternatives. Scroll reveals, bounded parallax, restrained ambient elements, motion pause and OS reduced-motion handling remain. Generated people are fictional illustrations, not personalised portraits.
 
 ## Collection
 
@@ -46,60 +43,35 @@ Preview dates can be uncovered by actually scratching the foil, tapping it, or u
 
 All couples, stories, venues and arrangements are fictional. The scenes are original AI-generated artwork, not photographs of actual customers or venues. See [asset provenance](docs/ASSETS.md).
 
-## Implemented features
+## Protected staff MVP — implemented, not deployed
 
-- Searchable, filterable responsive collection and complete invitation previews.
-- Eleven art-directed invitation compositions and opening directions, with keyboard access and reduced-motion support.
-- Per-design sample content and isolated drafts. Switching designs restores that design’s sample, saved draft, or current unsaved edits; it does not copy another couple into the new design.
-- Live editing of names, hosting line, date, city, story, closing note and one to six individually dated events.
-- Chronological event display, add/remove event controls and venue-local calendar downloads.
-- Explicit save/delete in browser localStorage. Unsaved edits stay only in the current tab.
-- Standalone HTML download with embedded images and fonts. It renders without network access and contains no JavaScript.
-- Honest RSVP demonstration: no response is transmitted or stored.
+- Server-verified Cloudflare Access JWTs and approved staff allowlist. Missing configuration fails closed; no localStorage authentication or public bypass.
+- D1 wedding/order records, draft revisions, chronological events (up to twenty), template selection and status.
+- Private saved-draft preview; immutable published snapshots; atomic publish pointer; unpublish and rollback.
+- One wildcard host-routing Worker. Unique reserved slugs resolve only their own current published snapshot, without a separate deployment per wedding.
+- Private R2 uploads with streaming size limits, image-type checks and per-wedding ownership. Only snapshot-referenced media is publicly readable.
+- Manual offline payment bookkeeping, idempotent receipts, append-only full reversals, server-calculated totals and operation history. No actual money movement.
+- Staff-authenticated admin UI to operate these features. On Netlify it explicitly reports that the backend is unavailable.
 
-Changing the main wedding date does not automatically shift individual event dates. Edit each event date explicitly. Calendar times are floating venue-local times; guests should confirm the venue timezone.
+The eleven artistic templates are maintained in source; staff choose a template rather than edit its underlying illustration/layout. Uploaded images add a gallery, not a generated portrait replacement. All approved staff share administrative permissions in this single-business MVP. There is no customer login, RSVP backend, card collection, gateway, staff invitation service, automatic DNS creation or destructive media deletion UI.
 
-## Deliberate boundaries
+See [Cloudflare architecture and deployment runbook](docs/CLOUDFLARE.md) for configuration templates, security boundaries, quotas and operational limitations. The user can supply an account/domain/contact later; no account access is needed to review or locally test this code.
 
-There is no backend, authentication, payment processing, messaging, built-in publishing, real RSVP collection, guest database, music playback, photo upload or map embed. The downloaded invitation is an offline keepsake, not a hosted share link. Generated character illustrations are fictional examples and are not personalised portraits. The day countdown is calculated when the page renders.
+## Verify locally
 
-Drafts can contain personal details. Anyone using the same browser profile may access them. Saving is explicit, and drafts can be deleted from the editor or by clearing browser site data. No cookies or tracking identifiers are used.
-
-## Architecture
-
-- `src/data.js`: eleven fictional sample weddings and design metadata.
-- `src/invitations.js`: reusable content components and eleven distinct composition functions.
-- `src/main.js`: gallery, routing, isolated editor drafts, event management, calendars and offline export.
-- `src/invitation.css`: responsive invitation compositions, also included in the export.
-- `src/craft-art.js`, `src/craft.css`: original vector illustration, invitation framing and material opening choreography.
-- `src/studio-home.css`: stationery-led collection homepage.
-- `src/style.css`, `src/v2.css`: shared editor shell and legacy style foundations.
-- `public/images/craft/`: twelve locally served illustrated opening, cover and interior artworks. Earlier unused first-edition artwork remains in `public/images/` for provenance.
-- `licenses/`: SIL Open Font License notices for locally bundled fonts.
-
-## Tests
-
-Start the production preview on port 4173, then:
+With the built gallery served on port 4175:
 
 ```sh
 npm test
-npm run test:branding
-node tests/home.mjs
-node tests/craft.mjs
-node tests/experience.mjs
+node tests/admin-ui.mjs
+npm run test:motion
 npm run audit:source
 ```
 
-Tests use Playwright with an installed Chromium binary. Set `CHROMIUM_PATH` if it is not at `/usr/bin/chromium`, and `TEST_URL` for a different local server. The suite covers three viewport widths, all designs, reduced and normal motion, distinct content, chronological events, draft isolation, editor controls, offline export and external request detection. Screenshots produced by tests are local review artifacts and are ignored by Git.
+Backend tests verify real RSA JWT cryptography with ephemeral in-memory test keys and mocked JWKS, SQLite behind a D1-shaped adapter and memory R2. Browser tests use Chromium; these are not claims of real iPhone, Safari, WhatsApp webview or deployed Cloudflare testing. The old editor/export tests remain historical fixtures for the retired DIY workflow and are not the current acceptance suite.
 
-Static audit scans application text assets for external URLs and common tracking markers; image files are excluded from the text scan. Runtime network capture complements that check. CSP restricts application resources to the same origin; exports permit only embedded images/fonts and inline styles.
+## Source map
 
-Browser verification is Chromium-based. Safari, Firefox, physical devices, all possible multilingual/long inputs and formal accessibility conformance have not been exhaustively verified.
+`src/main.js` and `src/sales.js`: public gallery, immersive previews and configured WhatsApp action. `src/invitations.js`, `src/craft-art.js`, `src/experience.js`: original invitation rendering and motion. `worker/`: authenticated API and wildcard routing. `public/admin.*`: staff interface. `migrations/`: D1 schema. `wrangler.example.jsonc`: unconfigured deployment template. No private customer data or production credentials belong in this repository.
 
-See [Demo data and motion](docs/DEMO-EXPERIENCE.md) for fictional sample boundaries, the per-design effect inventory and accessibility fallbacks.
-
-## Inquiry drafts and compatibility
-
-Use **Prepare an unsent inquiry brief** on the homepage, or explicitly copy editor details into a brief. Review/edit, copy or download it locally; there is no configured recipient, price, order submission or payment. Invitation drafts remain separate. See [Readiness and the phone checklist](docs/READINESS.md) for supported limits, owner inputs needed before assisted ordering, measured asset budgets and honest browser-test gaps.
-
-Run `node tests/readiness.mjs` for the personalization, Unicode/calendar and inquiry-flow checks. Local script fonts cover Malayalam, Devanagari/Hindi and Tamil; interface translation and photo upload are not provided. Long cover details use a flowing full-name stationery panel.
+No analytics, pixels, replay scripts, remote fonts or third-party embeds. Authentication's server-side JWKS request and a customer-initiated configured WhatsApp link have specific functional purposes. All artwork/fonts are local; provenance and licenses are in [ASSETS.md](docs/ASSETS.md) and `licenses/`. The Vow & Verse name is a creative choice, not a trademark/domain availability claim.

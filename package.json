@@ -7,11 +7,11 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node tests/browser.mjs",
+    "test": "node tests/backend.mjs && node tests/assisted.mjs && node tests/admin-ui.mjs && node tests/published.mjs",
     "audit:source": "node tests/audit.mjs",
-    "test:branding": "node tests/branding.mjs",
-    "test:craft": "node tests/craft.mjs",
-    "test:home": "node tests/home.mjs"
+    "test:backend": "node tests/backend.mjs",
+    "test:assisted": "node tests/assisted.mjs",
+    "test:motion": "node tests/experience.mjs && node tests/motion-control.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
@@ -25,7 +25,8 @@
     "@fontsource/noto-sans-devanagari": "5.3.0",
     "@fontsource/noto-sans-malayalam": "5.3.0",
     "@fontsource/noto-sans-tamil": "5.3.0",
-    "@fontsource/parisienne": "5.3.0"
+    "@fontsource/parisienne": "5.3.0",
+    "jose": "6.1.3"
   },
-  "description": "Vow & Verse — original wedding invitations, made personal."
+  "description": "Vow & Verse \u2014 original wedding invitations, made personal."
 }

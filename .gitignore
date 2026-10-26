@@ -5,3 +5,8 @@ evidence/
 .env.*
 *.log
 .DS_Store
+.dev.vars
+.dev.vars.*
+.wrangler/
+wrangler.jsonc
+wrangler.json
