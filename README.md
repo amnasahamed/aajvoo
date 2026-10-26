@@ -22,6 +22,10 @@ Hash routes work without server-side routing. Asset URLs assume the website is s
 
 The name is a creative identity; no trademark or domain availability is claimed. Existing invitation URLs and saved browser drafts remain compatible.
 
+## Homepage direction
+
+The studio homepage uses a cinematic candlelit cover, ink/plum navigation, an asymmetric two-column art gallery, a stationery-led studio note and a numbered editorial process. Its spotlight opens An Evening in Verse. Artwork is reused from the original local collection; invitation pages and stable routes keep their independent designs. Mobile discovery starts with artwork and a visible collection action.
+
 ## Collection
 
 | Design | Fictional couple | Composition |
@@ -76,6 +80,7 @@ Start the production preview on port 4173, then:
 ```sh
 npm test
 npm run test:branding
+node tests/home.mjs
 npm run audit:source
 ```
 
