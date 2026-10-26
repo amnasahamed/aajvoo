@@ -1,10 +1,12 @@
 :root {
   font-family: Manrope, Arial, sans-serif;
   color: #393e32;
-  background: #f7f4ec;
+  background: #f7f3e9;
   font-synthesis: none;
   --serif: "Cormorant Garamond", Georgia, serif;
-  --wine: #603c33;
+  --brand-ink: #293936;
+  --brand-brass: #927b4e;
+  --brand-paper: #f7f3e9;
   --line: #d9d7ca;
   --muted: #75776b;
 }
@@ -97,9 +99,9 @@ img {
   align-items: center;
   justify-content: center;
   gap: 25px;
-  background: var(--wine);
+  background: var(--brand-ink);
   color: #fff9eb;
-  border: 1px solid var(--wine);
+  border: 1px solid var(--brand-ink);
   padding: 18px 24px;
   font-size: 12px;
   letter-spacing: 0.02em;
@@ -107,7 +109,7 @@ img {
   transition: background 0.2s;
 }
 .button:hover {
-  background: #785044;
+  background: #40534c;
 }
 .button.small {
   padding: 13px 19px;
@@ -116,7 +118,7 @@ img {
 }
 .button.outline {
   background: transparent;
-  color: var(--wine);
+  color: var(--brand-ink);
 }
 .text-link {
   font-size: 12px;
@@ -753,7 +755,7 @@ footer > div:nth-child(2) > span {
   justify-content: space-between;
   gap: 20px;
   align-items: center;
-  background: #f7f4ec;
+  background: #f7f3e9;
   font-size: 11px;
   min-height: 75px;
 }
@@ -767,7 +769,7 @@ footer > div:nth-child(2) > span {
   padding: 35px;
   font-size: 12px;
   color: #69725c;
-  background: #f7f4ec;
+  background: #f7f3e9;
 }
 .preview-info p {
   max-width: 630px;
@@ -1143,7 +1145,7 @@ footer > div:nth-child(2) > span {
     top: 85px;
     left: 0;
     right: 0;
-    background: #f7f4ec;
+    background: #f7f3e9;
     z-index: 10;
     padding: 20px 6%;
     justify-content: space-between;

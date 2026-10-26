@@ -8,7 +8,7 @@ const event = (title, date, time, venue, note) => ({
 export const templates = [
   {
     id: "courtyard",
-    name: "The Secret Courtyard",
+    name: "Garden Verse",
     category: "Palace",
     mood: "A world tucked away, just for you.",
     layout: "garden",
@@ -63,7 +63,7 @@ export const templates = [
   },
   {
     id: "letters",
-    name: "Letters to You",
+    name: "A Letter to You",
     category: "Romantic",
     mood: "The things we always meant to say.",
     layout: "letter",
@@ -110,7 +110,7 @@ export const templates = [
   },
   {
     id: "dawn",
-    name: "First Light",
+    name: "The First Light",
     category: "Heritage",
     mood: "A beginning, as the world wakes.",
     layout: "sunrise",
@@ -165,7 +165,7 @@ export const templates = [
   },
   {
     id: "herbarium",
-    name: "The Wildflower Edit",
+    name: "Wildflower Waltz",
     category: "Romantic",
     mood: "A love with room to grow.",
     layout: "botanical",
@@ -219,7 +219,7 @@ export const templates = [
   },
   {
     id: "velvet",
-    name: "Afterglow",
+    name: "An Evening in Verse",
     category: "Palace",
     mood: "Stay for one more song.",
     layout: "nocturne",
@@ -273,7 +273,7 @@ export const templates = [
   },
   {
     id: "lake",
-    name: "Stillwater",
+    name: "A Stillwater Story",
     category: "Palace",
     mood: "Leave the rush behind.",
     layout: "landscape",
@@ -334,7 +334,7 @@ export const templates = [
   },
   {
     id: "temple",
-    name: "Sanctuary",
+    name: "A Sacred Beginning",
     category: "Heritage",
     mood: "The light we carry forward.",
     layout: "sanctuary",
@@ -388,7 +388,7 @@ export const templates = [
   },
   {
     id: "earthen",
-    name: "Earth & Ember",
+    name: "Written in Earth",
     category: "Contemporary",
     mood: "Nothing extra. Everything that matters.",
     layout: "editorial",
@@ -435,7 +435,7 @@ export const templates = [
   },
   {
     id: "moon",
-    name: "Under One Moon",
+    name: "The Moonlit Promise",
     category: "Nikah",
     mood: "A promise in the quiet of the evening.",
     layout: "celestial",
@@ -489,7 +489,7 @@ export const templates = [
   },
   {
     id: "tapestry",
-    name: "Woven Together",
+    name: "Threads of Promise",
     category: "Anand Karaj",
     mood: "Every thread has brought us here.",
     layout: "woven",
@@ -550,7 +550,7 @@ export const templates = [
   },
   {
     id: "silk",
-    name: "Silk & Symphony",
+    name: "A Silk Serenade",
     category: "Heritage",
     mood: "A timeless beginning, softly told.",
     layout: "silk",

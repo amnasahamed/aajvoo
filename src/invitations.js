@@ -48,7 +48,7 @@ function rsvp(t, d, o, cls = "") {
   return `<section class="invite-rsvp ${cls}" data-section="rsvp"><div>${kicker("Save a place in the story")}<h2>${t.id === "letters" ? "A little reply." : t.id === "velvet" ? "Will we see you there?" : "We hope you’ll join us."}</h2><p>Try the RSVP preview below.<br>No response is sent or stored.</p></div><form id="rsvp-form"><label>Your name<input name="guest" required maxlength="80" autocomplete="off" placeholder="Your full name"></label><label>Your reply<select name="response"><option>Joyfully accepts</option><option>Regretfully declines</option></select></label><button class="invite-button" type="submit">Preview my reply <span class="invite-arrow" aria-hidden="true"></span></button><p id="rsvp-status" role="status"></p></form></section>`;
 }
 const end = (d) =>
-  `<footer class="invite-end" data-section="end"><span class="monogram">${initials(d)}</span><p>${esc(d.note)}</p>${signed(d)}<small>A fictional celebration, designed with InviteStory.</small></footer>`;
+  `<footer class="invite-end" data-section="end"><span class="monogram">${initials(d)}</span><p>${esc(d.note)}</p>${signed(d)}<small>A fictional celebration, designed with Vow &amp; Verse.</small></footer>`;
 const hero = (t, d, cls = "") =>
   `<section class="invite-cover ${cls}" data-section="cover">${pic(t, "invite-art")}${title(t, d)}</section>`;
 // Independent compositions: structure, section order and content hierarchy differ.

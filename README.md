@@ -1,6 +1,6 @@
-# InviteStory — Atelier II
+# Vow & Verse
 
-An original, tracker-free wedding invitation studio. Eleven fictional celebrations have eleven independently composed pages, original generated imagery, personalised stories, multi-day programmes and distinct opening sequences.
+An original, tracker-free wedding invitation studio with an understated ink, warm-ivory and muted-brass identity. Eleven fictional celebrations have eleven independently composed pages, original generated imagery, personalised stories, multi-day programmes and distinct opening sequences.
 
 ## Run locally
 
@@ -20,21 +20,23 @@ npm run preview -- --port 4173
 
 Hash routes work without server-side routing. Asset URLs assume the website is served from a domain root. No hosting or external service is configured.
 
+The name is a creative identity; no trademark or domain availability is claimed. Existing invitation URLs and saved browser drafts remain compatible.
+
 ## Collection
 
 | Design | Fictional couple | Composition |
 | --- | --- | --- |
-| The Secret Courtyard | Ira & Neel | Photographic garden, architectural title, three-day gathering |
-| Letters to You | Leela & Samar | Deckle-edge stationery, personal letter, diary and reply card |
-| First Light | Vedika & Om | Sunrise scene, time-led itinerary, hillside story panel |
-| The Wildflower Edit | Aditi & Joel | Botanical specimen book, conservatory and garden-party programme |
-| Afterglow | Saira & Rishabh | Evening poster, candlelit salon programme and musical interlude |
-| Stillwater | Esha & Ronit | Travel journal, four-part weekend itinerary and postcard |
-| Sanctuary | Revathi & Madhav | Carved-stone architecture, ceremony-first callout, family blessing |
-| Earth & Ember | Avni & Kian | Numbered modern folio, sculptural still life and editorial grid |
-| Under One Moon | Safiya & Hamza | Moonlit architecture, Nikah gathering, pearl-toned story |
-| Woven Together | Harleen & Angad | Embroidered banner, family album, Anand Karaj programme |
-| Silk & Symphony | Janani & Vishal | Silk borders, wedding almanac and material diptych |
+| Garden Verse | Ira & Neel | Photographic garden, architectural title, three-day gathering |
+| A Letter to You | Leela & Samar | Deckle-edge stationery, personal letter, diary and reply card |
+| The First Light | Vedika & Om | Sunrise scene, time-led itinerary, hillside story panel |
+| Wildflower Waltz | Aditi & Joel | Botanical specimen book, conservatory and garden-party programme |
+| An Evening in Verse | Saira & Rishabh | Evening poster, candlelit salon programme and musical interlude |
+| A Stillwater Story | Esha & Ronit | Travel journal, four-part weekend itinerary and postcard |
+| A Sacred Beginning | Revathi & Madhav | Carved-stone architecture, ceremony-first callout, family blessing |
+| Written in Earth | Avni & Kian | Numbered modern folio, sculptural still life and editorial grid |
+| The Moonlit Promise | Safiya & Hamza | Moonlit architecture, Nikah gathering, pearl-toned story |
+| Threads of Promise | Harleen & Angad | Embroidered banner, family album, Anand Karaj programme |
+| A Silk Serenade | Janani & Vishal | Silk borders, wedding almanac and material diptych |
 
 All couples, stories, venues and arrangements are fictional. The scenes are original AI-generated artwork, not photographs of actual customers or venues. See [asset provenance](docs/ASSETS.md).
 
@@ -73,6 +75,7 @@ Start the production preview on port 4173, then:
 
 ```sh
 npm test
+npm run test:branding
 npm run audit:source
 ```
 

@@ -1,6 +1,6 @@
-# Original asset provenance — Atelier II
+# Original asset provenance — Vow & Verse
 
-The eleven images in `public/images/` were generated specifically for InviteStory using OpenAI image generation on 2026-10-25. Each came from a separate original prompt. No competitor image, stock photograph, customer portrait, external logo or reference image was supplied. The results depict imaginary settings and still lifes; no scene should be represented as a booked or real venue.
+The eleven images in `public/images/` were generated specifically for Vow & Verse using OpenAI image generation on 2026-10-25. Each came from a separate original prompt. No competitor image, stock photograph, customer portrait, external logo or reference image was supplied. The results depict imaginary settings and still lifes; no scene should be represented as a booked or real venue.
 
 | File | Art direction |
 | --- | --- |
@@ -18,7 +18,7 @@ The eleven images in `public/images/` were generated specifically for InviteStor
 
 Generated PNG results were encoded locally to WebP at quality 85, without creative pixel editing. All runtime images are local. The gallery uses CSS crops of the corresponding scene to study material and atmosphere; these are not additional independently generated photographs. No third-party image network is contacted.
 
-The favicon is original SVG geometry. Its SVG namespace is an identifier, not a network request.
+The Vow & Verse wordmark uses local typography with a brass italic ampersand. The favicon is original paired-V SVG geometry in ink and brass. Its SVG namespace is an identifier, not a network request.
 
 Fonts: Cormorant Garamond and Manrope, self-hosted from `@fontsource` packages, under the SIL Open Font License. License notices are included in `licenses/`. No Google Fonts or other font CDN is used. Offline invitation exports embed the local regular serif, italic serif and regular sans fonts.
 

@@ -1,5 +1,5 @@
 {
-  "name": "wedding-invitation-studio",
+  "name": "vow-and-verse",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "node tests/browser.mjs",
-    "audit:source": "node tests/audit.mjs"
+    "audit:source": "node tests/audit.mjs",
+    "test:branding": "node tests/branding.mjs"
   },
   "devDependencies": {
     "vite": "8.3.5",
@@ -17,5 +18,6 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "5.2.8",
     "@fontsource/manrope": "5.2.8"
-  }
+  },
+  "description": "Vow & Verse — original wedding invitations, made personal."
 }

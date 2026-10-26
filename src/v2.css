@@ -1,7 +1,7 @@
-/* Atelier II — the homepage is a photographic editorial, not an invitation mockup wall. */
+/* Vow & Verse — the homepage is a photographic editorial, not an invitation mockup wall. */
 :root {
-  color: #383c31;
-  background: #f6f3eb;
+  color: #293936;
+  background: #f7f3e9;
 }
 .site-nav {
   height: 92px;
@@ -38,7 +38,7 @@
   margin: 35px 0 26px;
 }
 .hero-v2-copy h1 em {
-  color: #74785c;
+  color: #88764f;
 }
 .hero-v2-copy .eyebrow {
   font-size: 10px;
@@ -1328,4 +1328,22 @@
     transition: none !important;
     animation: none !important;
   }
+}
+/* Shared identity belongs to the studio chrome; each invitation keeps its own palette. */
+.wordmark { letter-spacing: -1.3px; color: var(--brand-ink); }
+.wordmark .wordmark-amp { font-size: .78em; font-weight: 400; color: var(--brand-brass); margin-inline: .06em; }
+.site-nav { border-bottom-color: #d9d0ba; }
+.hero-v2-copy .eyebrow { color: #76633f; }
+.filters button[aria-pressed="true"] { background: #e8e1d2; color: var(--brand-ink); }
+.closing { background: #ede6d8; border-color: #d9d0ba; }
+.site-nav a:focus-visible, .studio-header a:focus-visible { outline-color: var(--brand-brass); }
+@media (max-width: 540px) {
+  .site-nav .wordmark { font-size: 28px; }
+  .studio-header .wordmark { font-size: 29px; }
+}
+@media (max-width: 380px) {
+  .site-nav { gap: 7px; padding-inline: 5%; }
+  .site-nav .wordmark { font-size: 24px; }
+  .site-nav > .button { font-size: 9px; padding-inline: 8px; }
+  .site-nav .mobile-menu { min-width: 28px; padding-inline: 2px; }
 }
