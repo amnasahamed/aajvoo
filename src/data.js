@@ -283,7 +283,7 @@ export const templates = [
     reveal: "postcard",
     edition: "06",
     detail:
-      "A destination journal in mist blue, with slow mornings and a lakeside gathering.",
+      "Painted plum shutters, a lakeside palace and floral fresco borders around a wedding by the water.",
     storyTitle: "A place we return to.",
     programmeTitle: "Your weekend away",
     galleryTitle: "Postcards from our imagined place",
@@ -445,7 +445,7 @@ export const templates = [
     reveal: "lattice",
     edition: "09",
     detail:
-      "Pearl light and indigo architecture, with a considered Nikah and walima programme.",
+      "Emerald and gold star lattice, glowing pierced lanterns and a pointed arch for a Nikah and walima celebration.",
     storyTitle: "The comfort of being understood.",
     programmeTitle: "An invitation to share our joy",
     galleryTitle: "A little world of light",
@@ -499,7 +499,7 @@ export const templates = [
     reveal: "textile",
     edition: "10",
     detail:
-      "A warm family album, hand-stitched rhythm and a joyful Anand Karaj celebration.",
+      "Magenta and saffron embroidery, stitched stationery and a glowing Jaggo lamp-pot for a joyful family celebration.",
     storyTitle: "A story stitched by everyone we love.",
     programmeTitle: "Three days, one happy family",
     galleryTitle: "Threads of home",
@@ -560,7 +560,7 @@ export const templates = [
     reveal: "scroll",
     edition: "11",
     detail:
-      "Cream silk and teal borders, jasmine strings and a graceful morning programme.",
+      "Magenta silk, gold zari borders, jasmine strings and a kolam opening into a morning celebration.",
     storyTitle: "A rhythm of our own.",
     programmeTitle: "The wedding almanac",
     galleryTitle: "The texture of a celebration",
