@@ -1,0 +1,27 @@
+/* noto-sans-devanagari-devanagari-400-normal */
+@font-face {
+  font-family: 'Noto Sans Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-400-normal.woff2) format('woff2'), url(@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-400-normal.woff) format('woff');
+  unicode-range: U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+/* noto-sans-malayalam-malayalam-400-normal */
+@font-face {
+  font-family: 'Noto Sans Malayalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/noto-sans-malayalam/files/noto-sans-malayalam-malayalam-400-normal.woff2) format('woff2'), url(@fontsource/noto-sans-malayalam/files/noto-sans-malayalam-malayalam-400-normal.woff) format('woff');
+  unicode-range: U+0307,U+0323,U+0951-0952,U+0964-0965,U+0D00-0D7F,U+1CDA,U+1CF2,U+200C-200D,U+20B9,U+25CC,U+A830-A832;
+}
+/* noto-sans-tamil-tamil-400-normal */
+@font-face {
+  font-family: 'Noto Sans Tamil';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/noto-sans-tamil/files/noto-sans-tamil-tamil-400-normal.woff2) format('woff2'), url(@fontsource/noto-sans-tamil/files/noto-sans-tamil-tamil-400-normal.woff) format('woff');
+  unicode-range: U+0964-0965,U+0B82-0BFA,U+200C-200D,U+20B9,U+25CC;
+}

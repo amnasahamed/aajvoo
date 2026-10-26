@@ -43,3 +43,5 @@ Twelve new original image-generation outputs are stored locally under `public/im
 Additional local fonts: Parisienne, Cinzel and Fraunces from pinned Fontsource packages, SIL Open Font License; notices in `licenses/`. All six used font faces are embedded in offline keepsakes. No remote font or image request is required.
 
 Characters in generated illustrations are fictional sample art and are not portraits of the entered names. Personalisation changes text and event details; it does not regenerate character likenesses or illustrative venue geography.
+
+Text compatibility adds pinned Fontsource Noto Sans Devanagari, Noto Sans Malayalam and Noto Sans Tamil 5.3.0, using the 400-weight script subsets locally. The original font files are unchanged; SIL OFL notices are in `licenses/`. These fonts are embedded in standalone keepsakes alongside the existing faces. No new artwork or photo-upload capability is introduced by the readiness pass.

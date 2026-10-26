@@ -97,3 +97,9 @@ Static audit scans application text assets for external URLs and common tracking
 Browser verification is Chromium-based. Safari, Firefox, physical devices, all possible multilingual/long inputs and formal accessibility conformance have not been exhaustively verified.
 
 See [Demo data and motion](docs/DEMO-EXPERIENCE.md) for fictional sample boundaries, the per-design effect inventory and accessibility fallbacks.
+
+## Inquiry drafts and compatibility
+
+Use **Prepare an unsent inquiry brief** on the homepage, or explicitly copy editor details into a brief. Review/edit, copy or download it locally; there is no configured recipient, price, order submission or payment. Invitation drafts remain separate. See [Readiness and the phone checklist](docs/READINESS.md) for supported limits, owner inputs needed before assisted ordering, measured asset budgets and honest browser-test gaps.
+
+Run `node tests/readiness.mjs` for the personalization, Unicode/calendar and inquiry-flow checks. Local script fonts cover Malayalam, Devanagari/Hindi and Tamil; interface translation and photo upload are not provided. Long cover details use a flowing full-name stationery panel.

@@ -21,7 +21,8 @@ const shortDate = (d) =>
     day: "numeric",
     month: "short",
   });
-const initials = (d) => esc(d.name1.slice(0, 1) + d.name2.slice(0, 1));
+const firstLetter=s=>typeof Intl.Segmenter==='function'?[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(s.trim())][0]?.segment||'':Array.from(s.trim())[0]||'';
+const initials = (d) => esc(firstLetter(d.name1) + firstLetter(d.name2));
 const names = (d) => `${esc(d.name1)} <i>&</i> ${esc(d.name2)}`;
 const pic = (t, cls = "", alt = "", pos = "") =>
   `<img class="${cls}" src="${imagePath(t)}" alt="${esc(alt || t.detail)}" ${pos ? `style="object-position:${pos}"` : ""} loading="lazy">`;
@@ -51,14 +52,15 @@ const end = (d) =>
 // A scene is composed for each invitation medium, rather than using a venue photo.
 export const painted = new Set(["courtyard", "letters", "dawn", "lake", "temple"]);
 export const scenePath = (t, state="open") => `/images/craft/${t.id}-${state}.webp`;
-const scene = (t,state="open") => painted.has(t.id)
- ? `<img class="crafted-scene" src="${scenePath(t,state)}" alt="Original illustrated ${t.name} ${state === "closed" ? "invitation cover" : "wedding world"}" loading="eager">`
+const scene = (t,state="open",lazy=false) => painted.has(t.id)
+ ? `<img class="crafted-scene" src="${scenePath(t,state)}" alt="Original illustrated ${t.name} ${state === "closed" ? "invitation cover" : "wedding world"}" loading="${lazy?'lazy':'eager'}" decoding="async">`
  : drawing(t.id,state);
 const typeSize=(t,d)=>{const base={temple:8.8,moon:11,tapestry:11,silk:11,earthen:12}[t.id]||13;const longest=Math.max(d.name1.length,d.name2.length);return `clamp(18px,${base*Math.min(1,10/longest)}cqw,78px)`};
 const framedTitle = (t,d) => `<div class="invite-title scene-title">${kicker(d.hostline)}<h1 style="font-size:${typeSize(t,d)}">${names(d)}</h1><span class="scene-union">${t.id==='moon'?'TOGETHER IN GRATITUDE':t.id==='tapestry'?'WITH OUR FAMILIES': 'ARE GETTING MARRIED'}</span><div class="scene-date">${dateText(d.date)}<span>${esc(d.location)}</span></div></div>`;
-export const sceneCover=(t,d)=>`<section class="invite-cover crafted-cover cover-${t.id}" data-section="cover">${scene(t)}${framedTitle(t,d)}${t.id==='earthen'?'<span class="seven-promises">SEVEN PROMISES · ONE BEGINNING</span>':''}</section>`;
+const extendedCover=d=>Math.max(d.name1.length,d.name2.length)>22 || d.hostline.length>110 || d.location.length>85;
+export const sceneCover=(t,d,o={})=>{const extended=extendedCover(d);return `<section class="invite-cover crafted-cover cover-${t.id} ${extended?'extended-cover':''}" data-section="cover">${scene(t,"open",o.lazy)}${extended?`<div class="cover-monogram" aria-hidden="true">${initials(d)}</div>`:''}${framedTitle(t,d)}${t.id==='earthen'&&!extended?'<span class="seven-promises">SEVEN PROMISES · ONE BEGINNING</span>':''}</section>`};
 function dateKeepsake(t,d,o){return `<section class="date-keepsake" data-section="date"><span class="invite-kicker">A date to hold close</span><div class="date-amulet"><div class="date-inside"><span>${day(d.date)}</span><strong>${new Date(d.date+'T12:00:00').getDate()}</strong><span>${new Date(d.date+'T12:00:00').toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</span></div>${!o.mini&&!o.exported?`<canvas class="date-scratch" data-initials="${initials(d)}" aria-hidden="true"></canvas>`:''}</div>${!o.mini&&!o.exported?'<button class="date-foil" aria-label="Reveal our wedding date" aria-expanded="false">Reveal date</button><p class="scratch-hint">Brush across the foil, tap it, or use the button.</p>':''}${countdown(d)}<p class="date-message" aria-live="polite"></p></section>`}
-const family=(t,d)=>`<section class="family-niches" data-section="family">${kicker('Two stories, one beginning')}<div class="family-pair"><div><span class="family-initial">${esc(d.name1[0])}</span><h2>${esc(d.name1)}</h2></div><span class="family-and">&amp;</span><div><span class="family-initial">${esc(d.name2[0])}</span><h2>${esc(d.name2)}</h2></div></div><p>${esc(d.hostline)}</p></section>`;
+const family=(t,d)=>`<section class="family-niches" data-section="family">${kicker('Two stories, one beginning')}<div class="family-pair"><div><span class="family-initial">${esc(firstLetter(d.name1))}</span><h2>${esc(d.name1)}</h2></div><span class="family-and">&amp;</span><div><span class="family-initial">${esc(firstLetter(d.name2))}</span><h2>${esc(d.name2)}</h2></div></div><p>${esc(d.hostline)}</p></section>`;
 const interiorArt=(t)=>({courtyard:'/images/craft/courtyard-interior.webp',letters:'/images/craft/letters-interior.webp',dawn:scenePath(t),lake:scenePath(t)})[t.id];
 const frame=(t,body)=>{const paper=interiorArt(t);return `<div class="invitation-pages pages-${t.id} ${paper?'painted-paper':''}" ${paper?`style="--interior-art:url('${paper}')"`:''}><div class="page-perimeter" aria-hidden="true">${paper?`<img src="${paper}" alt="" hidden>`:borderDrawing(t.id)}</div><div class="page-content">${body}</div></div>`};
 
@@ -76,7 +78,7 @@ const layouts={
  silk:(t,d,o)=>sceneCover(t,d)+frame(t,family(t,d)+programme(t,d,o,'almanac-events')+dateKeepsake(t,d,o)+story(t,d,'silk-story')+quote(t)+rsvp(t,d,o)+end(d)),
 };
 export function renderInvitation(t,d,options={}){
- return `<article class="invitation v2 crafted-invitation ${t.layout} ${options.mini?'mini':''}" style="--ink:${t.color};--paper:${t.paper}" data-template="${t.id}">${layouts[t.id](t,d,options)}</article>`;
+ return `<article class="invitation v2 crafted-invitation ${t.layout} ${Math.max(d.name1.length,d.name2.length)>22?'long-names':''} ${options.mini?'mini':''}" style="--ink:${t.color};--paper:${t.paper}" data-template="${t.id}">${layouts[t.id](t,d,options)}</article>`;
 }
 export function renderReveal(t,d){
  const material={courtyard:'gate',letters:'letter',dawn:'door',herbarium:'fold',velvet:'palace',lake:'palace',temple:'door',earthen:'circle',moon:'screen',tapestry:'cloth',silk:'kolam'}[t.id];

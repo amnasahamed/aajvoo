@@ -1,9 +1,9 @@
 :root {
-  font-family: Manrope, Arial, sans-serif;
+  font-family: Manrope, Arial, 'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',sans-serif;
   color: #393e32;
   background: #f7f3e9;
   font-synthesis: none;
-  --serif: "Cormorant Garamond", Georgia, serif;
+  --serif: "Cormorant Garamond", Georgia, 'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif;
   --brand-ink: #293936;
   --brand-brass: #927b4e;
   --brand-paper: #f7f3e9;
@@ -155,7 +155,7 @@ img {
   letter-spacing: -1.6px;
 }
 .wordmark span {
-  font-family: Manrope, sans-serif;
+  font-family: Manrope, 'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',sans-serif;
   font-size: 9px;
   vertical-align: top;
   display: inline-block;

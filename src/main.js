@@ -1,3 +1,10 @@
+import {calendarText,validDate,validTime} from "./calendar.js";
+import "./languages.css";
+import devanagariURL from "@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-400-normal.woff2?url";
+import malayalamURL from "@fontsource/noto-sans-malayalam/files/noto-sans-malayalam-malayalam-400-normal.woff2?url";
+import tamilURL from "@fontsource/noto-sans-tamil/files/noto-sans-tamil-tamil-400-normal.woff2?url";
+import {renderBrief,seedBrief} from "./brief.js";
+import "./readiness.css";
 import {mountExperience} from "./experience.js";
 let disposeExperience = () => {};
 let openingTimer;
@@ -56,8 +63,8 @@ function nav() {
 function footer() {
   return `<footer><div><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><p>For the moments that become your story.</p></div><div><a href="#collection">Explore the collection ${arrow}</a><a href="#/privacy">Privacy & local drafts</a><span>Designed with intention. Shared with love.</span></div><p class="footer-bottom">© ${new Date().getFullYear()} Vow & Verse <span>An independent design studio · Frontend edition</span></p></footer>`;
 }
-function miniature(t){return `<div class="invitation crafted-invitation ${t.layout}" data-template="${t.id}" aria-hidden="true">${sceneCover(t,t.sample).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div>`}
-function card(t,i){return `<article class="design-card"><a class="design-preview craft-preview" href="#/invitation/${t.id}" aria-label="Preview ${t.name}">${miniature(t)}<span class="preview-call">Open invitation ${arrow}</span></a><div class="card-info"><div><span class="eyebrow">${t.edition} / ${t.category}</span><h3>${t.name}</h3><p>${t.mood}</p></div><a href="#/studio/${t.id}" class="circle-link" aria-label="Personalise ${t.name}">${arrow}</a></div></article>`}
+function miniature(t, lazy=false){return `<div class="invitation crafted-invitation ${t.layout}" data-template="${t.id}" aria-hidden="true">${sceneCover(t,t.sample,{lazy}).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div>`}
+function card(t,i){return `<article class="design-card"><a class="design-preview craft-preview" href="#/invitation/${t.id}" aria-label="Preview ${t.name}">${miniature(t,true)}<span class="preview-call">Open invitation ${arrow}</span></a><div class="card-info"><div><span class="eyebrow">${t.edition} / ${t.category}</span><h3>${t.name}</h3><p>${t.mood}</p></div><a href="#/studio/${t.id}" class="circle-link" aria-label="Personalise ${t.name}">${arrow}</a></div></article>`}
 function renderCards() {
   const items = templates.filter(
     (t) =>
@@ -74,7 +81,7 @@ function renderCards() {
 }
 function home() {
   document.title = "Vow & Verse — A beautiful beginning";
-  app.innerHTML = `<div class="studio-home">` + nav() + `<main id="main"><section class="hero-v2 atelier-hero"><div class="atelier-intro"><span class="eyebrow">VOW &amp; VERSE · WEDDING INVITATIONS</span><h1>A little ceremony<br><em>before the ceremony.</em></h1><p>Break a seal. Open a garden gate.<br>Invite your people into your story.</p><a class="button" href="#collection">Find your invitation ${arrow}</a><span class="atelier-note">Eleven original worlds, waiting to be made yours.</span></div><div class="invitation-fan"><a class="fan-card fan-left" href="#/invitation/tapestry" aria-label="Preview Threads of Promise">${miniature(templates[9])}</a><a class="fan-card fan-right" href="#/invitation/moon" aria-label="Preview The Moonlit Promise">${miniature(templates[8])}</a><a class="fan-card fan-center" href="#/invitation/courtyard" aria-label="Preview Garden Verse">${miniature(templates[0])}<span class="fan-seal">Open<br>our world</span></a></div></section><div class="collection-preface"><span>Painted gardens</span><i>✧</i><span>Letters &amp; heirlooms</span><i>✧</i><span>Rituals &amp; new beginnings</span></div><section id="collection" class="collection section"><div class="section-heading"><div><span class="eyebrow">THE INVITATION COLLECTION</span><h2>Which one feels<br><em>like your celebration?</em></h2></div><p>Every design has its own opening,<br>its own details, its own heart.<br>Tap one. See where it takes you.</p></div><div class="collection-tools"><div class="filters" role="group" aria-label="Filter by style">${["All designs","Palace","Romantic","Heritage","Contemporary","Nikah","Anand Karaj"].map(x=>`<button data-filter="${x}" aria-pressed="${filter===x}">${x}</button>`).join('')}</div><label class="search"><span class="sr-only">Search designs</span><input type="search" placeholder="Find your style" value="${escapeHTML(search)}"><span aria-hidden="true">⌕</span></label></div><div class="collection-meta"><span id="result-count" aria-live="polite"></span><span>Open a preview · Make it yours</span></div><div class="design-grid" id="design-grid"></div></section><section class="craft-note" id="about"><div class="note-object"><div class="invitation crafted-invitation" data-template="letters">${sceneCover(templates[1],templates[1].sample).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div></div><div><span class="eyebrow">MORE THAN A PRETTY COVER</span><h2>Something to open.<br><em>Something to remember.</em></h2><p>A doorway that parts. A letter that unfolds. A date revealed with a touch.</p><p>The details continue inside: your families, your story, the days you’ll celebrate together. All composed as one invitation.</p><a class="text-link" href="#/invitation/letters">Open A Letter to You ${arrow}</a></div></section><section class="make-it-personal section" id="process"><span class="eyebrow">FROM OUR STUDIO TO YOUR STORY</span><h2>Make it <em>yours.</em></h2><div class="personal-steps"><article><span>01</span><h3>Fall for a design</h3><p>Explore all eleven complete sample celebrations. Choose the one that feels like you.</p></article><article><span>02</span><h3>Add your people &amp; plans</h3><p>Change names, dates, your story and each celebration. See your invitation take shape.</p></article><article><span>03</span><h3>Keep your invitation</h3><p>Save a local draft or download an offline keepsake. Hosting and sending are yours to arrange.</p></article></div><a class="button" href="#/studio/courtyard">Try the invitation studio ${arrow}</a></section><section class="faq section"><div><span class="eyebrow">BEFORE YOU BEGIN</span><h2>A few<br><em>little details.</em></h2></div><div>${[
+  app.innerHTML = `<div class="studio-home">` + nav() + `<main id="main"><section class="hero-v2 atelier-hero"><div class="atelier-intro"><span class="eyebrow">VOW &amp; VERSE · WEDDING INVITATIONS</span><h1>A little ceremony<br><em>before the ceremony.</em></h1><p>Break a seal. Open a garden gate.<br>Invite your people into your story.</p><a class="button" href="#collection">Find your invitation ${arrow}</a><span class="atelier-note">Eleven original worlds, waiting to be made yours.</span></div><div class="invitation-fan"><a class="fan-card fan-left" href="#/invitation/tapestry" aria-label="Preview Threads of Promise">${miniature(templates[9])}</a><a class="fan-card fan-right" href="#/invitation/moon" aria-label="Preview The Moonlit Promise">${miniature(templates[8])}</a><a class="fan-card fan-center" href="#/invitation/courtyard" aria-label="Preview Garden Verse">${miniature(templates[0])}<span class="fan-seal">Open<br>our world</span></a></div></section><div class="collection-preface"><span>Painted gardens</span><i>✧</i><span>Letters &amp; heirlooms</span><i>✧</i><span>Rituals &amp; new beginnings</span></div><section id="collection" class="collection section"><div class="section-heading"><div><span class="eyebrow">THE INVITATION COLLECTION</span><h2>Which one feels<br><em>like your celebration?</em></h2></div><p>Every design has its own opening,<br>its own details, its own heart.<br>Tap one. See where it takes you.</p></div><div class="collection-tools"><div class="filters" role="group" aria-label="Filter by style">${["All designs","Palace","Romantic","Heritage","Contemporary","Nikah","Anand Karaj"].map(x=>`<button data-filter="${x}" aria-pressed="${filter===x}">${x}</button>`).join('')}</div><label class="search"><span class="sr-only">Search designs</span><input type="search" placeholder="Find your style" value="${escapeHTML(search)}"><span aria-hidden="true">⌕</span></label></div><div class="collection-meta"><span id="result-count" aria-live="polite"></span><span>Open a preview · Make it yours</span></div><div class="design-grid" id="design-grid"></div></section><section class="craft-note" id="about"><div class="note-object"><div class="invitation crafted-invitation" data-template="letters">${sceneCover(templates[1],templates[1].sample,{lazy:true}).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div></div><div><span class="eyebrow">MORE THAN A PRETTY COVER</span><h2>Something to open.<br><em>Something to remember.</em></h2><p>A doorway that parts. A letter that unfolds. A date revealed with a touch.</p><p>The details continue inside: your families, your story, the days you’ll celebrate together. All composed as one invitation.</p><a class="text-link" href="#/invitation/letters">Open A Letter to You ${arrow}</a></div></section><section class="make-it-personal section" id="process"><span class="eyebrow">FROM OUR STUDIO TO YOUR STORY</span><h2>Make it <em>yours.</em></h2><div class="personal-steps"><article><span>01</span><h3>Fall for a design</h3><p>Explore all eleven complete sample celebrations. Choose the one that feels like you.</p></article><article><span>02</span><h3>Add your people &amp; plans</h3><p>Change names, dates, your story and each celebration. See your invitation take shape.</p></article><article><span>03</span><h3>Keep your invitation</h3><p>Save a local draft or download an offline keepsake. Hosting and sending are yours to arrange.</p></article></div><a class="button" href="#/studio/courtyard">Try the invitation studio ${arrow}</a><p><a class="text-link" href="#/brief">Prepare an unsent inquiry brief</a></p></section><section class="faq section"><div><span class="eyebrow">BEFORE YOU BEGIN</span><h2>A few<br><em>little details.</em></h2></div><div>${[
 ["Can I try every design?","Yes. Every invitation has a complete fictional sample and a live editor. No account or payment is required."],
 ["What can I personalise?","Names, date, location, hosting line, story and closing note, plus up to six celebrations with individual dates, times, venues and descriptions. Illustration characters are fictional sample artwork and are not personalised portraits."],
 ["Does this send invitations or collect RSVPs?","No. This is a frontend design studio. The RSVP is a clearly labelled preview; no response is sent or stored. Payments, messaging, guest collection and hosting services are not connected."],
@@ -149,36 +156,15 @@ function download(name, content, type) {
   const a = document.createElement("a");
   a.href = url;
   a.download = name;
+  document.body.append(a);
   a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 function calendar(index) {
   const e = draft.events[index];
   const isSample = !!document.querySelector(".preview-toolbar");
-  const esc = (s) =>
-    s
-      .replace(/[\r\n]+/g, " ")
-      .replace(/\\/g, "\\\\")
-      .replace(/,/g, "\\,")
-      .replace(/;/g, "\\;");
-  const stamp = new Date()
-    .toISOString()
-    .replace(/[-:]/g, "")
-    .replace(/\.\d{3}/, "");
-  const ics = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Vow & Verse//Wedding Collection//EN",
-    "BEGIN:VEVENT",
-    `UID:${crypto.randomUUID()}@vow-and-verse.local`,
-    `DTSTAMP:${stamp}`,
-    `DTSTART:${e.date.replaceAll("-", "")}T${e.time.replace(":", "")}00`,
-    `SUMMARY:${isSample ? "Sample celebration — " : ""}${esc(e.title)}`,
-    `LOCATION:${esc(e.venue + ", " + draft.location)}`,
-    `DESCRIPTION:${esc((isSample ? "Fictional demonstration; not a real event or booking. " : "") + e.note + ". Venue local time; confirm timezone with hosts.")}`,
-    "END:VEVENT",
-    "END:VCALENDAR",
-  ].join("\r\n");
+  const ics = calendarText(e,draft.location,isSample);
   download(exportName(current) + ".ics", ics, "text/calendar");
 }
 const fields = [
@@ -192,12 +178,7 @@ const fields = [
 ];
 // Stable storage namespace preserves drafts saved before the visual rebrand.
 const keyFor = (id) => "invitestory-v2-draft-" + id;
-function validDate(s) {
-  return (
-    /^\d{4}-\d{2}-\d{2}$/.test(s) &&
-    !Number.isNaN(new Date(s + "T12:00:00").getTime())
-  );
-}
+
 function readSaved(t) {
   try {
     const raw = JSON.parse(localStorage.getItem(keyFor(t.id)));
@@ -217,7 +198,7 @@ function readSaved(t) {
             (k) => typeof e[k] === "string" && e[k].length <= 1000,
           ) &&
           validDate(e.date) &&
-          /^\d{2}:\d{2}$/.test(e.time),
+          validTime(e.time),
       )
     )
       out.events = raw.events;
@@ -238,7 +219,7 @@ function studio(t) {
     sessionDrafts.get(t.id) || readSaved(t) || sampleFor(t),
   );
   document.title = `Personalise ${t.name} — Vow & Verse`;
-  app.innerHTML = `<header class="studio-header"><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><a href="#collection">← Collection</a><span>YOUR PRIVATE DESIGN STUDIO</span></header><main id="main" class="studio"><section class="editor"><div class="eyebrow">A WORLD THAT BEGINS WITH YOU</div><h1>Make it <em>yours.</em></h1><p>Each design has its own sample wedding and its own draft. Switching designs keeps your current edits in this tab.</p><form id="editor-form"><label>Your design<select name="design">${templates.map((x) => `<option value="${x.id}" ${x.id === t.id ? "selected" : ""}>${x.name}</option>`).join("")}</select></label><fieldset><legend>01 / The two of you</legend><div class="form-pair">${field("name1", "First name")}${field("name2", "Second name")}</div>${field("hostline", "Hosting line", "text", 200)}${field("date", "Wedding date", "date")}${field("location", "Location")}<label>Your story<textarea name="story" rows="5" maxlength="2000" required>${escapeHTML(draft.story)}</textarea></label></fieldset><fieldset><legend>02 / Every celebration</legend><div id="event-editors">${draft.events.map(eventEditor).join("")}</div><button class="text-link" type="button" id="add-event" ${draft.events.length >= 6 ? "disabled" : ""}>+ Add a celebration</button><p class="form-note">Each event has its own date. Your programme is displayed in chronological order.</p></fieldset><fieldset><legend>03 / A final note</legend>${field("note", "Your closing note", "text", 200)}</fieldset><div class="editor-actions"><button class="button" type="submit">Save draft on this device</button><button class="button outline" type="button" id="export">Download invitation ↓</button><button class="text-link" type="button" id="clear-draft">Delete saved draft</button><button class="text-link" type="button" id="reset-sample">Reset current edits to sample</button></div><p class="privacy-note">Drafts are saved only when you choose. Download includes local artwork and fonts. No publishing, messaging, payments or live RSVP collection.</p><p id="save-status" role="status"></p></form></section><section class="studio-preview" aria-label="Live invitation preview"><div class="preview-label"><span>LIVE PREVIEW · ${t.name.toUpperCase()}</span><button id="preview-size" aria-pressed="false">Phone view</button></div><div id="live-preview">${renderInvitation(t, ordered(draft), { mini: true })}</div></section></main>`;
+  app.innerHTML = `<header class="studio-header"><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><a href="#collection">← Collection</a><span>YOUR PRIVATE DESIGN STUDIO</span></header><main id="main" class="studio"><section class="editor"><div class="eyebrow">A WORLD THAT BEGINS WITH YOU</div><h1>Make it <em>yours.</em></h1><p>Each design has its own sample wedding and its own draft. Switching designs keeps your current edits in this tab. Text personalisation only: artwork stays fixed and photo upload is not supported.</p><form id="editor-form"><label>Your design<select name="design">${templates.map((x) => `<option value="${x.id}" ${x.id === t.id ? "selected" : ""}>${x.name}</option>`).join("")}</select></label><fieldset><legend>01 / The two of you</legend><div class="form-pair">${field("name1", "First name")}${field("name2", "Second name")}</div>${field("hostline", "Hosting line", "text", 200)}${field("date", "Wedding date", "date")}${field("location", "Location")}<label>Your story<textarea name="story" rows="5" maxlength="2000" required>${escapeHTML(draft.story)}</textarea></label></fieldset><fieldset><legend>02 / Every celebration</legend><div id="event-editors">${draft.events.map(eventEditor).join("")}</div><button class="text-link" type="button" id="add-event" ${draft.events.length >= 6 ? "disabled" : ""}>+ Add a celebration</button><p class="form-note">Each event has its own date. Your programme is displayed in chronological order.</p></fieldset><fieldset><legend>03 / A final note</legend>${field("note", "Your closing note", "text", 200)}</fieldset><div class="editor-actions"><button class="button" type="submit">Save draft on this device</button><button class="button outline" type="button" id="export">Download invitation ↓</button><button class="text-link" type="button" id="clear-draft">Delete saved draft</button><button class="text-link" type="button" id="reset-sample">Reset current edits to sample</button><button class="text-link" type="button" id="prepare-brief">Prepare brief from these details</button></div><p class="privacy-note">Drafts are saved only when you choose. Download includes local artwork and fonts. No publishing, messaging, payments or live RSVP collection.</p><p id="save-status" role="status"></p></form></section><section class="studio-preview" aria-label="Live invitation preview"><div class="preview-label"><span>LIVE PREVIEW · ${t.name.toUpperCase()}</span><button id="preview-size" aria-pressed="false">Phone view</button></div><div id="live-preview">${renderInvitation(t, ordered(draft), { mini: true })}</div></section></main>`;
   const form = document.querySelector("#editor-form");
   function capture() {
     const fd = new FormData(form);
@@ -338,6 +319,7 @@ function studio(t) {
       exportInvite(current, ordered(draft));
     }
   };
+  document.querySelector("#prepare-brief").onclick=()=>{if(form.reportValidity()){capture();seedBrief(current.id,ordered(draft));location.hash="/brief/"+current.id}};
   document.querySelector("#preview-size").onclick = (e) => {
     const on = e.target.getAttribute("aria-pressed") !== "true";
     e.target.setAttribute("aria-pressed", on);
@@ -369,10 +351,10 @@ async function exportInvite(t, d) {
   button.disabled = true;
   button.textContent = "Preparing your keepsake…";
   try {
-    const [serif, italic, sans, script, classic, folk] = await Promise.all(
-      [serifURL, italicURL, sansURL, scriptURL, classicURL, folkURL].map(dataURL),
+    const [serif, italic, sans, script, classic, folk, devanagari, malayalam, tamil] = await Promise.all(
+      [serifURL, italicURL, sansURL, scriptURL, classicURL, folkURL, devanagariURL, malayalamURL, tamilURL].map(dataURL),
     );
-    const fonts = `@font-face{font-family:'Cormorant Garamond';src:url('${serif}')}@font-face{font-family:'Cormorant Garamond';font-style:italic;src:url('${italic}')}@font-face{font-family:Manrope;src:url('${sans}')}@font-face{font-family:Parisienne;src:url('${script}')}@font-face{font-family:Cinzel;src:url('${classic}')}@font-face{font-family:Fraunces;font-weight:600;src:url('${folk}')}`;
+    const fonts = `@font-face{font-family:"Noto Sans Devanagari";src:url('${devanagari}')}@font-face{font-family:"Noto Sans Malayalam";src:url('${malayalam}')}@font-face{font-family:"Noto Sans Tamil";src:url('${tamil}')}@font-face{font-family:'Cormorant Garamond';src:url('${serif}')}@font-face{font-family:'Cormorant Garamond';font-style:italic;src:url('${italic}')}@font-face{font-family:Manrope;src:url('${sans}')}@font-face{font-family:Parisienne;src:url('${script}')}@font-face{font-family:Cinzel;src:url('${classic}')}@font-face{font-family:Fraunces;font-weight:600;src:url('${folk}')}`;
     let body = renderInvitation(t, d, { exported: true });
     const images = [...new Set([...body.matchAll(/src="(\/images\/[^"<>]+)"/g)].map(m=>m[1]))];
     for(const path of images) body=body.replaceAll(path, await dataURL(path));
@@ -416,7 +398,8 @@ function route() {
   }
   document.title = "Vow & Verse — A beautiful beginning";
   const [, page, id] = hash.split("/");
-  if (page === "privacy") privacy();
+  if (page === "brief") renderBrief(app,templates,id,download);
+  else if (page === "privacy") privacy();
   else if (page === "invitation" || page === "studio") {
     const t = templates.find((x) => x.id === id);
     if (t) page === "studio" ? studio(t) : preview(t);

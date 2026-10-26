@@ -343,7 +343,7 @@
   padding: 22px;
 }
 .design-preview.editorial .design-names > strong {
-  font-family: Manrope, sans-serif;
+  font-family: Manrope, 'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',sans-serif;
   font-size: 38px;
   letter-spacing: -2px;
 }

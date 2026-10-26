@@ -22,7 +22,10 @@
     "@fontsource/cormorant-garamond": "5.2.8",
     "@fontsource/fraunces": "5.3.0",
     "@fontsource/manrope": "5.2.8",
+    "@fontsource/noto-sans-devanagari": "5.3.0",
+    "@fontsource/noto-sans-malayalam": "5.3.0",
+    "@fontsource/noto-sans-tamil": "5.3.0",
     "@fontsource/parisienne": "5.3.0"
   },
-  "description": "Vow & Verse \u2014 original wedding invitations, made personal."
+  "description": "Vow & Verse — original wedding invitations, made personal."
 }
