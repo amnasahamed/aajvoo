@@ -18,36 +18,38 @@ npm run build
 npm run preview -- --port 4173
 ```
 
-Hash routes work without server-side routing. Asset URLs assume the website is served from a domain root. No hosting or external service is configured.
+Hash routes work without server-side routing. Asset URLs assume the website is served from a domain root. The repository is connected to the owner’s Netlify preview at https://avyuab.netlify.app. No backend or third-party application service is configured.
 
 The name is a creative identity; no trademark or domain availability is claimed. Existing invitation URLs and saved browser drafts remain compatible.
 
-## Homepage direction
+## Illustrated invitation direction
 
-The studio homepage uses a cinematic candlelit cover, ink/plum navigation, an asymmetric two-column art gallery, a stationery-led studio note and a numbered editorial process. Its spotlight opens An Evening in Verse. Artwork is reused from the original local collection; invitation pages and stable routes keep their independent designs. Mobile discovery starts with artwork and a visible collection action.
+The homepage presents the composed invitation collection as a fan of stationery rather than a venue-photo hero. Each preview opens through a material-specific object: garden gates, paper seals, carved doors, painted shutters, a star screen, stitched cloth or a drawn kolam. Twelve original local painted assets and six vector illustration systems carry through the covers, families, date keepsakes and programmes. Names remain live text within the compositions.
+
+Preview dates can be uncovered with a click or keyboard activation. Reduced motion skips opening choreography and decorative particles. Exports intentionally open directly to the invitation and show the date; they contain no scripts or RSVP form. The generated people are fictional artwork, not personalised portraits.
 
 ## Collection
 
 | Design | Fictional couple | Composition |
 | --- | --- | --- |
-| Garden Verse | Ira & Neel | Photographic garden, architectural title, three-day gathering |
+| Garden Verse | Ira & Neel | Painted lotus garden, openwork gates, framed family niches and three-day gathering |
 | A Letter to You | Leela & Samar | Deckle-edge stationery, personal letter, diary and reply card |
-| The First Light | Vedika & Om | Sunrise scene, time-led itinerary, hillside story panel |
-| Wildflower Waltz | Aditi & Joel | Botanical specimen book, conservatory and garden-party programme |
-| An Evening in Verse | Saira & Rishabh | Evening poster, candlelit salon programme and musical interlude |
-| A Stillwater Story | Esha & Ronit | Travel journal, four-part weekend itinerary and postcard |
+| The First Light | Vedika & Om | Carved sandalwood portal, dawn temple painting and scalloped ceremony programme |
+| Wildflower Waltz | Aditi & Joel | Blush folding stationery, botanical arch, circular initials and garden-party programme |
+| An Evening in Verse | Saira & Rishabh | Burgundy/gold manuscript doors, jharokha, mandala and arch programme |
+| A Stillwater Story | Esha & Ronit | Painted floral shutters, lake-palace manuscript and four-part weekend programme |
 | A Sacred Beginning | Revathi & Madhav | Carved-stone architecture, ceremony-first callout, family blessing |
-| Written in Earth | Avni & Kian | Numbered modern folio, sculptural still life and editorial grid |
-| The Moonlit Promise | Safiya & Hamza | Moonlit architecture, Nikah gathering, pearl-toned story |
-| Threads of Promise | Harleen & Angad | Embroidered banner, family album, Anand Karaj programme |
-| A Silk Serenade | Janani & Vishal | Silk borders, wedding almanac and material diptych |
+| Written in Earth | Avni & Kian | Seven-ring ceremonial print, terracotta flame and ruled editorial programme |
+| The Moonlit Promise | Safiya & Hamza | Emerald star screen, pointed arch, lanterns and Nikah gathering |
+| Threads of Promise | Harleen & Angad | Magenta/saffron embroidered cloth, tilted folk lettering and stitched Anand Karaj programme |
+| A Silk Serenade | Janani & Vishal | Drawn kolam, magenta silk border, jasmine and temple illustration, wedding almanac |
 
 All couples, stories, venues and arrangements are fictional. The scenes are original AI-generated artwork, not photographs of actual customers or venues. See [asset provenance](docs/ASSETS.md).
 
 ## Implemented features
 
 - Searchable, filterable responsive collection and complete invitation previews.
-- Eleven independent section trees and opening directions, with keyboard access and reduced-motion support.
+- Eleven art-directed invitation compositions and opening directions, with keyboard access and reduced-motion support.
 - Per-design sample content and isolated drafts. Switching designs restores that design’s sample, saved draft, or current unsaved edits; it does not copy another couple into the new design.
 - Live editing of names, hosting line, date, city, story, closing note and one to six individually dated events.
 - Chronological event display, add/remove event controls and venue-local calendar downloads.
@@ -59,7 +61,7 @@ Changing the main wedding date does not automatically shift individual event dat
 
 ## Deliberate boundaries
 
-There is no backend, authentication, payment processing, messaging, public hosting, real RSVP collection, guest database, music playback, photo upload or map embed. The downloaded invitation is an offline keepsake, not a hosted share link. Gallery details are art-directed crops of each design’s generated scene, not documentary wedding photographs. The day countdown is calculated when the page renders.
+There is no backend, authentication, payment processing, messaging, built-in publishing, real RSVP collection, guest database, music playback, photo upload or map embed. The downloaded invitation is an offline keepsake, not a hosted share link. Generated character illustrations are fictional examples and are not personalised portraits. The day countdown is calculated when the page renders.
 
 Drafts can contain personal details. Anyone using the same browser profile may access them. Saving is explicit, and drafts can be deleted from the editor or by clearing browser site data. No cookies or tracking identifiers are used.
 
@@ -69,8 +71,10 @@ Drafts can contain personal details. Anyone using the same browser profile may a
 - `src/invitations.js`: reusable content components and eleven distinct composition functions.
 - `src/main.js`: gallery, routing, isolated editor drafts, event management, calendars and offline export.
 - `src/invitation.css`: responsive invitation compositions, also included in the export.
-- `src/style.css`, `src/v2.css`: studio shell, gallery, photographic homepage and opening sequences.
-- `public/images/`: eleven locally served WebP artworks.
+- `src/craft-art.js`, `src/craft.css`: original vector illustration, invitation framing and material opening choreography.
+- `src/studio-home.css`: stationery-led collection homepage.
+- `src/style.css`, `src/v2.css`: shared editor shell and legacy style foundations.
+- `public/images/craft/`: twelve locally served illustrated opening, cover and interior artworks. Earlier unused first-edition artwork remains in `public/images/` for provenance.
 - `licenses/`: SIL Open Font License notices for locally bundled fonts.
 
 ## Tests
@@ -81,6 +85,7 @@ Start the production preview on port 4173, then:
 npm test
 npm run test:branding
 node tests/home.mjs
+node tests/craft.mjs
 npm run audit:source
 ```
 

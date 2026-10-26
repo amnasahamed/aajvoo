@@ -9,15 +9,20 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "node tests/browser.mjs",
     "audit:source": "node tests/audit.mjs",
-    "test:branding": "node tests/branding.mjs"
+    "test:branding": "node tests/branding.mjs",
+    "test:craft": "node tests/craft.mjs",
+    "test:home": "node tests/home.mjs"
   },
   "devDependencies": {
-    "vite": "8.3.5",
-    "@playwright/test": "1.56.1"
+    "@playwright/test": "1.56.1",
+    "vite": "8.3.5"
   },
   "dependencies": {
+    "@fontsource/cinzel": "5.3.0",
     "@fontsource/cormorant-garamond": "5.2.8",
-    "@fontsource/manrope": "5.2.8"
+    "@fontsource/fraunces": "5.3.0",
+    "@fontsource/manrope": "5.2.8",
+    "@fontsource/parisienne": "5.3.0"
   },
-  "description": "Vow & Verse — original wedding invitations, made personal."
+  "description": "Vow & Verse \u2014 original wedding invitations, made personal."
 }

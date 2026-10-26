@@ -11,10 +11,20 @@ import "./style.css";
 import "./v2.css";
 import "./invitation.css";
 import "./home.css";
+import "./craft.css";
+import "./studio-home.css";
+import craftCSS from "./craft.css?raw";
+import "@fontsource/parisienne/latin-400.css";
+import "@fontsource/cinzel/latin-400.css";
+import "@fontsource/fraunces/latin-600.css";
+import scriptURL from "@fontsource/parisienne/files/parisienne-latin-400-normal.woff2?url";
+import classicURL from "@fontsource/cinzel/files/cinzel-latin-400-normal.woff2?url";
+import folkURL from "@fontsource/fraunces/files/fraunces-latin-600-normal.woff2?url";
 import inviteCSS from "./invitation.css?raw";
 import { templates, sampleFor } from "./data.js";
 import {
   renderInvitation,
+  sceneCover,
   renderReveal,
   esc as escapeHTML,
   imagePath as art,
@@ -43,10 +53,8 @@ function nav() {
 function footer() {
   return `<footer><div><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><p>For the moments that become your story.</p></div><div><a href="#collection">Explore the collection ${arrow}</a><a href="#/privacy">Privacy & local drafts</a><span>Designed with intention. Shared with love.</span></div><p class="footer-bottom">© ${new Date().getFullYear()} Vow & Verse <span>An independent design studio · Frontend edition</span></p></footer>`;
 }
-function card(t, i) {
-  const d = t.sample;
-  return `<article class="design-card collection-card"><a class="design-preview ${t.layout}" style="--ink:${t.color};--paper:${t.paper}" href="#/invitation/${t.id}" aria-label="Preview ${t.name}"><img src="${art(t)}" alt="${escapeHTML(t.detail)}" loading="lazy"><span class="design-number">${t.edition} / VOW &amp; VERSE</span><div class="design-names"><span>${escapeHTML(d.location)}</span><strong>${escapeHTML(d.name1)} <i>&</i> ${escapeHTML(d.name2)}</strong><small>${dateText(d.date)}</small></div><span class="preview-call">Step inside ${arrow}</span></a><div class="card-info"><div><span class="eyebrow">${t.category} / ${t.reveal}</span><h3>${t.name}</h3><p>${t.mood}</p></div><a href="#/studio/${t.id}" class="circle-link" aria-label="Personalise ${t.name}">${arrow}</a></div></article>`;
-}
+function miniature(t){return `<div class="invitation crafted-invitation ${t.layout}" data-template="${t.id}" aria-hidden="true">${sceneCover(t,t.sample).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div>`}
+function card(t,i){return `<article class="design-card"><a class="design-preview craft-preview" href="#/invitation/${t.id}" aria-label="Preview ${t.name}">${miniature(t)}<span class="preview-call">Open invitation ${arrow}</span></a><div class="card-info"><div><span class="eyebrow">${t.edition} / ${t.category}</span><h3>${t.name}</h3><p>${t.mood}</p></div><a href="#/studio/${t.id}" class="circle-link" aria-label="Personalise ${t.name}">${arrow}</a></div></article>`}
 function renderCards() {
   const items = templates.filter(
     (t) =>
@@ -63,38 +71,13 @@ function renderCards() {
 }
 function home() {
   document.title = "Vow & Verse — A beautiful beginning";
-  app.innerHTML =
-    `<div class="gallery-home">` + nav() +
-    `<main id="main"><section class="hero-v2 cinema"><img class="hero-photograph" src="/images/velvet.webp" alt="An imagined candlelit salon with rich plum drapery and an intimate celebration table"><div class="cinema-shade"></div><div class="cinema-caption"><span>INDEPENDENT WEDDING INVITATIONS</span><span>ELEVEN WORLDS. ONE VERY PERSONAL STORY.</span></div><div class="cinema-title"><h1>Set the scene.<br><em>Tell your story.</em></h1><div class="cinema-actions"><p>Invitations with a world of their own.<br>For a celebration that could only be yours.</p><a class="button" href="#collection">Explore the collection ${arrow}</a></div></div><a class="cinema-feature" href="#/invitation/velvet"><span>IN THE SPOTLIGHT / 05</span><strong>An Evening in Verse</strong><span>Step into Saira &amp; Rishabh’s world ${arrow}</span></a><div class="cinema-foot"><span>Original imagined scenes · Fictional celebrations</span><a href="#collection">SCROLL TO DISCOVER ↓</a></div></section><section class="editorial-intro"><span class="eyebrow">THE ART OF AN INVITATION</span><h2>Before the first embrace.<br>Before the first dance.<br><em>There is this.</em></h2><div><p>A glimpse of the day to come. A place for your people to feel the anticipation. Make your first hello as considered as the celebration itself.</p><a class="text-link" href="#/invitation/velvet">Experience a full invitation ${arrow}</a></div></section><section id="collection" class="collection section"><div class="section-heading"><div><div class="eyebrow">THE COLLECTION / ELEVEN ORIGINAL WORLDS</div><h2>Find your<br><em>opening chapter.</em></h2></div><p>Quiet romance or a grand entrance.<br>Choose a feeling, then step inside.<br>Every world is yours to personalise.</p></div><div class="collection-tools"><div class="filters" role="group" aria-label="Filter by style">${["All designs", "Palace", "Romantic", "Heritage", "Contemporary", "Nikah", "Anand Karaj"].map((x) => `<button data-filter="${x}" aria-pressed="${filter === x}">${x}</button>`).join("")}</div><label class="search"><span class="sr-only">Search designs</span><input type="search" placeholder="Find your style" value="${escapeHTML(search)}"><span aria-hidden="true">⌕</span></label></div><div class="collection-meta"><span id="result-count"></span><span>Every detail, ready to make your own</span></div><div class="design-grid" id="design-grid"></div></section><section class="studio-note" id="about"><div class="note-image"><img src="/images/letters.webp" alt="Imagined handwritten stationery, plum ribbon and wax seal" loading="lazy"><span>A LETTER TO YOU / COLLECTION NO. 02</span></div><div class="note-body"><span class="eyebrow">THE STUDIO PHILOSOPHY</span><h2>Digital by nature.<br><em>Personal by design.</em></h2><p>We treat a screen like a piece of beautiful stationery. Texture, light, type and a little theatre — composed around the words that matter to you.</p><p>Each design has its own pace and personality. Your names, your celebrations, your story make it complete.</p><a class="text-link" href="#/studio/letters">Make a letter your own ${arrow}</a></div></section><section class="process-gallery" id="process"><div class="process-title"><span class="eyebrow">FROM FIRST LOOK TO FINAL DETAIL</span><h2>Three steps.<br><em>Entirely yours.</em></h2><p>No account. No payment.<br>Room to experiment.</p></div><div class="process-rows"><article><span>01</span><div><h3>Follow a feeling.</h3><p>Open any design to explore its full story, opening sequence and celebration programme.</p></div><a href="#collection" aria-label="Explore designs">${arrow}</a></article><article><span>02</span><div><h3>Write yourself in.</h3><p>Add your names, dates and details in the live editor. Each design keeps its own draft.</p></div><a href="#/studio/courtyard" aria-label="Open the invitation editor">${arrow}</a></article><article><span>03</span><div><h3>Keep your chapter.</h3><p>Save on this device or download an offline HTML keepsake. Sending, hosting and live RSVP are not included.</p></div></article></div></section><section class="faq section"><div><div class="eyebrow">A FEW LITTLE DETAILS</div><h2>Wondering<br><em>about something?</em></h2></div><div>${[
-      [
-        "Can I try a design before choosing?",
-        "Of course. Every design has a full preview, and the studio lets you personalise it locally. No account or payment is needed.",
-      ],
-      [
-        "What can I personalise?",
-        "Your names, date, city, hosting line, story and closing note — plus up to six celebrations, each with its own date, time, venue and description. Each design begins with a different fictional wedding.",
-      ],
-      [
-        "Will this send invitations or collect RSVPs?",
-        "This edition is a private frontend studio. It does not publish, send messages or collect guest responses. The RSVP in previews is clearly marked as a demonstration.",
-      ],
-      [
-        "Where are my details saved?",
-        "Only on your device when you choose Save draft. You can delete that draft in the studio. Nothing is sent to a server.",
-      ],
-      [
-        "Can I download my invitation?",
-        "Yes. Download a standalone HTML keepsake with its artwork and fonts embedded. It opens offline and includes your story and schedule. It does not include hosting, music or an RSVP service.",
-      ],
-    ]
-      .map(
-        ([q, a]) =>
-          `<details><summary>${q}<span>+</span></summary><p>${a}</p></details>`,
-      )
-      .join(
-        "",
-      )}</div></section><section class="closing"><div class="eyebrow">YOUR NEXT CHAPTER IS WAITING</div><h2>Make an<br><em>entrance.</em></h2><a class="button" href="#collection">Explore the collection <span class="arrow" aria-hidden="true"></span></a></section></main>` +
-    footer() + `</div>`;
+  app.innerHTML = `<div class="studio-home">` + nav() + `<main id="main"><section class="hero-v2 atelier-hero"><div class="atelier-intro"><span class="eyebrow">VOW &amp; VERSE · WEDDING INVITATIONS</span><h1>A little ceremony<br><em>before the ceremony.</em></h1><p>Break a seal. Open a garden gate.<br>Invite your people into your story.</p><a class="button" href="#collection">Find your invitation ${arrow}</a><span class="atelier-note">Eleven original worlds, waiting to be made yours.</span></div><div class="invitation-fan"><a class="fan-card fan-left" href="#/invitation/tapestry" aria-label="Preview Threads of Promise">${miniature(templates[9])}</a><a class="fan-card fan-right" href="#/invitation/moon" aria-label="Preview The Moonlit Promise">${miniature(templates[8])}</a><a class="fan-card fan-center" href="#/invitation/courtyard" aria-label="Preview Garden Verse">${miniature(templates[0])}<span class="fan-seal">Open<br>our world</span></a></div></section><div class="collection-preface"><span>Painted gardens</span><i>✧</i><span>Letters &amp; heirlooms</span><i>✧</i><span>Rituals &amp; new beginnings</span></div><section id="collection" class="collection section"><div class="section-heading"><div><span class="eyebrow">THE INVITATION COLLECTION</span><h2>Which one feels<br><em>like your celebration?</em></h2></div><p>Every design has its own opening,<br>its own details, its own heart.<br>Tap one. See where it takes you.</p></div><div class="collection-tools"><div class="filters" role="group" aria-label="Filter by style">${["All designs","Palace","Romantic","Heritage","Contemporary","Nikah","Anand Karaj"].map(x=>`<button data-filter="${x}" aria-pressed="${filter===x}">${x}</button>`).join('')}</div><label class="search"><span class="sr-only">Search designs</span><input type="search" placeholder="Find your style" value="${escapeHTML(search)}"><span aria-hidden="true">⌕</span></label></div><div class="collection-meta"><span id="result-count" aria-live="polite"></span><span>Open a preview · Make it yours</span></div><div class="design-grid" id="design-grid"></div></section><section class="craft-note" id="about"><div class="note-object"><div class="invitation crafted-invitation" data-template="letters">${sceneCover(templates[1],templates[1].sample).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div></div><div><span class="eyebrow">MORE THAN A PRETTY COVER</span><h2>Something to open.<br><em>Something to remember.</em></h2><p>A doorway that parts. A letter that unfolds. A date revealed with a touch.</p><p>The details continue inside: your families, your story, the days you’ll celebrate together. All composed as one invitation.</p><a class="text-link" href="#/invitation/letters">Open A Letter to You ${arrow}</a></div></section><section class="make-it-personal section" id="process"><span class="eyebrow">FROM OUR STUDIO TO YOUR STORY</span><h2>Make it <em>yours.</em></h2><div class="personal-steps"><article><span>01</span><h3>Fall for a design</h3><p>Explore all eleven complete sample celebrations. Choose the one that feels like you.</p></article><article><span>02</span><h3>Add your people &amp; plans</h3><p>Change names, dates, your story and each celebration. See your invitation take shape.</p></article><article><span>03</span><h3>Keep your invitation</h3><p>Save a local draft or download an offline keepsake. Hosting and sending are yours to arrange.</p></article></div><a class="button" href="#/studio/courtyard">Try the invitation studio ${arrow}</a></section><section class="faq section"><div><span class="eyebrow">BEFORE YOU BEGIN</span><h2>A few<br><em>little details.</em></h2></div><div>${[
+["Can I try every design?","Yes. Every invitation has a complete fictional sample and a live editor. No account or payment is required."],
+["What can I personalise?","Names, date, location, hosting line, story and closing note, plus up to six celebrations with individual dates, times, venues and descriptions. Illustration characters are fictional sample artwork and are not personalised portraits."],
+["Does this send invitations or collect RSVPs?","No. This is a frontend design studio. The RSVP is a clearly labelled preview; no response is sent or stored. Payments, messaging, guest collection and hosting services are not connected."],
+["Where is my draft saved?","Only in this browser when you choose Save draft. You can delete it in the studio. Each design keeps its own draft."],
+["What is in the download?","A standalone HTML invitation with local artwork and fonts embedded. It opens offline with your story and programme. Opening animations and the RSVP demonstration are for the live preview; the keepsake opens directly to the invitation."]
+].map(([q,a])=>`<details><summary>${q}<span>+</span></summary><p>${a}</p></details>`).join('')}</div></section><section class="studio-closing"><span class="eyebrow">YOUR PEOPLE. YOUR CELEBRATION. YOUR INVITATION.</span><h2>Let the first moment<br><em>be a beautiful one.</em></h2><a class="button" href="#collection">Explore the collection ${arrow}</a></section></main>`+footer()+`</div>`;
   renderCards();
   document.querySelectorAll("[data-filter]").forEach(
     (b) =>
@@ -130,21 +113,32 @@ function preview(t) {
     open.disabled = true;
     const reveal = document.querySelector(".reveal");
     reveal.classList.add("opening");
-    document.querySelector("#opened-invite").hidden = false;
     setTimeout(
       () => {
+        document.querySelector("#opened-invite").hidden = false;
         reveal.remove();
         const h = document.querySelector(".invite-title h1");
         h.tabIndex = -1;
         h.focus({ preventScroll: true });
         window.scrollTo(0, 0);
       },
-      matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 950,
+      matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1450,
     );
     bindInvite();
   };
 }
 function bindInvite() {
+  document.querySelectorAll(".date-foil").forEach(button => button.onclick = () => {
+    if(button.getAttribute("aria-expanded") === "true") return;
+    button.setAttribute("aria-expanded", "true");
+    const section = button.closest(".date-keepsake");
+    section.querySelector(".date-message").textContent = "We cannot wait to celebrate with you.";
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const petals = document.createElement("span"); petals.className = "petal-burst"; petals.setAttribute("aria-hidden","true");
+      petals.innerHTML = Array.from({length:16},(_,i)=>`<i style="--x:${(i-7.5)*18}px;--turn:${i*57}deg;animation-delay:${i%4*.07}s"></i>`).join("");
+      button.parentElement.append(petals); setTimeout(()=>petals.remove(),2200);
+    }
+  });
   document
     .querySelectorAll("[data-calendar]")
     .forEach((b) => (b.onclick = () => calendar(Number(b.dataset.calendar))));
@@ -381,17 +375,16 @@ async function exportInvite(t, d) {
   button.disabled = true;
   button.textContent = "Preparing your keepsake…";
   try {
-    const [image, serif, italic, sans] = await Promise.all(
-      [art(t), serifURL, italicURL, sansURL].map(dataURL),
+    const [serif, italic, sans, script, classic, folk] = await Promise.all(
+      [serifURL, italicURL, sansURL, scriptURL, classicURL, folkURL].map(dataURL),
     );
-    const fonts = `@font-face{font-family:'Cormorant Garamond';src:url('${serif}')}@font-face{font-family:'Cormorant Garamond';font-style:italic;src:url('${italic}')}@font-face{font-family:Manrope;src:url('${sans}')}`;
-    const body = renderInvitation(t, d, { exported: true }).replaceAll(
-      art(t),
-      image,
-    );
+    const fonts = `@font-face{font-family:'Cormorant Garamond';src:url('${serif}')}@font-face{font-family:'Cormorant Garamond';font-style:italic;src:url('${italic}')}@font-face{font-family:Manrope;src:url('${sans}')}@font-face{font-family:Parisienne;src:url('${script}')}@font-face{font-family:Cinzel;src:url('${classic}')}@font-face{font-family:Fraunces;font-weight:600;src:url('${folk}')}`;
+    let body = renderInvitation(t, d, { exported: true });
+    const images = [...new Set([...body.matchAll(/src="(\/images\/[^"<>]+)"/g)].map(m=>m[1]))];
+    for(const path of images) body=body.replaceAll(path, await dataURL(path));
     download(
       exportName(t) + ".html",
-      `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>${escapeHTML(t.name)} — ${escapeHTML(d.name1)} &amp; ${escapeHTML(d.name2)} | Vow &amp; Verse</title><meta name="generator" content="Vow &amp; Verse"><meta name="description" content="${escapeHTML(t.name)} — a personal wedding invitation by Vow &amp; Verse"><style>${fonts}body{margin:0}*{box-sizing:border-box}${inviteCSS}</style></head><body>${body}</body></html>`,
+      `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>${escapeHTML(t.name)} — ${escapeHTML(d.name1)} &amp; ${escapeHTML(d.name2)} | Vow &amp; Verse</title><meta name="generator" content="Vow &amp; Verse"><meta name="description" content="${escapeHTML(t.name)} — a personal wedding invitation by Vow &amp; Verse"><style>${fonts}body{margin:0}*{box-sizing:border-box}${inviteCSS}${craftCSS}</style></head><body>${body}</body></html>`,
       "text/html",
     );
     toast("Your complete offline invitation is ready. Nothing was uploaded.");

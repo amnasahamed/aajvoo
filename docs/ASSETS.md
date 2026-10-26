@@ -16,10 +16,30 @@ The eleven images in `public/images/` were generated specifically for Vow & Vers
 | tapestry.webp | Original Punjabi phulkari-inspired embroidery, silk stitches, marigolds and aged wood |
 | silk.webp | Kanjeevaram-inspired cream and teal silk, jasmine strings, brass lamps and warm morning light |
 
-Generated PNG results were encoded locally to WebP at quality 85, without creative pixel editing. All runtime images are local. The gallery uses CSS crops of the corresponding scene to study material and atmosphere; these are not additional independently generated photographs. No third-party image network is contacted.
+Generated PNG results were encoded locally to WebP at quality 85, without creative pixel editing. All runtime images are local. These first-edition assets remain in the source for provenance, but the current invitation experience does not use repeated scene crops as a gallery. No third-party image network is contacted.
 
 The Vow & Verse wordmark uses local typography with a brass italic ampersand. The favicon is original paired-V SVG geometry in ink and brass. Its SVG namespace is an identifier, not a network request.
 
 Fonts: Cormorant Garamond and Manrope, self-hosted from `@fontsource` packages, under the SIL Open Font License. License notices are included in `licenses/`. No Google Fonts or other font CDN is used. Offline invitation exports embed the local regular serif, italic serif and regular sans fonts.
 
 All sample identities, stories, event names and venues are original fictional examples. Cultural references are used as illustrative design context, not a claim that every family follows the same customs. Hosts should adapt wording, programmes and guidance to their own celebration.
+
+## Illustrated invitation collection — 2026-10-26
+
+Twelve new original image-generation outputs are stored locally under `public/images/craft/`. They were created with OpenAI image generation from newly written art directions; no competitor asset was supplied. Matching open-state edits used only our own newly generated closed-state image as a reference. The PNG outputs were encoded to WebP at quality 88 without cropping or creative pixel editing.
+
+| Files | Original composition |
+| --- | --- |
+| courtyard-closed/open.webp | Peach carved garden arch, lotus-metal gates, pond, flowering perimeter and a small fictional couple |
+| courtyard-interior.webp | Coordinating carved garden and jasmine/rose stationery, generated from our own garden artwork |
+| letters-interior.webp | Asymmetric cornflower, cosmos and daisy cotton-paper stationery, generated from our own letter artwork |
+| letters-closed/open.webp | Deckle-edged envelope and botanical wax seal within a watercolor wildflower meadow; airy letter clearing and small fictional couple |
+| dawn-closed/open.webp | Carved pale sandalwood temple doors, jasmine, bells, lamps and a dawn-garden opening with fictional couple |
+| lake-closed/open.webp | Floral-fresco plum shutters and ivory lake-palace manuscript with painted peacocks and fictional couple |
+| temple-closed/open.webp | Southern stone/teak threshold, brass studs, mango-leaf/jasmine toran, silk perimeter, kolam and distant temple/couple |
+
+`src/craft-art.js` contains original authored SVG geometry: botanical paper, marigold garlands, mandala/jharokha stationery, seven-ring fire print, lantern/star jaali, embroidered satin-stitch-inspired cloth, a continuous-loop kolam, jasmine strings, brass lamps and a temple silhouette. These drawings are not copied/traced source artwork. The motifs are decorative cultural interpretations, not instructions for religious ceremony.
+
+Additional local fonts: Parisienne, Cinzel and Fraunces from pinned Fontsource packages, SIL Open Font License; notices in `licenses/`. All six used font faces are embedded in offline keepsakes. No remote font or image request is required.
+
+Characters in generated illustrations are fictional sample art and are not portraits of the entered names. Personalisation changes text and event details; it does not regenerate character likenesses or illustrative venue geography.

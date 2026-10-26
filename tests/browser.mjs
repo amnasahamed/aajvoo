@@ -88,7 +88,7 @@ try {
     }
     if (width === 390) {
       const top = await page
-        .locator(".hero-photograph")
+        .locator(".fan-center .crafted-scene")
         .evaluate((el) => el.getBoundingClientRect().top);
       ok(top < 450, "Homepage artwork begins within first phone viewport");
       await page.getByRole("button", { name: "Open navigation" }).click();
