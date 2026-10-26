@@ -108,3 +108,168 @@
 .crafted-invitation .extended-cover .scene-title .scene-date,.crafted-invitation .extended-cover .scene-title .scene-date>span{background:transparent!important;color:inherit!important;opacity:1}.crafted-invitation .extended-cover .scene-title .invite-kicker{color:inherit}
 .cover-silk .cover-monogram{color:#fff0da;text-shadow:none}
 .crafted-invitation.long-names .family-pair{grid-template-columns:minmax(0,1fr);gap:20px}.crafted-invitation.long-names .family-pair>div{width:100%;max-width:100%;text-align:center}.crafted-invitation.long-names .family-initial{margin-inline:auto}.crafted-invitation.long-names .family-pair h2{font-size:clamp(24px,7cqw,34px)!important;line-height:1.4}
+
+/* Guest-first stationery refinement. Scoped to invitation interiors, never studio chrome. */
+.crafted-invitation .page-content>section{padding-block:34px}
+.crafted-invitation .page-content{--reading-ink:currentColor}
+.crafted-invitation .page-content p{font-size:15px;line-height:1.8}
+.crafted-invitation .page-content .invite-kicker{font-size:11px;letter-spacing:.09em}
+.crafted-invitation .family-niches{padding-block:28px 20px}
+.crafted-invitation .family-niches .family-dedication{font:21px/1.4 var(--serif);margin:0 auto 22px;max-width:26ch;text-wrap:balance}
+.crafted-invitation .family-pair{margin-top:0;gap:14px}
+.crafted-invitation .family-initial{height:82px;max-width:88px;font-size:49px}
+.crafted-invitation .family-pair>div{padding-bottom:0}
+.crafted-invitation.long-names .family-pair{grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr)}
+.crafted-invitation .date-amulet{margin-block:18px;width:176px;height:176px}
+.crafted-invitation .date-inside>span{font-size:13px;letter-spacing:.02em}
+.crafted-invitation .date-inside>strong{font-size:56px}
+.crafted-invitation .date-keepsake .countdown{margin-top:18px;gap:9px}
+.crafted-invitation .date-keepsake .countdown strong{font-size:29px}
+.crafted-invitation .date-keepsake .countdown>span{font-size:11px;line-height:1.5;letter-spacing:.035em}
+.crafted-invitation .date-keepsake .date-message{font:italic 18px/1.45 var(--serif);min-height:0;margin:12px auto 0}
+.crafted-invitation .date-keepsake .date-message:empty{display:none}
+.crafted-invitation .date-foil[hidden]{display:none!important}
+.crafted-invitation .date-keepsake .scratch-hint{font-size:13px;line-height:1.6}
+.crafted-invitation .event-list{gap:19px;margin-top:24px}
+.crafted-invitation .event-day{font:22px/1.35 var(--serif);text-align:left;margin:19px 0 0;padding-top:18px;border-top:1px solid currentColor;letter-spacing:0;text-transform:none}
+.crafted-invitation .event-day>span{display:block;font:11px/1.7 Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.crafted-invitation .event-time{flex-wrap:wrap;font-size:15px;color:inherit;gap:8px 14px;padding-bottom:12px}
+.crafted-invitation .event-time time{font:500 23px/1.3 var(--serif);font-variant-numeric:tabular-nums}
+.crafted-invitation .event-time .ceremony-label{font:11px/1.5 Manrope,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.crafted-invitation .event p{font-size:15px;line-height:1.7;margin-block:10px}
+.crafted-invitation .event .event-venue{font-size:15px;font-weight:600;line-height:1.55}
+.crafted-invitation .event-number{display:none}
+.crafted-invitation .event h3{font-size:28px;line-height:1.2;margin:0 0 12px;padding:0;text-wrap:balance}
+.crafted-invitation .event-supporting{border-radius:0;border:0;border-bottom:1px solid #b8997055;box-shadow:none;background:transparent;padding:8px 0 24px;text-align:left;transform:none}
+.crafted-invitation .event-supporting::before{display:none}
+.crafted-invitation .event-supporting .event-time{justify-content:flex-start;border:0;background:transparent;color:inherit;margin:0;padding:0;box-shadow:none}
+.crafted-invitation .event-main{padding:32px 20px 25px;margin:4px 0 10px}
+.crafted-invitation .event-supporting h3{font-size:25px;text-align:left}
+.crafted-invitation .invite-button{font-size:14px;line-height:1.5;min-height:44px}
+.crafted-invitation .time-note{font-size:12px;line-height:1.7;text-align:left;margin-top:20px}
+.crafted-invitation .story-prose p{text-align:left}
+.crafted-invitation .guest-notes{text-align:left}
+.crafted-invitation .guest-notes h2{text-align:left;font-size:32px;line-height:1.2;text-wrap:balance}
+.crafted-invitation .guest-notes .invite-kicker{text-align:left}
+.crafted-invitation .guest-note-list{border-block:1px solid #b8997055;padding:5px 0 17px}
+.crafted-invitation .guest-notes h3{font:600 14px/1.5 Manrope,sans-serif;letter-spacing:.015em;margin:21px 0 8px;text-align:left}
+.crafted-invitation .guest-notes p{margin:8px 0 0}
+.crafted-invitation .guest-notes .fiction-note{font-size:12px;line-height:1.7;opacity:1;margin-top:20px}
+.crafted-invitation .invite-rsvp h2{font-size:32px;line-height:1.2;text-wrap:balance}
+.crafted-invitation .invite-rsvp>div>p{font-size:13px;line-height:1.7}
+.crafted-invitation .invite-rsvp form{padding:26px 20px;background:#fffdf244;border:1px solid #b5996b99}
+.crafted-invitation .invite-rsvp label{font:500 14px/1.5 Manrope,sans-serif;color:inherit}
+.crafted-invitation .invite-rsvp input,.crafted-invitation .invite-rsvp select{font-size:16px;line-height:1.5;color:inherit;border-bottom:1px solid currentColor;min-height:48px;padding:12px 0;max-width:100%}
+.crafted-invitation .invite-rsvp input::placeholder{color:inherit;opacity:.8}
+.crafted-invitation .invite-rsvp #rsvp-status:empty{display:none}
+.crafted-invitation .invite-end{padding:36px 0 90px}
+.ending-mark{display:block;width:78px;height:74px;margin:0 auto 20px;pointer-events:none}
+.crafted-invitation .invite-end .closing-line{font:24px/1.35 var(--serif);text-wrap:balance;margin:0 auto 21px;max-width:24ch}
+.crafted-invitation .invite-end .signature{font-size:32px;margin:0 0 22px;overflow-wrap:anywhere}
+.crafted-invitation .invite-end small{font-size:11px;line-height:1.7}
+/* Garden: an arch for the vows, pressed green paper for the reply. */
+.pages-courtyard .event-main{background:#f1f3df;border-color:#7b8764}
+.pages-courtyard .invite-rsvp form{background:#edf0dc;border:double 4px #a0aa83;border-radius:60px 60px 4px 4px;padding-top:36px}
+.pages-courtyard .ending-mark{color:#6b8059;width:92px}
+/* Correspondence: postal date, ruled note and a genuine reply-slip composition. */
+.pages-letters .date-amulet{width:210px;height:166px}
+.pages-letters .invite-story .story-prose p{font-size:22px;line-height:1.6}
+.pages-letters .event-main{border:0;border-left:3px double #78908b;border-radius:0;box-shadow:none;padding:16px 0 20px 18px;text-align:left;background:transparent}
+.pages-letters .event-main .event-time{justify-content:flex-start}
+.pages-letters .guest-notes h2,.pages-letters .invite-rsvp h2{font-family:Parisienne,serif;font-size:39px;text-align:left}
+.pages-letters .invite-rsvp>div{text-align:left}
+.pages-letters .invite-rsvp form{border:1px dashed #718b83;background:#fffdf4;box-shadow:6px 6px 0 #d7e1d455;padding:24px 18px}
+.pages-letters .invite-end{border-top:1px dashed #a5b6a7}
+/* Dawn: a narrow architectural dedication, with the ceremony given the only large arch. */
+.pages-dawn .date-amulet{height:188px}
+.pages-dawn .invite-rsvp form{border:double 4px #ad8b58;border-radius:70px 70px 3px 3px;padding-top:36px;background:#fff8e9}
+.pages-dawn .guest-notes h2{font:26px/1.35 Cinzel,serif}
+.pages-dawn .ending-mark{width:86px;color:#8c5d32}
+/* Wildflower: uncoated paper and flat ink, instead of faux shaded medallions. */
+.pages-herbarium{background:#fbf1ed;color:#793f55}
+.pages-herbarium .event-main{border:1px solid #af778b;border-radius:3px;box-shadow:inset 0 0 0 7px #fbf1ed;background:#fff9f4;padding-top:27px}
+.pages-herbarium .date-amulet{border-radius:2px;border:1px solid #a96e83;box-shadow:none;background:#fff9f4;width:182px;height:190px;transform:rotate(2deg)}
+.pages-herbarium .date-inside{border-radius:0;border-style:solid;border-color:#d5abb4}
+.pages-herbarium .invite-rsvp form{background:#fff9f4;border:0;border-block:1px solid #b47e91;box-shadow:none}
+.pages-herbarium .ending-mark{height:94px;width:96px;color:#687c5b}
+#opened-invite .cover-herbarium .scene-title{color:#793f55}
+/* Velvet: rich ink and readable ivory on a formal, gold-ruled reply card. */
+.pages-velvet{color:#f3dfb3}
+.pages-velvet .event-main{background:#74394b;border-color:#d8b979}
+.pages-velvet .invite-rsvp form{background:#f8ecd6;color:#572238;border:double 4px #be9a5f}
+.pages-velvet .guest-notes h2{font-size:31px}
+.pages-velvet .ending-mark{width:92px}
+/* Lake: dated itinerary entries and a postcard, not four equal palace posters. */
+.pages-lake{color:#783c50}
+.pages-lake .event-main{border:double 4px #b48275;border-radius:3px}
+.pages-lake .event-main::before{display:none}
+.pages-lake .guest-notes h2{font-family:Parisienne,serif;font-size:39px}
+.pages-lake .invite-rsvp form{background:#fff8e9;border:double 4px #b98e7d;border-top-width:9px}
+.pages-lake .ending-mark{width:100px;height:85px;color:#537b77}
+/* Temple: ritual programme and brass-bordered blessing card. */
+.pages-temple .date-amulet{width:182px;height:180px}
+.pages-temple .event-main .event-time{margin:0 0 9px;padding:12px 6px;gap:7px;flex-direction:column}
+.pages-temple .guest-notes h2,.pages-temple .invite-rsvp h2{font:26px/1.35 Cinzel,serif}
+.pages-temple .invite-rsvp form{border:double 4px #ac8946;background:#fff8e7;border-top:8px solid #88304f}
+.pages-temple .ending-mark{color:#927238}
+.pages-temple .invite-end .signature{font:24px/1.5 Cinzel,serif}
+/* Earth: compact ruled typography; no ornamental cursive signature. */
+.pages-earthen .date-keepsake{border-block:1px solid #b8997055!important}
+.pages-earthen .date-amulet{width:154px;height:154px}
+.pages-earthen .invite-programme>h2{font-size:34px;text-align:left;text-wrap:balance}
+.pages-earthen .event-main{border:0;border-top:3px solid #b65936;border-bottom:1px solid #b8997055;border-radius:0;background:transparent;box-shadow:none;padding:20px 0;text-align:left}
+.pages-earthen .event-time{justify-content:flex-start}
+.pages-earthen .invite-rsvp h2{text-align:left;font-size:34px}
+.pages-earthen .invite-rsvp>div{text-align:left}
+.pages-earthen .invite-rsvp form{border:0;border-block:1px solid #9e8473;padding:22px 0;background:none}
+.pages-earthen .invite-end .signature{font:27px/1.4 var(--serif)}
+.pages-earthen .ending-mark{color:#a34f32;width:90px}
+/* Moon: keep the Nikah's pointed arch; a lighter reply sheet gives the dark journey a rest. */
+.pages-moon{color:#f1e2bb}
+.pages-moon .event-main{border-radius:130px 130px 2px 2px;background:#214c47;border-color:#bea66e;padding-top:38px}
+.pages-moon .event-main .event-time{flex-direction:column}
+.pages-moon .event-main .event-time time{font-size:31px}
+.pages-moon .guest-notes h2,.pages-moon .invite-rsvp h2{font:25px/1.35 Cinzel,serif}
+.pages-moon .invite-rsvp form{color:#173f37;background:#f3ead4;border:double 4px #b9a371;border-radius:55px 55px 2px 2px;padding-top:34px}
+.pages-moon .ending-mark{color:#e0c88e;height:90px}
+/* Threads: restrained fabric labels for supporting events, one ceremonial stitched panel. */
+.pages-tapestry .event-main{background:#f8dbad;border:2px dashed #8b3154;border-radius:0;box-shadow:5px 5px #8b3154;transform:rotate(-.7deg)}
+.pages-tapestry .event-supporting{background:transparent;border:0;border-left:2px dashed #a44f5e;padding:8px 0 22px 16px;box-shadow:none}
+.pages-tapestry .event-day{font-family:Fraunces,serif;font-size:21px;border-top-style:dashed}
+.pages-tapestry .event-main .event-number{display:block;position:static;font:42px/1 Fraunces,serif;opacity:1;margin:5px 0 14px}
+.pages-tapestry .date-amulet{border-radius:0;border:2px dashed #8b3154;background:#f6dca9;box-shadow:5px 5px #9d4562;transform:rotate(-2deg);width:185px;height:178px}
+.pages-tapestry .date-inside{border:0;border-radius:0}
+.pages-tapestry .invite-rsvp form{background:#efb3bd;border:2px dashed #8b3154;box-shadow:5px 5px #9d4562}
+.pages-tapestry .guest-note-list{border-block:2px dashed #a95d64}
+.pages-tapestry .invite-end .signature{font:24px/1.4 Fraunces,serif}
+.pages-tapestry .ending-mark{stroke-dasharray:3 2;width:90px;height:90px}
+/* Silk: fine warp/weft, not shaded paper. Keep the gold zari at the edges. */
+.pages-silk{background-color:#fff2d9;background-image:repeating-linear-gradient(0deg,#aa784209 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,#aa784207 0 1px,transparent 1px 3px);color:#74304f}
+#opened-invite .cover-silk:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,#ffe2a30a 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,#260e3109 0 1px,transparent 1px 3px)}
+.pages-silk .date-amulet{border:double 5px #b58f4a;border-radius:0;background:#a13b67;color:#fff0d5;width:185px;height:176px}
+.pages-silk .date-inside{border:1px solid #dfbd7d;border-radius:0}
+.pages-silk .event-main{border-block:double 5px #b7924f;border-inline:0;border-radius:0;box-shadow:inset 0 7px #a83265,inset 0 -7px #a83265;background:#fff8e8;padding:30px 16px}
+.pages-silk .guest-notes h2,.pages-silk .invite-rsvp h2{font:25px/1.4 Cinzel,serif}
+.pages-silk .invite-rsvp form{background:#fff8e7;border:0;border-block:double 5px #b7924f;box-shadow:inset 0 6px #a83265;padding-block:30px}
+.pages-silk .ending-mark{color:#96385f;width:98px;height:94px}
+.pages-silk .invite-end .signature{font:25px/1.4 Cinzel,serif}
+/* Cues remain readable over painted covers and clear of phone safe areas. */
+.craft-reveal .entry-instruction{font-size:14px;line-height:1.5;bottom:max(22px,calc(env(safe-area-inset-bottom) + 16px));background:#fff6e9f5;color:#543b35;border:1px solid #ad936d66;border-radius:3px;padding:10px 12px;left:12%;right:12%}
+.craft-reveal .entry-instruction>span{font-size:12px;opacity:1;margin-top:3px}
+.craft-reveal .craft-seal>small{font-size:10px}
+.immersive-preview .preview-toolbar{left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right))}
+
+@media(min-width:760px){.immersive-preview .preview-toolbar{left:calc(50% - 250px);right:calc(50% - 250px)}}
+@media(max-width:360px){.crafted-invitation .page-content{padding-inline:10%}.crafted-invitation .event-main{padding-inline:15px}.crafted-invitation .invite-rsvp form{padding-inline:14px}.crafted-invitation .guest-notes h2,.crafted-invitation .invite-rsvp h2{font-size:28px}.crafted-invitation .event-time .ceremony-label{font-size:10px}}
+.crafted-invitation .family-niches .family-dedication{font-size:21px!important;line-height:1.4}
+.crafted-invitation .pages-temple .event-main .event-time{color:#fff0ce}
+.pages-earthen .date-amulet{width:174px;height:174px}
+.crafted-invitation .date-inside>span{line-height:1.5}
+.crafted-invitation .date-keepsake .countdown>span{text-transform:none;letter-spacing:0;font-size:13px;max-width:none}
+.crafted-invitation .pages-tapestry .event-supporting{background:transparent;transform:none}
+.crafted-invitation .pages-tapestry .event-main{background:#f8dbad;transform:rotate(-.7deg)}
+
+/* A reserved in-flow row after the cover: never an overlay on guest information. */
+.crafted-invitation .motion-controls{position:static;inset:auto;z-index:auto;max-width:none;margin:0;padding:8px 6%;min-height:60px;display:flex;justify-content:flex-end;background:inherit;border:0;border-radius:0;box-shadow:none}
+.crafted-invitation .motion-toggle{min-height:44px;padding:10px 16px;font-size:13px;line-height:1.5;color:inherit;border:1px solid currentColor;border-radius:24px;background:transparent;text-decoration:none}
+.crafted-invitation .motion-toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px}

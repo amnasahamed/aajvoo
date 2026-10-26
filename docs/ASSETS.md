@@ -53,3 +53,7 @@ Three new original assets were generated with OpenAI image generation, with tran
 The original PNG outputs remain preserved outside the runnable source archive. Runtime WebP files preserve transparency and full image dimensions; only format encoding/compression was performed. Lotus and jasmine use quality 84; meadow uses quality 72 with WebP method 6. No scripted raster cropping, background removal, compositing or painting was used.
 
 Nineteen additional original SVG image planes were authored as code-native geometry in `tools/build-depth-art.mjs`. Their botanical, jaali, lantern, textile, clay and zari forms are original constructions rather than traced assets. All 22 runtime layer files are local in `public/images/layers/`. The per-design composition and motion boundaries are documented in [SCENE-LAYERS.md](SCENE-LAYERS.md).
+
+## Invitation interior refinement
+
+The eleven small closing marks in `src/invitations.js` are original code-native SVG linework (garden petals, correspondence, threshold, botanical stem, salon arch, paper boat, brass lamp, shared bowl, crescent, embroidery and kolam-inspired geometry). They are not generated raster imagery or traced reference assets. Fine silk warp/weft is a local CSS pattern. Existing painted scenes and transparent image assets are unchanged.

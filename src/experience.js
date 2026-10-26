@@ -13,7 +13,7 @@ export function mountExperience(root, id) {
     const hadFocus = document.activeElement === button;
     revealed = true;
     if (canvas) { canvas.hidden = true; canvas.style.touchAction = 'pan-y'; }
-    if (button) { button.setAttribute('aria-expanded','true'); button.textContent = 'Date revealed'; button.disabled = true; button.tabIndex = -1; }
+    if (button) { button.setAttribute('aria-expanded','true'); button.textContent = 'Date revealed'; button.disabled = true; button.tabIndex = -1; button.hidden = true; }
     section?.classList.add('date-revealed');
     if (section) { const message=section.querySelector('.date-message'); message.textContent = 'We cannot wait to celebrate with you.'; message.tabIndex=-1; if(hadFocus)message.focus({preventScroll:true}); }
   };
@@ -48,7 +48,7 @@ export function mountExperience(root, id) {
     canvas.addEventListener('pointerup',e=>finish(e),{signal});canvas.addEventListener('pointercancel',e=>finish(e,true),{signal});canvas.addEventListener('lostpointercapture',()=>{activePointer=null},{signal});
   }
   const controls=document.createElement('div');controls.className='motion-controls';
-  const toggle=document.createElement('button');toggle.type='button';toggle.className='motion-toggle';controls.append(toggle);root.prepend(controls);
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='motion-toggle';controls.append(toggle);if(cover)cover.after(controls);else root.prepend(controls);
   const sections=[...root.querySelectorAll('.page-content > section,.page-content > aside')];
   if (cover) {
     const kind = ['courtyard','letters','herbarium'].includes(id)?'petal':['dawn','lake','moon','temple'].includes(id)?'glint':['tapestry','silk'].includes(id)?'thread':null;

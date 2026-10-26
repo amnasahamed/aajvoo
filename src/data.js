@@ -548,7 +548,7 @@ export const templates = [
     "layout": "silk",
     "color": "#294b45",
     "paper": "#f3ead6",
-    "opening": "Draw our beginning",
+    "opening": "Open our beginning",
     "reveal": "scroll",
     "edition": "11",
     "detail": "Magenta silk, gold zari borders, jasmine strings and a kolam opening into a morning celebration.",
