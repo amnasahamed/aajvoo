@@ -82,7 +82,7 @@ function renderCards() {
     ? items.map((t) => card(t, templates.indexOf(t))).join("")
     : '<p class="empty">No designs found. Try another word or choose All designs.</p>';
   document.querySelector("#result-count").textContent =
-    `${items.length} considered designs`;
+    `${items.length} considered ${items.length === 1 ? "design" : "designs"}`;
 }
 function home() {
   document.title = "Vow & Verse — A beautiful beginning";
