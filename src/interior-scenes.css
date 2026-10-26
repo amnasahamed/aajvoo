@@ -1,0 +1,101 @@
+/* Separate local image planes, composed in quiet spaces between the reading groups. */
+.composed-pages .section-scene{position:relative;isolation:isolate;width:calc(100% + 44px);margin:0 -22px 24px;aspect-ratio:480/180;pointer-events:none;user-select:none;overflow:clip;contain:layout style;--interior-depth:0px}
+.section-scene .section-plane{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain;display:block;border:0;border-radius:0;pointer-events:none!important;user-select:none}
+.section-scene .section-plane-far{transform:translateY(calc(var(--interior-depth) * -.32));opacity:.8}
+.section-scene .section-plane-near{transform:translateY(calc(var(--interior-depth) * .7))}
+.section-scene .section-plane-botanical{inset:auto 0 -2px auto;object-fit:contain;height:auto;width:38%;transform:translateY(calc(var(--interior-depth) * 1.05));opacity:.93}
+.section-scene .botanical-dawn,.section-scene .botanical-temple{top:0;bottom:auto;left:0;width:100%;height:100%;object-fit:fill;opacity:.65}
+.section-scene .botanical-letters{width:42%;left:0;right:auto;bottom:-4px}
+.composed-pages .scene-story{width:calc(100% + 30px);margin-inline:-15px;margin-bottom:12px;aspect-ratio:480/150}
+.composed-pages .scene-story .section-plane{object-position:bottom}
+.composed-pages .scene-notes{width:100%;margin:0 0 4px;aspect-ratio:480/125}
+.composed-pages .scene-notes .section-plane{object-position:left bottom}
+.composed-pages .scene-reply{width:85%;margin:0 auto 18px;aspect-ratio:480/160}
+.composed-pages .scene-end{width:calc(100% + 56px);margin:0 -28px 24px;aspect-ratio:480/195}
+.composed-pages .invite-end>.ending-mark{display:none}
+.composed-pages .invite-end .closing-line{margin-top:12px}
+/* Replace endlessly tiled painted cover edges with a single introductory fragment.
+   Later sections have their own scenery instead of repeating the cover down the page. */
+.composed-pages.painted-paper>.page-perimeter::before{background-repeat:no-repeat;mask-image:linear-gradient(to right,#000 0 5%,transparent 11% 89%,#000 95% 100%);-webkit-mask-image:linear-gradient(to right,#000 0 5%,transparent 11% 89%,#000 95% 100%)}
+.composed-pages.painted-paper .page-content>section:not(:first-child){border-top:0}
+.composed-pages.pages-courtyard .scene-programme,.composed-pages.pages-lake .scene-programme{width:calc(100% + 70px);margin-inline:-35px}
+.composed-pages.pages-dawn .scene-programme,.composed-pages.pages-temple .scene-programme{margin-bottom:16px}
+.composed-pages.pages-letters .scene-story{display:none} /* Preserve the direct personal-letter opening. */
+.composed-pages.pages-letters .scene-notes{width:80%;margin-left:-12px}
+.composed-pages.pages-letters .scene-reply{width:100%;margin-bottom:4px}
+.composed-pages.pages-herbarium .section-plane-far{opacity:.65}
+.composed-pages.pages-herbarium .scene-story{width:85%;margin-left:auto;margin-right:0}
+.composed-pages.pages-velvet .scene-story,.composed-pages.pages-moon .scene-story{width:90%;margin-inline:auto}
+.composed-pages.pages-moon .scene-programme{margin-bottom:10px}
+.composed-pages.pages-earthen .scene-programme{aspect-ratio:480/145}
+.composed-pages.pages-earthen .scene-story{width:70%;margin-left:auto;margin-right:-15px;aspect-ratio:480/140}
+.composed-pages.pages-earthen .scene-notes{aspect-ratio:480/100}
+.composed-pages.pages-earthen .scene-reply{display:none} /* The plain ruled table reply needs no badge. */
+.composed-pages.pages-tapestry .scene-programme{margin-bottom:10px}
+.composed-pages.pages-tapestry .scene-story{width:85%;margin-left:auto;margin-right:0}
+.composed-pages.pages-silk .scene-notes{margin-bottom:0}
+.composed-pages .page-content>section,.composed-pages .invite-end{position:relative}
+/* Meaningful feedback lives with the activated control, never as an overlay on the page. */
+.action-feedback{font:12px/1.6 Manrope,sans-serif!important;margin:9px 0 0!important;min-height:0;color:inherit}
+.action-feedback:empty{display:none}
+.interaction-burst{position:absolute;inset:-14px;pointer-events:none;overflow:visible;z-index:5;contain:layout style}
+.interaction-burst i{position:absolute;left:50%;top:35%;width:11px;height:15px;opacity:0;background:var(--burst-color,#ce989c);border-radius:70% 0 70% 0;animation:keepsake-burst 1050ms cubic-bezier(.15,.55,.35,1) forwards;animation-delay:var(--delay,0ms);transform-origin:center}
+.interaction-burst.burst-leaf i{border-radius:0 90% 0 90%;width:9px;height:17px}
+.interaction-burst.burst-gold i{border-radius:1px;width:6px;height:9px}
+.interaction-burst.burst-thread i{border-radius:0;width:9px;height:9px;border:1px dashed #fff1b8}
+.interaction-burst.burst-petal i:nth-child(3n){width:13px;height:13px;border-radius:50% 25% 50% 25%}
+@keyframes keepsake-burst{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.3)}18%{opacity:.95}100%{opacity:0;transform:translate(var(--burst-x),var(--burst-y)) rotate(var(--burst-turn)) scale(.8)}}
+.crafted-invitation .action-ack{animation:action-ack 480ms ease-out}
+.crafted-invitation .date-amulet.date-ack{animation:date-ack 650ms ease-out}
+.crafted-invitation .reply-ack{animation:reply-ack 580ms ease-out}
+@keyframes action-ack{0%,100%{box-shadow:0 0 0 0 transparent}40%{box-shadow:0 0 0 4px #ba976d33}}
+@keyframes date-ack{0%,100%{filter:brightness(1)}40%{filter:brightness(1.1)}}
+@keyframes reply-ack{0%,100%{box-shadow:0 0 0 0 transparent}45%{box-shadow:0 0 0 5px #ba976d35}}
+.crafted-invitation .invite-button,.crafted-invitation .date-foil,.crafted-invitation .motion-toggle{transition:background-color .18s,border-color .18s,box-shadow .18s,translate .18s}
+.crafted-invitation .invite-button:active,.crafted-invitation .date-foil:active{translate:0 1px}
+.crafted-invitation .invite-button:focus-visible,.crafted-invitation .date-foil:focus-visible{outline:2px solid currentColor;outline-offset:4px;box-shadow:0 0 0 5px #c6a77c22}
+#opened-invite.motion-user-paused .section-plane,#opened-invite.motion-reduced .section-plane,#opened-invite.motion-paused .section-plane{transform:none!important;will-change:auto}
+#opened-invite.motion-user-paused .interaction-burst,#opened-invite.motion-reduced .interaction-burst,#opened-invite.motion-paused .interaction-burst{display:none}
+#opened-invite.motion-user-paused .action-ack,#opened-invite.motion-user-paused .date-ack,#opened-invite.motion-user-paused .reply-ack,#opened-invite.motion-reduced .action-ack,#opened-invite.motion-reduced .date-ack,#opened-invite.motion-reduced .reply-ack{animation:none}
+#opened-invite.motion-user-paused button,#opened-invite.motion-reduced button{transition:none;translate:none}
+@media(prefers-reduced-motion:reduce){.section-plane{transform:none!important}.interaction-burst{display:none!important}.crafted-invitation .action-ack,.crafted-invitation .date-ack,.crafted-invitation .reply-ack{animation:none!important}.crafted-invitation button{transition:none!important;translate:none!important}}
+.interior-active>.section-plane{will-change:transform}
+#opened-invite.motion-user-paused .section-plane,#opened-invite.motion-reduced .section-plane,#opened-invite.motion-paused .section-plane{will-change:auto}
+#opened-invite.motion-paused .action-ack,#opened-invite.motion-paused .date-ack,#opened-invite.motion-paused .reply-ack{animation:none}
+.section-scene .painted-vista{opacity:1;object-fit:contain}
+.section-scene .painted-near{inset:auto 0 -4px auto;width:57%;height:auto;max-width:none}
+.composed-pages .scene-programme:has(.painted-vista){aspect-ratio:480/215;width:calc(100% + 82px);margin-inline:-41px}
+.composed-pages .scene-story:has(.painted-vista){width:calc(100% + 54px);margin-inline:-27px;aspect-ratio:480/170}
+.composed-pages .scene-story .painted-vista{opacity:.85;mask-image:linear-gradient(90deg,#000 0 65%,transparent 100%)}
+.composed-pages .scene-end:has(.painted-vista){width:calc(100% + 82px);margin-inline:-41px;aspect-ratio:480/210}
+.composed-pages .scene-end .painted-vista{opacity:.6}
+/* Physical replies are framed by their material, not a repeated picture badge. */
+.composed-pages .scene-reply{height:56px;aspect-ratio:auto;margin-bottom:8px;overflow:hidden}
+.composed-pages .scene-reply .section-plane-far{opacity:.25}
+.composed-pages .scene-reply .section-plane-near{height:115px;top:-31px}
+.composed-pages.pages-letters .scene-reply{height:88px}
+.composed-pages.pages-letters .scene-reply .section-plane-near{height:130px;top:-24px}
+.composed-pages.pages-earthen .scene-reply{display:none}
+/* The reply's planes sit at the paper edges around the controls, with a clear writing zone. */
+.composed-pages .invite-rsvp form{position:relative;isolation:isolate}
+.composed-pages .invite-rsvp form>.scene-reply{display:block;position:absolute;inset:0;z-index:0;aspect-ratio:auto;width:100%;height:100%;margin:0;overflow:hidden;opacity:.85}
+.composed-pages .invite-rsvp form>.scene-reply .section-plane{inset:0;width:100%;height:100%;object-fit:fill}
+.composed-pages .invite-rsvp form>.scene-reply .section-plane-far{opacity:.65}
+.composed-pages .invite-rsvp form>label,.composed-pages .invite-rsvp form>button,.composed-pages .invite-rsvp form>#rsvp-status{position:relative;z-index:1}
+/* Reading folios carry material behind the prose, rather than another illustration badge. */
+.composed-pages .invite-story:not(.personal-letter),.composed-pages .guest-notes{isolation:isolate;padding:46px 14px 42px}
+.composed-pages .invite-story>.scene-story,.composed-pages .guest-notes>.scene-notes{position:absolute;inset:5px -20px;z-index:-1;width:calc(100% + 40px);height:calc(100% - 10px);max-height:none;aspect-ratio:auto;margin:0;overflow:clip}
+.composed-pages .invite-story>.scene-story .section-plane-far,.composed-pages .guest-notes>.scene-notes .section-plane-far{object-fit:fill;opacity:.8}
+.composed-pages .invite-story>.scene-story .section-plane-near,.composed-pages .guest-notes>.scene-notes .section-plane-near{object-fit:fill;opacity:.85}
+.composed-pages .invite-story>.scene-story:has(.painted-vista){aspect-ratio:auto}
+.composed-pages .personal-letter{isolation:isolate}
+.composed-pages .guest-notes .guest-note-list{border-block:0}
+@media(max-width:360px){.composed-pages .invite-story:not(.personal-letter),.composed-pages .guest-notes{padding-inline:8px}}
+.composed-pages .invite-story>.scene-story .section-plane-near,.composed-pages .guest-notes>.scene-notes .section-plane-near{max-height:640px}
+/* Enforce the quiet writing zone even when long headings approach the paper edges. */
+.composed-pages .invite-story>.scene-story .section-plane-near,.composed-pages .guest-notes>.scene-notes .section-plane-near{mask-image:linear-gradient(to right,#000 0 7%,transparent 8% 92%,#000 93% 100%)}
+/* A corner-pair botanical asset belongs across the vista, not in a small rectangular
+   inset. Feather its cut stems into paper before the scene's clipping boundary. */
+.section-scene .painted-near{inset:auto 0 6px;width:100%;height:auto;max-width:none;mask-image:linear-gradient(90deg,transparent,#000 10% 90%,transparent),linear-gradient(#000 0 64%,transparent 96%);mask-composite:intersect;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10% 90%,transparent),linear-gradient(#000 0 64%,transparent 96%);-webkit-mask-composite:source-in}
+.section-scene .section-plane-botanical{mask-image:linear-gradient(90deg,transparent,#000 10% 90%,transparent),linear-gradient(#000 0 70%,transparent 97%);mask-composite:intersect;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10% 90%,transparent),linear-gradient(#000 0 70%,transparent 97%);-webkit-mask-composite:source-in}
+.section-scene .botanical-letters{bottom:8px;mask-image:linear-gradient(90deg,transparent,#000 12% 65%,transparent 98%),linear-gradient(#000 0 50%,transparent 92%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12% 65%,transparent 98%),linear-gradient(#000 0 50%,transparent 92%)}

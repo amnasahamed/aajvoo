@@ -57,3 +57,9 @@ Nineteen additional original SVG image planes were authored as code-native geome
 ## Invitation interior refinement
 
 The eleven small closing marks in `src/invitations.js` are original code-native SVG linework (garden petals, correspondence, threshold, botanical stem, salon arch, paper boat, brass lamp, shared bowl, crescent, embroidery and kolam-inspired geometry). They are not generated raster imagery or traced reference assets. Fine silk warp/weft is a local CSS pattern. Existing painted scenes and transparent image assets are unchanged.
+
+### Lower-interior art, October 2026
+
+Four new original images were generated with OpenAI image generation from original descriptions, without supplied reference images or competitor assets. They depict imaginary garden pavilions/lotus pool, a lake palace shoreline, a granite temple courtyard and a sandstone dawn veranda. They are stored locally as `images/interiors/{courtyard,lake,temple,dawn}-painted-vista.webp`, each 2172×724 with transparency. Generation produced PNGs; delivery uses alpha-preserving WebP format encoding (quality 82), without cropping, resizing, raster compositing or creative pixel editing. They are AI-generated illustrations, not photographs of actual venues or commissioned hand-painted works.
+
+The 96 SVG images in the same directory are original code-native vector geometry authored in `tools/build-interior-art.mjs`. Their material details and framing are not traced from competitor art. All assets are decorative, local and noninteractive. Existing botanical foreground assets are reused where their subject fits. No remote image/font service is required.

@@ -1,3 +1,4 @@
+import {composeInteriors} from "./interior-scenes.js";
 import {renderSceneLayers,renderInteriorLayer} from "./scene-layers.js";
 import {drawing, ornament, borderDrawing} from "./craft-art.js";
 export const esc = (s) =>
@@ -98,7 +99,7 @@ export const sceneCover=(t,d,o={})=>{const extended=extendedCover(d);return `<se
 function dateKeepsake(t,d,o){return `<section class="date-keepsake" data-section="date"><span class="invite-kicker">Keep this day for us</span><div class="date-amulet"><div class="date-inside"><span>${day(d.date)}</span><strong>${new Date(d.date+'T12:00:00').getDate()}</strong><span>${new Date(d.date+'T12:00:00').toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</span></div>${!o.mini&&!o.exported?`<canvas class="date-scratch" data-initials="${initials(d)}" aria-hidden="true"></canvas>`:''}</div>${!o.mini&&!o.exported?'<button class="date-foil" aria-label="Reveal our wedding date" aria-expanded="false">Reveal date</button><p class="scratch-hint">Brush across the foil, tap it, or use the button.</p>':''}${countdown(d)}<p class="date-message" aria-live="polite"></p></section>`}
 const family=(t,d)=>`<section class="family-niches" data-section="family">${kicker('Together with our families')}<p class="family-dedication">${esc(d.hostline)}</p><div class="family-pair" aria-hidden="true"><div><span class="family-initial">${esc(firstLetter(d.name1))}</span></div><span class="family-and">&amp;</span><div><span class="family-initial">${esc(firstLetter(d.name2))}</span></div></div></section>`;
 const interiorArt=(t)=>({courtyard:'/images/craft/courtyard-interior.webp',letters:'/images/craft/letters-interior.webp',dawn:scenePath(t),lake:scenePath(t)})[t.id];
-const frame=(t,body)=>{const paper=interiorArt(t);return `<div class="invitation-pages pages-${t.id} ${paper?'painted-paper':''}" ${paper?`style="--interior-art:url('${paper}')"`:''}><div class="page-perimeter" aria-hidden="true">${paper?`<img src="${paper}" alt="" hidden>`:borderDrawing(t.id)}</div>${renderInteriorLayer(t.id)}<div class="page-content">${body}</div></div>`};
+const frame=(t,body)=>{const paper=interiorArt(t);return `<div class="invitation-pages composed-pages pages-${t.id} ${paper?'painted-paper':''}" ${paper?`style="--interior-art:url('${paper}')"`:''}><div class="page-perimeter" aria-hidden="true">${paper?`<img src="${paper}" alt="" hidden>`:borderDrawing(t.id)}</div>${renderInteriorLayer(t.id)}<div class="page-content">${composeInteriors(t.id,body)}</div></div>`};
 
 const layouts={
  courtyard:(t,d,o)=>sceneCover(t,d,{...o,layers:!o.mini})+frame(t,family(t,d)+dateKeepsake(t,d,o)+programme(t,d,o,'garden-events')+story(t,d,'garden-story')+notes(t,d)+rsvp(t,d,o)+end(t,d)),

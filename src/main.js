@@ -6,7 +6,7 @@ import tamilURL from "@fontsource/noto-sans-tamil/files/noto-sans-tamil-tamil-40
 import {chooseDesign} from "./sales.js";
 import "./assisted.css";
 import "./readiness.css";
-import {mountExperience} from "./experience.js";
+import {mountExperience,isMotionPaused} from "./experience.js";
 let disposeExperience = () => {};
 let openingTimer;
 let catalogScroll=0;
@@ -27,6 +27,7 @@ import "./invitation.css";
 import "./home.css";
 import "./craft.css";
 import "./scene-layers.css";
+import "./interior-scenes.css";
 import "./studio-home.css";
 import "./editorial-home.css";
 import craftCSS from "./craft.css?raw";
@@ -145,7 +146,7 @@ function preview(t) {
         h.focus({ preventScroll: true });
         window.scrollTo(0, 0);
       },
-      matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1450,
+      (isMotionPaused() || matchMedia("(prefers-reduced-motion: reduce)").matches) ? 0 : 1450,
     );
     bindInvite();
   };
@@ -153,13 +154,20 @@ function preview(t) {
 function bindInvite() {
   document
     .querySelectorAll("[data-calendar]")
-    .forEach((b) => (b.onclick = () => calendar(Number(b.dataset.calendar))));
+    .forEach((b) => (b.onclick = () => {
+      calendar(Number(b.dataset.calendar));
+      let status=b.nextElementSibling;
+      if(!status?.classList.contains('action-feedback')){status=document.createElement('p');status.className='action-feedback';status.setAttribute('role','status');b.after(status)}
+      status.textContent='Calendar file requested. Open it to review and add the event.';
+      b.dispatchEvent(new CustomEvent('invitation-action',{bubbles:true,detail:{kind:'calendar'}}));
+    }));
   const form = document.querySelector("#rsvp-form");
   if (form)
     form.onsubmit = (e) => {
       e.preventDefault();
       document.querySelector("#rsvp-status").textContent =
         "Preview complete. No RSVP was sent or saved. Please contact your hosts directly.";
+      form.dispatchEvent(new CustomEvent('invitation-action',{bubbles:true,detail:{kind:'reply'}}));
       form.reset();
     };
 }
@@ -197,7 +205,7 @@ function renderWedding(){
  app.querySelectorAll('.fiction-note,.invite-rsvp').forEach(x=>x.remove());
  const credit=app.querySelector('.invite-end small');if(credit)credit.textContent='Designed with Vow & Verse';
  if(draft.media?.length){const gallery=document.createElement('section');gallery.className='personal-gallery';gallery.setAttribute('aria-label','Wedding photographs');for(const id of draft.media){const img=document.createElement('img');img.src=weddingPayload.staff?`/api/weddings/${location.pathname.split('/')[2]}/media/${id}`:`/media/${id}`;img.alt='Wedding photograph';img.loading='lazy';gallery.append(img)}app.querySelector('.invite-end').before(gallery)}
- document.querySelector('#open-invite').onclick=e=>{e.currentTarget.disabled=true;const reveal=app.querySelector('.reveal');reveal.classList.add('opening');openingTimer=setTimeout(()=>{reveal.remove();const root=document.querySelector('#opened-invite');root.hidden=false;disposeExperience=mountExperience(root,t.id);bindInvite();window.scrollTo(0,0)},matchMedia('(prefers-reduced-motion: reduce)').matches?0:1450)};
+ document.querySelector('#open-invite').onclick=e=>{e.currentTarget.disabled=true;const reveal=app.querySelector('.reveal');reveal.classList.add('opening');openingTimer=setTimeout(()=>{reveal.remove();const root=document.querySelector('#opened-invite');root.hidden=false;disposeExperience=mountExperience(root,t.id);bindInvite();window.scrollTo(0,0)},(isMotionPaused()||matchMedia('(prefers-reduced-motion: reduce)').matches)?0:1450)};
 }
 function route() {
   clearTimeout(openingTimer);
