@@ -1,4 +1,5 @@
 // Local, bounded invitation motion. Every observer/listener belongs to this mount.
+let motionPaused = false; // Current tab only; no storage or tracking.
 export function mountExperience(root, id) {
   const abort = new AbortController(), signal = abort.signal;
   const media = matchMedia('(prefers-reduced-motion: reduce)');
@@ -46,19 +47,30 @@ export function mountExperience(root, id) {
     };
     canvas.addEventListener('pointerup',e=>finish(e),{signal});canvas.addEventListener('pointercancel',e=>finish(e,true),{signal});canvas.addEventListener('lostpointercapture',()=>{activePointer=null},{signal});
   }
+  const controls=document.createElement('div');controls.className='motion-controls';
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='motion-toggle';controls.append(toggle);root.prepend(controls);
   const sections=[...root.querySelectorAll('.page-content > section,.page-content > aside')];
   if (cover) {
     const kind = ['courtyard','letters','herbarium'].includes(id)?'petal':['dawn','lake','moon','temple'].includes(id)?'glint':['tapestry','silk'].includes(id)?'thread':null;
     if(kind){const layer=document.createElement('div');layer.className='ambient ambient-'+kind;layer.setAttribute('aria-hidden','true');layer.innerHTML=Array.from({length:5},(_,i)=>`<i style="--left:${i%2?91-i:4+i}%;--top:${14+i*16}%;--delay:${-i*2.7}s;--duration:${10+i*2}s"></i>`).join('');cover.append(layer);}
-    const io=new IntersectionObserver(([e])=>{cover.classList.toggle('motion-active',e.isIntersecting&&!document.hidden&&!media.matches);},{threshold:0});io.observe(cover);observers.push(io);
+    const io=new IntersectionObserver(([e])=>{cover.classList.toggle('motion-active',e.isIntersecting&&!document.hidden&&!media.matches&&!motionPaused);},{threshold:0});io.observe(cover);observers.push(io);
   }
-  const updateDepth=()=>{raf=0;if(disposed||media.matches||document.hidden||!cover)return;const rect=cover.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)return;cover.style.setProperty('--scene-depth',`${Math.max(-9,Math.min(9,-rect.top*.025))}px`);};
-  const schedule=()=>{if(!raf&&!media.matches&&!document.hidden)raf=requestAnimationFrame(updateDepth)};
+  const updateDepth=()=>{raf=0;if(disposed||media.matches||motionPaused||document.hidden||!cover)return;const rect=cover.getBoundingClientRect();if(rect.bottom<0||rect.top>innerHeight)return;cover.style.setProperty('--scene-depth',`${Math.max(-9,Math.min(9,-rect.top*.025))}px`);};
+  const schedule=()=>{if(!raf&&!media.matches&&!motionPaused&&!document.hidden)raf=requestAnimationFrame(updateDepth)};
   window.addEventListener('scroll',schedule,{passive:true,signal});window.addEventListener('resize',schedule,{passive:true,signal});
   const scrollObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('section-seen');scrollObserver.unobserve(e.target)}}),{threshold:.08});observers.push(scrollObserver);
   if(!media.matches)sections.forEach(e=>{if(e.getBoundingClientRect().top>innerHeight){e.classList.add('section-arriving');scrollObserver.observe(e)}});
-  const preferences=()=>{root.classList.toggle('motion-reduced',media.matches);if(media.matches){revealDate();sections.forEach(e=>e.classList.add('section-seen'));cover?.style.removeProperty('--scene-depth');cover?.classList.remove('motion-active');}else schedule()};
+  const preferences=()=>{
+    const stopped=media.matches||motionPaused;
+    root.classList.toggle('motion-reduced',media.matches);root.classList.toggle('motion-user-paused',motionPaused);
+    toggle.disabled=media.matches;toggle.textContent=media.matches?'Motion reduced':motionPaused?'Resume motion':'Pause motion';toggle.setAttribute('aria-pressed',String(stopped));
+    toggle.title=media.matches?'Your device reduced-motion preference is respected':'Pause or resume decorative motion';
+    if(media.matches)revealDate();
+    if(stopped){cancelAnimationFrame(raf);raf=0;sections.forEach(e=>e.classList.add('section-seen'));cover?.style.removeProperty('--scene-depth');cover?.classList.remove('motion-active');}
+    else {if(cover){const r=cover.getBoundingClientRect();cover.classList.toggle('motion-active',r.bottom>0&&r.top<innerHeight&&!document.hidden);}schedule();}
+  };
+  toggle.addEventListener('click',()=>{if(media.matches)return;motionPaused=!motionPaused;preferences();},{signal});
   media.addEventListener('change',preferences,{signal});preferences();schedule();
   document.addEventListener('visibilitychange',()=>{root.classList.toggle('motion-paused',document.hidden);if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();},{signal});
-  return ()=>{disposed=true;abort.abort();observers.forEach(o=>o.disconnect());cancelAnimationFrame(raf);root.querySelectorAll('.ambient').forEach(e=>e.remove());};
+  return ()=>{disposed=true;abort.abort();observers.forEach(o=>o.disconnect());cancelAnimationFrame(raf);root.querySelectorAll('.ambient').forEach(e=>e.remove());controls.remove();};
 }

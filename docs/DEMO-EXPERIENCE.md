@@ -31,3 +31,5 @@ Reduced motion removes parallax, ambient movement and scroll transitions; the da
 ## Verification scope
 
 Automated browser coverage includes all eleven normal-motion journeys, actual canvas erasure, keyboard/touch alternatives, cancellation, route interruption, history restoration, local-only network activity, responsive layouts and reduced motion. Screenshots are internal QA artifacts. Testing is Chromium-based; physical-device performance, Safari/Firefox behavior and every possible assistive-technology combination are not exhaustively verified.
+
+The opened invitation includes a keyboard-accessible Pause motion / Resume motion control. It pauses ambient CSS movement and scroll-driven parallax, and makes pending scroll sections visible without motion. Scratch, tap and keyboard date reveals continue working. The choice persists in module memory across previews in the current tab only; no browser storage is written. OS reduced motion overrides the toggle (shown disabled as “Motion reduced”). Navigation removes the control and its listener with the invitation mount.

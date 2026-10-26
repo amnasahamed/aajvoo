@@ -84,3 +84,12 @@
 
 .entry-temple .entry-dedication{top:28%;left:20%;right:20%}
 .entry-backdrop{position:absolute;inset:0;z-index:0;pointer-events:none}
+
+/* A discreet, persistent control for optional ongoing motion. */
+.motion-controls{position:sticky;top:0;z-index:8;max-width:520px;margin:0 auto;min-height:44px;display:flex;justify-content:flex-end;background:#f9f3e7;border-bottom:1px solid #e4d4c1}
+.motion-toggle{font:12px/1.4 Manrope,sans-serif;color:#593d43;background:transparent;border:0;min-height:44px;padding:10px 16px;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.motion-toggle:focus-visible{outline:2px solid #69384b;outline-offset:-4px}
+.motion-toggle:disabled{cursor:default;text-decoration:none;opacity:.8}
+.motion-user-paused .ambient i{animation-play-state:paused!important}
+.motion-user-paused .section-arriving{opacity:1;transform:none;transition:none}
+#opened-invite.motion-user-paused .crafted-cover>.crafted-scene,#opened-invite.motion-user-paused .crafted-cover>.craft-drawing{transform:none;will-change:auto}
