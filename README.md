@@ -26,23 +26,23 @@ The name is a creative identity; no trademark or domain availability is claimed.
 
 The homepage presents the composed invitation collection as a fan of stationery rather than a venue-photo hero. Each preview opens through a material-specific object: garden gates, paper seals, carved doors, painted shutters, a star screen, stitched cloth or a drawn kolam. Twelve original local painted assets and six vector illustration systems carry through the covers, families, date keepsakes and programmes. Names remain live text within the compositions.
 
-Preview dates can be uncovered with a click or keyboard activation. Reduced motion skips opening choreography and decorative particles. Exports intentionally open directly to the invitation and show the date; they contain no scripts or RSVP form. The generated people are fictional artwork, not personalised portraits.
+Preview dates can be uncovered by actually scratching the foil, tapping it, or using the keyboard-accessible reveal button. Reduced motion skips opening choreography, parallax and ambient movement, and exposes the date directly. Exports intentionally open directly to the invitation and show the date; they contain no scripts or RSVP form. The generated people are fictional artwork, not personalised portraits.
 
 ## Collection
 
 | Design | Fictional couple | Composition |
 | --- | --- | --- |
-| Garden Verse | Ira & Neel | Painted lotus garden, openwork gates, framed family niches and three-day gathering |
-| A Letter to You | Leela & Samar | Deckle-edge stationery, personal letter, diary and reply card |
-| The First Light | Vedika & Om | Carved sandalwood portal, dawn temple painting and scalloped ceremony programme |
-| Wildflower Waltz | Aditi & Joel | Blush folding stationery, botanical arch, circular initials and garden-party programme |
-| An Evening in Verse | Saira & Rishabh | Burgundy/gold manuscript doors, jharokha, mandala and arch programme |
-| A Stillwater Story | Esha & Ronit | Painted floral shutters, lake-palace manuscript and four-part weekend programme |
-| A Sacred Beginning | Revathi & Madhav | Carved-stone architecture, ceremony-first callout, family blessing |
-| Written in Earth | Avni & Kian | Seven-ring ceremonial print, terracotta flame and ruled editorial programme |
-| The Moonlit Promise | Safiya & Hamza | Emerald star screen, pointed arch, lanterns and Nikah gathering |
-| Threads of Promise | Harleen & Angad | Magenta/saffron embroidered cloth, tilted folk lettering and stitched Anand Karaj programme |
-| A Silk Serenade | Janani & Vishal | Drawn kolam, magenta silk border, jasmine and temple illustration, wedding almanac |
+| Garden Verse | Ishavi & Nivaan | Painted lotus garden, openwork gates, framed family niches and three-day gathering |
+| A Letter to You | Eluvi & Sairen | Deckle-edge stationery, personal letter, diary and reply card |
+| The First Light | Aarivi & Omesh | Carved sandalwood portal, dawn temple painting and scalloped ceremony programme |
+| Wildflower Waltz | Tavira & Jolen | Blush folding stationery, botanical arch, circular initials and garden-party programme |
+| An Evening in Verse | Sahira & Riven | Burgundy/gold manuscript doors, jharokha, mandala and arch programme |
+| A Stillwater Story | Eshani & Ronav | Painted floral shutters, lake-palace manuscript and four-part weekend programme |
+| A Sacred Beginning | Reyathi & Madhiran | Carved-stone architecture, ceremony-first callout, family blessing |
+| Written in Earth | Avira & Kivaan | Seven-ring ceremonial print, terracotta flame and ruled editorial programme |
+| The Moonlit Promise | Zayira & Hamiran | Emerald star screen, pointed arch, lanterns and Nikah gathering |
+| Threads of Promise | Harvani & Angir | Magenta/saffron embroidered cloth, tilted folk lettering and stitched Anand Karaj programme |
+| A Silk Serenade | Janira & Vishen | Drawn kolam, magenta silk border, jasmine and temple illustration, wedding almanac |
 
 All couples, stories, venues and arrangements are fictional. The scenes are original AI-generated artwork, not photographs of actual customers or venues. See [asset provenance](docs/ASSETS.md).
 
@@ -86,6 +86,7 @@ npm test
 npm run test:branding
 node tests/home.mjs
 node tests/craft.mjs
+node tests/experience.mjs
 npm run audit:source
 ```
 
@@ -94,3 +95,5 @@ Tests use Playwright with an installed Chromium binary. Set `CHROMIUM_PATH` if i
 Static audit scans application text assets for external URLs and common tracking markers; image files are excluded from the text scan. Runtime network capture complements that check. CSP restricts application resources to the same origin; exports permit only embedded images/fonts and inline styles.
 
 Browser verification is Chromium-based. Safari, Firefox, physical devices, all possible multilingual/long inputs and formal accessibility conformance have not been exhaustively verified.
+
+See [Demo data and motion](docs/DEMO-EXPERIENCE.md) for fictional sample boundaries, the per-design effect inventory and accessibility fallbacks.

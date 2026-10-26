@@ -1,3 +1,6 @@
+import {mountExperience} from "./experience.js";
+let disposeExperience = () => {};
+let openingTimer;
 import "@fontsource/cormorant-garamond/latin-400.css";
 import "@fontsource/cormorant-garamond/latin-500.css";
 import "@fontsource/cormorant-garamond/latin-400-italic.css";
@@ -113,10 +116,11 @@ function preview(t) {
     open.disabled = true;
     const reveal = document.querySelector(".reveal");
     reveal.classList.add("opening");
-    setTimeout(
+    openingTimer = setTimeout(
       () => {
         document.querySelector("#opened-invite").hidden = false;
         reveal.remove();
+        disposeExperience = mountExperience(document.querySelector("#opened-invite"), t.id);
         const h = document.querySelector(".invite-title h1");
         h.tabIndex = -1;
         h.focus({ preventScroll: true });
@@ -128,17 +132,6 @@ function preview(t) {
   };
 }
 function bindInvite() {
-  document.querySelectorAll(".date-foil").forEach(button => button.onclick = () => {
-    if(button.getAttribute("aria-expanded") === "true") return;
-    button.setAttribute("aria-expanded", "true");
-    const section = button.closest(".date-keepsake");
-    section.querySelector(".date-message").textContent = "We cannot wait to celebrate with you.";
-    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
-      const petals = document.createElement("span"); petals.className = "petal-burst"; petals.setAttribute("aria-hidden","true");
-      petals.innerHTML = Array.from({length:16},(_,i)=>`<i style="--x:${(i-7.5)*18}px;--turn:${i*57}deg;animation-delay:${i%4*.07}s"></i>`).join("");
-      button.parentElement.append(petals); setTimeout(()=>petals.remove(),2200);
-    }
-  });
   document
     .querySelectorAll("[data-calendar]")
     .forEach((b) => (b.onclick = () => calendar(Number(b.dataset.calendar))));
@@ -161,6 +154,7 @@ function download(name, content, type) {
 }
 function calendar(index) {
   const e = draft.events[index];
+  const isSample = !!document.querySelector(".preview-toolbar");
   const esc = (s) =>
     s
       .replace(/[\r\n]+/g, " ")
@@ -179,9 +173,9 @@ function calendar(index) {
     `UID:${crypto.randomUUID()}@vow-and-verse.local`,
     `DTSTAMP:${stamp}`,
     `DTSTART:${e.date.replaceAll("-", "")}T${e.time.replace(":", "")}00`,
-    `SUMMARY:${esc(e.title)}`,
+    `SUMMARY:${isSample ? "Sample celebration — " : ""}${esc(e.title)}`,
     `LOCATION:${esc(e.venue + ", " + draft.location)}`,
-    `DESCRIPTION:${esc(e.note)}. Venue local time; confirm timezone with hosts.`,
+    `DESCRIPTION:${esc((isSample ? "Fictional demonstration; not a real event or booking. " : "") + e.note + ". Venue local time; confirm timezone with hosts.")}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -244,7 +238,7 @@ function studio(t) {
     sessionDrafts.get(t.id) || readSaved(t) || sampleFor(t),
   );
   document.title = `Personalise ${t.name} — Vow & Verse`;
-  app.innerHTML = `<header class="studio-header"><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><a href="#collection">← Collection</a><span>YOUR PRIVATE DESIGN STUDIO</span></header><main id="main" class="studio"><section class="editor"><div class="eyebrow">A WORLD THAT BEGINS WITH YOU</div><h1>Make it <em>yours.</em></h1><p>Each design has its own sample wedding and its own draft. Switching designs keeps your current edits in this tab.</p><form id="editor-form"><label>Your design<select name="design">${templates.map((x) => `<option value="${x.id}" ${x.id === t.id ? "selected" : ""}>${x.name}</option>`).join("")}</select></label><fieldset><legend>01 / The two of you</legend><div class="form-pair">${field("name1", "First name")}${field("name2", "Second name")}</div>${field("hostline", "Hosting line", "text", 200)}${field("date", "Wedding date", "date")}${field("location", "City & country")}<label>Your story<textarea name="story" rows="5" maxlength="2000" required>${escapeHTML(draft.story)}</textarea></label></fieldset><fieldset><legend>02 / Every celebration</legend><div id="event-editors">${draft.events.map(eventEditor).join("")}</div><button class="text-link" type="button" id="add-event" ${draft.events.length >= 6 ? "disabled" : ""}>+ Add a celebration</button><p class="form-note">Each event has its own date. Your programme is displayed in chronological order.</p></fieldset><fieldset><legend>03 / A final note</legend>${field("note", "Your closing note", "text", 200)}</fieldset><div class="editor-actions"><button class="button" type="submit">Save draft on this device</button><button class="button outline" type="button" id="export">Download invitation ↓</button><button class="text-link" type="button" id="clear-draft">Delete saved draft</button><button class="text-link" type="button" id="reset-sample">Reset current edits to sample</button></div><p class="privacy-note">Drafts are saved only when you choose. Download includes local artwork and fonts. No publishing, messaging, payments or live RSVP collection.</p><p id="save-status" role="status"></p></form></section><section class="studio-preview" aria-label="Live invitation preview"><div class="preview-label"><span>LIVE PREVIEW · ${t.name.toUpperCase()}</span><button id="preview-size" aria-pressed="false">Phone view</button></div><div id="live-preview">${renderInvitation(t, ordered(draft), { mini: true })}</div></section></main>`;
+  app.innerHTML = `<header class="studio-header"><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><a href="#collection">← Collection</a><span>YOUR PRIVATE DESIGN STUDIO</span></header><main id="main" class="studio"><section class="editor"><div class="eyebrow">A WORLD THAT BEGINS WITH YOU</div><h1>Make it <em>yours.</em></h1><p>Each design has its own sample wedding and its own draft. Switching designs keeps your current edits in this tab.</p><form id="editor-form"><label>Your design<select name="design">${templates.map((x) => `<option value="${x.id}" ${x.id === t.id ? "selected" : ""}>${x.name}</option>`).join("")}</select></label><fieldset><legend>01 / The two of you</legend><div class="form-pair">${field("name1", "First name")}${field("name2", "Second name")}</div>${field("hostline", "Hosting line", "text", 200)}${field("date", "Wedding date", "date")}${field("location", "Location")}<label>Your story<textarea name="story" rows="5" maxlength="2000" required>${escapeHTML(draft.story)}</textarea></label></fieldset><fieldset><legend>02 / Every celebration</legend><div id="event-editors">${draft.events.map(eventEditor).join("")}</div><button class="text-link" type="button" id="add-event" ${draft.events.length >= 6 ? "disabled" : ""}>+ Add a celebration</button><p class="form-note">Each event has its own date. Your programme is displayed in chronological order.</p></fieldset><fieldset><legend>03 / A final note</legend>${field("note", "Your closing note", "text", 200)}</fieldset><div class="editor-actions"><button class="button" type="submit">Save draft on this device</button><button class="button outline" type="button" id="export">Download invitation ↓</button><button class="text-link" type="button" id="clear-draft">Delete saved draft</button><button class="text-link" type="button" id="reset-sample">Reset current edits to sample</button></div><p class="privacy-note">Drafts are saved only when you choose. Download includes local artwork and fonts. No publishing, messaging, payments or live RSVP collection.</p><p id="save-status" role="status"></p></form></section><section class="studio-preview" aria-label="Live invitation preview"><div class="preview-label"><span>LIVE PREVIEW · ${t.name.toUpperCase()}</span><button id="preview-size" aria-pressed="false">Phone view</button></div><div id="live-preview">${renderInvitation(t, ordered(draft), { mini: true })}</div></section></main>`;
   const form = document.querySelector("#editor-form");
   function capture() {
     const fd = new FormData(form);
@@ -403,6 +397,9 @@ function privacy() {
     footer();
 }
 function route() {
+  clearTimeout(openingTimer);
+  disposeExperience();
+  disposeExperience = () => {};
   const hash = location.hash || "#/";
   if (["#collection", "#process", "#about"].includes(hash)) {
     if (!document.querySelector(".hero-v2")) home();

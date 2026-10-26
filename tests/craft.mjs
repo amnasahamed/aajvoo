@@ -17,7 +17,7 @@ try{
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow');
   await page.screenshot({path:`evidence/craft/${t.id}-open.png`});await page.screenshot({path:`evidence/craft/${t.id}-journey.png`,fullPage:true});
   await page.locator('.invite-programme').scrollIntoViewIfNeeded();await page.screenshot({path:`evidence/craft/${t.id}-programme.png`});
-  await page.locator('.date-foil').click();assert(await page.locator('.date-foil').getAttribute('aria-expanded')==='true','Date revealed');assert((await page.locator('.date-message').textContent()).includes('celebrate'),'Date message');assert(await page.locator('.petal-burst').count()===0,'Reduced motion avoids decorative particles');
+  assert(await page.locator('.date-foil').isDisabled(),'Reduced motion date needs no interaction');assert(await page.locator('.date-foil').getAttribute('aria-expanded')==='true','Date revealed');assert((await page.locator('.date-message').textContent()).includes('celebrate'),'Date message');assert(await page.locator('.petal-burst').count()===0,'Reduced motion avoids decorative particles');
   await page.locator('.invite-end').scrollIntoViewIfNeeded();await page.screenshot({path:`evidence/craft/${t.id}-closing.png`});
   await page.goto(base+'/#/studio/'+t.id);await page.locator('[name=name1]').fill('Annalise-Dharshini');await page.locator('[name=name2]').fill('Venkataraman-Sebastian');await ready();
   const title=await page.locator('#live-preview .invite-title').evaluate(e=>{const r=e.getBoundingClientRect(),c=e.closest('.invite-cover').getBoundingClientRect();return {fits:e.scrollWidth<=e.clientWidth+1,bottom:r.bottom<=c.bottom}});assert(title.fits&&title.bottom,'Long names fit cover');

@@ -57,3 +57,30 @@
    Reveal the inner scene only on activation; never wait on image decoding. */
 .craft-reveal:not(.opening) .entry-behind{visibility:hidden}
 .craft-reveal .entry-object,.craft-reveal .entry-panel,.craft-reveal .letter-pocket,.craft-reveal .letter-flap{background:var(--paper,#f6eddd)}
+
+/* Local motion enhances the scene while typography remains a steady plane. */
+#opened-invite .crafted-cover{overflow:hidden}
+#opened-invite .crafted-cover>.crafted-scene,#opened-invite .crafted-cover>.craft-drawing{transform:translateY(var(--scene-depth,0px)) scale(1.035);transform-origin:center;will-change:transform}
+.ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.ambient i{position:absolute;left:var(--left);top:var(--top);animation:quiet-drift var(--duration) ease-in-out var(--delay) infinite alternate;animation-play-state:paused}
+.motion-active .ambient i{animation-play-state:running}
+.ambient-petal i{width:6px;height:10px;border-radius:75% 10% 75% 20%;background:#edd1bd;opacity:.7}
+.ambient-glint i{width:3px;height:3px;border-radius:50%;background:#ffe0a0;box-shadow:0 0 8px 3px #f7cb7755;animation-name:quiet-glow}
+.ambient-thread i{width:6px;height:6px;border:1px solid #f9d486;transform:rotate(45deg);animation-name:quiet-thread}
+@keyframes quiet-drift{from{transform:translate(0,-7px) rotate(-20deg);opacity:.25}to{transform:translate(7px,15px) rotate(45deg);opacity:.75}}
+@keyframes quiet-glow{from{opacity:.1;transform:translateY(-3px)}to{opacity:.8;transform:translateY(5px)}}
+@keyframes quiet-thread{from{opacity:.25;transform:rotate(35deg) translateY(-2px)}to{opacity:.7;transform:rotate(55deg) translateY(3px)}}
+.section-arriving{opacity:.01;transform:translateY(12px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.3,1)}
+.section-arriving.section-seen{opacity:1;transform:none}
+.date-scratch{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;touch-action:none;cursor:crosshair}
+.date-scratch[hidden]{display:none}
+.date-keepsake>.date-foil{position:static;display:inline-block;width:auto;height:auto;min-height:44px;border:1px solid currentColor;border-radius:0;background:transparent;color:inherit;box-shadow:none;transform:none;padding:12px 22px;margin:20px auto 0;font:14px/1.4 Manrope,sans-serif;opacity:1;clip-path:none}
+.date-keepsake>.date-foil[aria-expanded=true]{display:inline-block;opacity:.7;transform:none;pointer-events:none}
+.date-keepsake .scratch-hint{font:12px/1.7 Manrope,sans-serif;margin:12px auto 22px;max-width:230px}
+.date-revealed .scratch-hint{display:none}
+.motion-paused .ambient i,.motion-reduced .ambient i{animation-play-state:paused!important}
+.motion-reduced .ambient{display:none}
+@media(prefers-reduced-motion:reduce){.ambient,.date-scratch,.scratch-hint{display:none!important}.section-arriving{opacity:1;transform:none;transition:none}#opened-invite .crafted-cover>.crafted-scene,#opened-invite .crafted-cover>.craft-drawing{transform:none;will-change:auto}}
+
+.entry-temple .entry-dedication{top:28%;left:20%;right:20%}
+.entry-backdrop{position:absolute;inset:0;z-index:0;pointer-events:none}

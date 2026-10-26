@@ -160,10 +160,12 @@ try {
   await cal.saveAs(`${evidence}/calendar.ics`);
   ok(
     (await fs.readFile(`${evidence}/calendar.ics`, "utf8")).includes(
-      "DTSTART:20271119T183000",
+      "DTSTART:20281119T183000",
     ),
     "Calendar uses individual event date and time",
   );
+  ok((await fs.readFile(`${evidence}/calendar.ics`, "utf8")).includes("Fictional demonstration"), "Sample calendar is labelled fictional");
+  ok((await fs.readFile(`${evidence}/calendar.ics`, "utf8")).includes("Ambarveil"), "Sample calendar uses invented location");
   await page.goto(base + "/#/studio/courtyard");
   await page.locator("[name=name1]").fill("Mira");
   await page
@@ -185,7 +187,7 @@ try {
   );
   await page.locator("[name=design]").selectOption("moon");
   ok(
-    (await page.locator("[name=name1]").inputValue()) === "Safiya",
+    (await page.locator("[name=name1]").inputValue()) === "Zayira",
     "Switching design loads its distinct sample",
   );
   await page.locator("[name=name1]").fill("Amal");
@@ -203,7 +205,7 @@ try {
     .getByRole("button", { name: "Reset current edits to sample" })
     .click();
   ok(
-    (await page.locator("[name=name1]").inputValue()) === "Safiya",
+    (await page.locator("[name=name1]").inputValue()) === "Zayira",
     "Sample reset restores correct identity",
   );
   await page.locator("[name=design]").selectOption("courtyard");
@@ -279,7 +281,7 @@ try {
   await page.getByRole("button", { name: "Delete saved draft" }).click();
   await page.reload();
   ok(
-    (await page.locator("[name=name1]").inputValue()) === "Ira",
+    (await page.locator("[name=name1]").inputValue()) === "Ishavi",
     "Saved draft deletion works",
   );
   for (const t of templates) {
