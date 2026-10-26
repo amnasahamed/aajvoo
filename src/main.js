@@ -26,6 +26,7 @@ import "./v2.css";
 import "./invitation.css";
 import "./home.css";
 import "./craft.css";
+import "./scene-layers.css";
 import "./studio-home.css";
 import "./editorial-home.css";
 import craftCSS from "./craft.css?raw";

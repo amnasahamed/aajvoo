@@ -1,0 +1,14 @@
+/* Independent artwork planes; all interactive content remains above them. */
+.crafted-cover>.scene-plane{position:absolute;inset:0;pointer-events:none!important;user-select:none;z-index:0;overflow:visible;transform-origin:center;contain:layout style}
+.scene-plane>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:fill;pointer-events:none!important;border:0;border-radius:0;max-height:none}
+.scene-plane-near>.plane-botanical{top:auto;bottom:-5px;left:-2%;width:104%;height:auto;max-width:none}
+.cover-letters .scene-plane-near>.plane-botanical{bottom:-17px}.cover-lake .scene-plane-near>.plane-botanical{left:0;width:100%;bottom:-22px}
+.crafted-cover>.scene-title,.crafted-cover>.cover-monogram,.crafted-cover>.seven-promises{z-index:2}
+#opened-invite .scene-plane-mid{transform:translateY(calc(var(--scene-depth,0px) * .35));will-change:transform}
+#opened-invite .scene-plane-near{transform:translateY(calc(var(--scene-depth,0px) * -.65));will-change:transform}
+.interior-relief{position:absolute;top:0;left:0;width:100%;height:760px;max-height:100%;z-index:0;pointer-events:none!important;overflow:hidden;opacity:.8;clip-path:polygon(0 0,12% 0,12% 100%,0 100%,0 0,88% 0,100% 0,100% 100%,88% 100%,88% 0)}
+.interior-relief img{width:100%;height:100%;object-fit:fill;pointer-events:none;display:block}.relief-dawn,.relief-temple{height:auto;max-height:220px;opacity:.8}.relief-dawn img,.relief-temple img{height:auto}.relief-letters,.relief-courtyard,.relief-lake{opacity:.45}.relief-earthen{opacity:.5}
+.invitation-pages>.page-content{position:relative;z-index:1}
+#opened-invite.motion-user-paused .scene-plane,#opened-invite.motion-reduced .scene-plane,#opened-invite.motion-paused .scene-plane{transform:none;will-change:auto}
+@media(prefers-reduced-motion:reduce){#opened-invite .scene-plane{transform:none!important;will-change:auto}}
+.crafted-invitation .extended-cover>.scene-plane{height:auto;aspect-ratio:480/760;bottom:auto}

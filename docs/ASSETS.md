@@ -45,3 +45,11 @@ Additional local fonts: Parisienne, Cinzel and Fraunces from pinned Fontsource p
 Characters in generated illustrations are fictional sample art and are not portraits of the entered names. Personalisation changes text and event details; it does not regenerate character likenesses or illustrative venue geography.
 
 Text compatibility adds pinned Fontsource Noto Sans Devanagari, Noto Sans Malayalam and Noto Sans Tamil 5.3.0, using the 400-weight script subsets locally. The original font files are unchanged; SIL OFL notices are in `licenses/`. These fonts are embedded in standalone keepsakes alongside the existing faces. No new artwork or photo-upload capability is introduced by the readiness pass.
+
+## Independent transparent scene planes — 2026-10-26
+
+Three new original assets were generated with OpenAI image generation, with transparent backgrounds and no supplied reference images: `layers/lotus-foreground.webp` (dusty pink lotus, sage leaves and jasmine at the lower corners), `layers/meadow-foreground.webp` (cosmos, cornflowers and fine meadow grasses), and `layers/jasmine-corners.webp` (upper-corner jasmine, mango leaves and antique brass bell). These are generated watercolor-style illustrations, not photographed or physically hand-painted objects. They were requested as independent overlays with clear central negative space, not complete posters. No competitor artwork, branding, customer portrait or real venue was supplied.
+
+The original PNG outputs remain preserved outside the runnable source archive. Runtime WebP files preserve transparency and full image dimensions; only format encoding/compression was performed. Lotus and jasmine use quality 84; meadow uses quality 72 with WebP method 6. No scripted raster cropping, background removal, compositing or painting was used.
+
+Nineteen additional original SVG image planes were authored as code-native geometry in `tools/build-depth-art.mjs`. Their botanical, jaali, lantern, textile, clay and zari forms are original constructions rather than traced assets. All 22 runtime layer files are local in `public/images/layers/`. The per-design composition and motion boundaries are documented in [SCENE-LAYERS.md](SCENE-LAYERS.md).
