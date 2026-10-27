@@ -1,0 +1,66 @@
+/* Readability and service refinement. No new decoration or animation. */
+/* Navigation occupies its own space. It never rides over invitation content. */
+.immersive-preview .preview-toolbar{position:relative;inset:auto;max-width:520px;width:100%;margin:0 auto;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));min-height:64px;align-items:center;background:#f7f0e4;border-bottom:1px solid #d3c2ab;pointer-events:auto;box-sizing:border-box}
+.immersive-preview .preview-toolbar button{background:transparent;box-shadow:none;font-size:13px;line-height:1.4;padding:10px 14px;min-height:44px;border-color:#bcaa92}
+.immersive-preview .preview-toolbar #choose-design{background:#392d34;color:#fff6e8;border-color:#392d34}
+.immersive-preview .reveal{min-height:calc(100svh - 64px)}
+.preview-decision{max-width:520px;margin:0 auto;background:#f7f0e4;color:#392d34;padding:42px clamp(24px,5vw,40px) max(42px,env(safe-area-inset-bottom));text-align:center;box-sizing:border-box}
+.preview-decision[hidden]{display:none}
+.preview-decision h2{font:36px/1.1 'Cormorant Garamond','Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif;margin:15px 0}
+.preview-decision p{font:14px/1.8 Manrope,sans-serif;max-width:34ch;margin:0 auto 24px}
+.preview-decision>div{display:flex;flex-direction:column;gap:12px}
+.preview-decision button{min-height:48px;padding:13px 16px;font:14px/1.5 Manrope,sans-serif;border:1px solid #9c8874;background:#392d34;color:#fff7ec;border-radius:2px}
+.preview-decision button:last-child{background:transparent;color:inherit}
+.preview-decision button:focus-visible,.preview-toolbar button:focus-visible{outline:2px solid #9d5e35;outline-offset:3px}
+/* Preserve miniature art direction: these readability rules apply only to real invitations. */
+#opened-invite .scene-title .invite-kicker{font-size:12px;line-height:1.45;letter-spacing:.025em;max-width:100%;margin-bottom:12px;text-transform:none}
+#opened-invite .scene-union{font-size:10px;letter-spacing:.09em;line-height:1.5;margin:12px 0 8px}
+#opened-invite .scene-date{font-size:18px;line-height:1.4}
+#opened-invite .scene-date>span{font:12px/1.5 Manrope,'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',sans-serif;margin-top:7px;text-wrap:balance}
+#opened-invite .cover-temple .scene-title{top:24%;left:20%;width:60%}
+#opened-invite .cover-moon .scene-title{top:33%}
+#opened-invite .cover-earthen .scene-title{top:22%}
+#opened-invite .cover-tapestry .scene-title{top:20%}
+#opened-invite .cover-herbarium .scene-title{top:24%}
+#opened-invite .page-content .invite-kicker{font-size:11px;letter-spacing:.1em;line-height:1.6}
+#opened-invite .time-note,#opened-invite .fiction-note,#opened-invite .invite-end small{font-size:13px;line-height:1.7;opacity:1}
+#opened-invite .invite-rsvp>div>p,#opened-invite .action-feedback{font-size:14px!important;line-height:1.7}
+#opened-invite .promise-ribbon{font-size:11px;line-height:1.6;letter-spacing:.06em}
+#opened-invite .date-keepsake .countdown>span{font-size:14px;line-height:1.5}
+/* Editorial paper, woven cloth and formal salon pages should not share a stack-of-paper motif. */
+#opened-invite .pages-earthen .invite-story>.scene-story .section-plane-far,
+#opened-invite .pages-earthen .guest-notes>.scene-notes .section-plane-far,
+#opened-invite .pages-velvet .invite-story>.scene-story .section-plane-far,
+#opened-invite .pages-silk .invite-story>.scene-story .section-plane-far,
+#opened-invite .pages-tapestry .invite-story>.scene-story .section-plane-far{opacity:0}
+#opened-invite .pages-earthen .invite-story{padding:30px 0 36px;border-block:1px solid #b1795655}
+#opened-invite .pages-earthen .guest-notes{padding:35px 0;border-top:1px solid #b1795655}
+#opened-invite .pages-earthen .story-prose p{font:21px/1.6 'Cormorant Garamond','Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif}
+#opened-invite .pages-velvet .invite-story{border-block:1px solid #d5b97866;padding:35px 12px}
+#opened-invite .pages-velvet .story-prose p{font:21px/1.65 'Cormorant Garamond','Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif;color:#f6e5c4}
+#opened-invite .pages-velvet .invite-story h2{font-size:35px;line-height:1.15}
+#opened-invite .pages-herbarium .invite-story{border-left:2px solid #9aab85;padding:28px 18px;margin-block:20px 30px;text-align:left}
+#opened-invite .pages-herbarium .invite-story h2{font:32px/1.2 'Cormorant Garamond','Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif;text-align:left}
+#opened-invite .pages-herbarium .invite-story .invite-kicker{text-align:left}
+#opened-invite .pages-herbarium .invite-story>.scene-story .section-plane-far{opacity:.35}
+#opened-invite .pages-herbarium .guest-notes{padding-block:32px}
+#opened-invite .pages-tapestry .invite-story{border-block:1px dashed #a84c65;padding-block:32px}
+#opened-invite .pages-silk .invite-story{border-block:3px double #ba975f;padding-block:32px;background:repeating-linear-gradient(0deg,#aa78420a 0 1px,transparent 1px 4px)}
+#opened-invite .pages-silk .invite-story h2{font:25px/1.4 Cinzel,'Noto Sans Devanagari','Noto Sans Malayalam','Noto Sans Tamil',serif;text-wrap:balance}
+/* Service clarity and a curated starting order, without changing the approved homepage scene. */
+.editorial-home .hero-copy>p{max-width:35ch;line-height:1.75}
+.editorial-home .collection-meta{font-size:12px;line-height:1.6}
+.editorial-home .card-info .eyebrow{font-size:12px}
+@media(max-width:700px){.editorial-home .hero-copy>p{font-size:14px}.editorial-home .collection-meta{font-size:12px}.editorial-home .collection-meta>span:last-child{max-width:170px}.editorial-home .hero-baseline{font-size:10px}}
+@media(max-width:360px){.immersive-preview .preview-toolbar button{font-size:12px;padding-inline:10px}#opened-invite .scene-title .invite-kicker{font-size:11px}#opened-invite .scene-date>span{font-size:12px}#opened-invite .scene-union{font-size:10px}.preview-decision{padding-inline:24px}}
+#opened-invite .cover-courtyard .scene-title,#opened-invite .cover-lake .scene-title{top:18%}
+#opened-invite .cover-dawn .scene-title{top:21%}
+#opened-invite .cover-tapestry .scene-title{top:25%}
+#opened-invite .cover-moon .scene-title{top:38%}
+#opened-invite .cover-courtyard .scene-union,#opened-invite .cover-lake .scene-union,#opened-invite .cover-dawn .scene-union,#opened-invite .cover-temple .scene-union{display:none}
+#opened-invite .cover-courtyard .scene-date,#opened-invite .cover-lake .scene-date,#opened-invite .cover-dawn .scene-date,#opened-invite .cover-temple .scene-date{margin-top:14px;background:#fff2dcba;border-radius:2px;padding:5px 10px}
+#opened-invite .cover-tapestry .scene-union{display:none}
+#opened-invite .cover-tapestry .scene-date{margin-top:16px}
+/* A soft paper wash supports metadata without placing a hard UI box on the painting. */
+#opened-invite :is(.cover-courtyard,.cover-lake,.cover-dawn,.cover-temple) .scene-date{position:relative;isolation:isolate;background:transparent}
+#opened-invite :is(.cover-courtyard,.cover-lake,.cover-dawn,.cover-temple) .scene-date:before{content:'';position:absolute;inset:-12px -18px;z-index:-1;background:radial-gradient(ellipse,#fff3dce8 35%,#fff3dc00 75%);pointer-events:none}
