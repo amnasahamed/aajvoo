@@ -1,41 +1,32 @@
-# Vow & Verse — landing-page design system
+# Vow & Verse — invitation-first homepage
 
-Scope: the `.foundation-home` landing page only. Invitation artwork, previews, motion, staff screens and backend contracts have their own established systems. Do not propagate these tokens into them.
+## Scope and current direction
 
-## Reference and interpretation
+The `.foundation-home` root scopes this system to the public landing page. The class name is retained for compatibility; the previous Claude-inspired editorial layout is superseded by the user's newer request for [Aavjoo homepage](https://aavjoo.in/) inspiration. Do not change invitation designs, motion, staff UI or backend contracts to match the homepage.
 
-The user-selected [VoltAgent awesome-claude-design collection](https://github.com/VoltAgent/awesome-claude-design) led to the [Claude design analysis](https://getdesign.md/claude/design-md) and its [actual DESIGN.md](https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md/claude/DESIGN.md), reviewed on 28 October 2026. Its useful foundations are warm editorial surfaces, a serif/sans hierarchy, restrained depth, clear controls and consistent spacing. This is an independent adaptation, not an Anthropic affiliation or a Claude-generated implementation. No proprietary fonts, logos, marks or product copy are used.
+Reference reviewed on 28 October 2026: centered bold sans-serif headline with small stationery accents, paired phone scenes in a two-column gallery, illustrated three-step explanation, soft FAQ panels and a dark closing invitation. No reference assets, code, offers, contact details or claims were copied.
 
-The [Clay document](https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md/clay/DESIGN.md) was also inspected. It describes Clay.com's colourful GTM product rather than the agency suggested by the catalog blurb. Its saturated feature-card language was not adopted. No external repository command was executed.
+Our adaptation uses Vow & Verse's existing original invitation artwork, local licensed Manrope and Cormorant Garamond, warm-white canvas and ink/plum identity. The earlier [Claude design analysis](https://getdesign.md/claude/design-md) informed a prior iteration only; its split-hero and three-column rules are no longer current. Neither reference implies affiliation.
 
-## Our visual decisions
+## Composition
 
-The invitations are the product. Show a large, legible Garden specimen with a quiet paper surround; never cover its names with tilted overlapping cards. Desktop places the artifact before the editorial copy. Phone places a short headline/action before the artwork. The gallery starts Garden, Lake, Letter and retains all eleven searchable/filterable designs. Three columns at wide widths, two at intermediate widths, one on phones. Equal baseline alignment makes comparison easier; do not stagger cards or turn them into SaaS feature tiles.
+Center the short, confident headline above two clear pill actions: collection and a complete live demo. A small original botanical wax-seal drawing is a typographic accent. Three readable invitation specimens show the breadth of the collection; Garden is central, Lake and Letter flank it without covering its lettering. On phone, subordinate side specimens intentionally extend beyond the hero crop while the complete central specimen and its action remain visible. Reserve image geometry before loading.
 
-Use these landing-scoped tokens:
+The collection is a two-column scene gallery above700px and one column below. Each scene shows two dark phone frames: the opening artwork and the interior names composition. Focus/hover gently dissolves the front cover into the invitation. This is an honest visual sample; tapping opens the real full-screen invitation. No idle animations, autoplay or full invitation interaction modules inside thumbnails. Each card has a44px full-preview strip and descriptive accessible links. Search and category filters retain all eleven designs. Garden, Lake and Letter lead without invented popularity claims.
 
-| Role | Value |
-|---|---|
-| Canvas | `#f8f5ef` |
-| Paper surround | `#eee7dc` |
-| Ink | `#342b31` |
-| Supporting text | `#695e61` |
-| Hairline | `#d8cfc5` |
-| Primary accent | `#684450` |
-| Active accent | `#4d303a` |
-| Control radius | `6px` |
-| Main content | `1240px` including40px side padding |
+Three illustrated process panels explain discovery, conversation and studio personalisation. Illustrations are clearly schematic, not fabricated customer messages. Follow with native FAQ disclosures and one plum closing panel; no additional feature filler.
 
-Cormorant Garamond500 is the display voice; Manrope400/500 is body and interface. Both are existing locally served licensed fonts. Hero46–86px, section44–64px, card30–32px, body14–16px, labels11–13px. Italic display appears selectively, never as repeated decorative script. Keep body line-height around1.7. All active controls have at least44px height and explicit keyboard focus.
+## Tokens and hierarchy
 
-Use an8px spacing rhythm, with4px refinements. Wide section gaps64–80px; phone40–48px. The hero is the single strongest artifact surface. Gallery surrounds share one quiet paper colour so individual invitations carry the colour. Shadows are faint and limited to physical specimens; structural separation uses borders and surface changes.
+- Canvas `#fffefa`; ink `#292429`; muted text `#686167`; hairline `#e5ded8`.
+- Plum `#684450`; dark closing `#392b34`; supporting surfaces derived quietly from existing artwork palettes.
+- Hero: local Manrope600,33–80px, compact letter spacing; section headings31–48px. Cormorant is reserved for invitation names, selected italic accents and card titles.
+- Body14–16px; metadata11–12px. At the narrowest320px viewport the short hero subtitle is13px. Keep text contrast and44px controls rather than shrinking interactive labels excessively.
+- Navigation and controls use pill shapes; scene cards14px corners, process16px, closing24px. Avoid borders/shadows inside artwork beyond the deliberate phone framing.
+- Wide content1160px plus side padding. Gallery gaps28px wide/32px vertical phone. Clear section transitions without oversized introductory blocks.
 
-## Components and states
+## Behaviour and boundaries
 
-Primary actions are plum-filled rectangles. Secondary preview links are underlined and descriptive. Category buttons have text labels, an `aria-pressed` selected state and a filled ink surface; keyboard focus must remain distinct from selection. Search keeps a visible boundary and semantic label. Empty search results explain how to recover. Gallery previews have a44px invitation-entry strip and a separate labelled arrow target. Hover lifts only the specimen by4px; reduced motion removes that transition.
+Keep category `aria-pressed`, labelled search, empty recovery, visible keyboard outlines, preview/back/filter/scroll restoration and native disclosure controls. Reduced motion removes transition/lift; cover state changes immediately on focus/hover. No continuous decorative motion or new pause requirement on the homepage. All assets are local; lower artwork is lazy-loaded. Existing full invitation controls and their pause behaviour are unchanged.
 
-Process content remains an illustrated studio letter with three real steps, not feature boxes. FAQ uses native disclosure controls. The footer is the one dark closing surface. Keep artwork dimensions reserved and lazy-load lower images; never interpret an unscrolled full-page capture's unloaded images as missing design.
-
-## Content boundaries
-
-Explain that the studio handles personalisation. Preserve the honest unconfigured WhatsApp state. Do not add prices, delivery guarantees, hosting/revision terms, testimonials, purchases or client names without supplied facts. No trackers, remote fonts, new embeds or external runtime requests. Design-reference links belong in this document, not the customer interface.
+State that the studio handles editing. WhatsApp remains honestly unconfigured until a real recipient is supplied. Do not invent price, timing, hosting/revision commitments, customer proof, phone, domain or payment flow. No trackers, remote fonts or embeds. No customer DIY form.
