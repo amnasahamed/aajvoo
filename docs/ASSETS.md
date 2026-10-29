@@ -67,3 +67,7 @@ The 96 SVG images in the same directory are original code-native vector geometry
 ## Homepage Geist font
 
 `public/fonts/geist/geist-latin-wght-normal.woff2` is the unmodified Geist Latin variable font from `@fontsource-variable/geist`5.3.0 (Fontsource distribution of Google Fonts/Geist Project). Copyright2024 The Geist Project Authors. SIL Open Font License1.1 is retained in `public/fonts/geist/OFL.txt`. Project: https://github.com/vercel/geist-font ; distribution: https://fontsource.org/fonts/geist . Served locally under the homepage-only family alias `VV Geist`; invitation fonts are unchanged.
+
+## Actual-renderer homepage previews
+
+`public/images/previews/*.jpg` are locally generated browser captures of this project's original invitation designs and fictional sample data, not competitor screenshots or new generated artwork. Their dimensions and hashes are in `manifest.json`; regeneration and verification are documented in `docs/PREVIEW-ASSETS.md`. All33 states come from the real invitation routes. The home gallery uses closed/open states and the hero uses complete cover captures.

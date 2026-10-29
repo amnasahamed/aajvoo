@@ -1,0 +1,266 @@
+{
+  "browser": "151.0.7922.173",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "deviceScaleFactor": 1,
+  "reducedMotion": true,
+  "format": "jpeg",
+  "quality": 90,
+  "templates": {
+    "courtyard": {
+      "closed": {
+        "src": "/images/previews/courtyard-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 153873,
+        "sha256": "e7a54f55fbcf13d016cd46df7de639ec4aca4b97e3d331cf9d7f0954e510bd87"
+      },
+      "open": {
+        "src": "/images/previews/courtyard-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 112009,
+        "sha256": "39a7cded123590df14139ed008fa6c64e3bf7d7e5910a94495b13193b9b3e679"
+      },
+      "cover": {
+        "src": "/images/previews/courtyard-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 95381,
+        "sha256": "105127f1a9bde1f405ea717aa7a050adeadaa68dc12862dda759eafb051cd5c5"
+      }
+    },
+    "letters": {
+      "closed": {
+        "src": "/images/previews/letters-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 129381,
+        "sha256": "4ff7b924a518fee00cfc08ce62f3fbed0d1099e208b604b6905d4a343fee6361"
+      },
+      "open": {
+        "src": "/images/previews/letters-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 103512,
+        "sha256": "6aabe99997813a889aa01e444891c9c0946dea335344c67d41070c10c68b3f85"
+      },
+      "cover": {
+        "src": "/images/previews/letters-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 88550,
+        "sha256": "7d764602c9398590a558aeff60c3391d406e06d25913040266cc794fc496c569"
+      }
+    },
+    "dawn": {
+      "closed": {
+        "src": "/images/previews/dawn-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 130999,
+        "sha256": "fbb1c6dab4fe4a4f136335e79a81bf22709d7fa18592385bc956d2c4089bd8af"
+      },
+      "open": {
+        "src": "/images/previews/dawn-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 100497,
+        "sha256": "302e7012f044dfdbdb62a9f0f8b83ebe24e06b76ac8127b37b9a5f6333641da6"
+      },
+      "cover": {
+        "src": "/images/previews/dawn-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 82769,
+        "sha256": "81d7ffb6623a305be746d6d6ff658a9078584448c266c9e4ff147441b70a4b4e"
+      }
+    },
+    "herbarium": {
+      "closed": {
+        "src": "/images/previews/herbarium-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 31697,
+        "sha256": "ba8bf4a95311f03bf093bb3028716d22c8df01e888259420d5c83b23a59d19ff"
+      },
+      "open": {
+        "src": "/images/previews/herbarium-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 40376,
+        "sha256": "e2a0f78c751670714526ee7f4c5dc095585926ec6f679bbbe98f8482f8cfce78"
+      },
+      "cover": {
+        "src": "/images/previews/herbarium-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 29714,
+        "sha256": "35c7a4f1f5aff1cdb57b8591c17381220592b475aea4174151badbda04d6e45a"
+      }
+    },
+    "velvet": {
+      "closed": {
+        "src": "/images/previews/velvet-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 45247,
+        "sha256": "8ec818cf163a0916e149b4726ab72fde33b39943ae4deafdf7209de484d073d3"
+      },
+      "open": {
+        "src": "/images/previews/velvet-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 59679,
+        "sha256": "33d8fbe1789ff6c674009f9f5fe5a9c5895c69eda312007e73167beef31e77cc"
+      },
+      "cover": {
+        "src": "/images/previews/velvet-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 46825,
+        "sha256": "7323f632eb0e371d06bd7492ed16b486782ed6863b7ad937c712c87104d58047"
+      }
+    },
+    "lake": {
+      "closed": {
+        "src": "/images/previews/lake-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 170178,
+        "sha256": "3af55d20fdcf8227bffb23339690e1508579ff1af73713b02e1d088d0ced60d4"
+      },
+      "open": {
+        "src": "/images/previews/lake-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 98459,
+        "sha256": "a5223fb9d9522d0146cd8c3505fddc066937037fd332a5359bea09b753fd2d6b"
+      },
+      "cover": {
+        "src": "/images/previews/lake-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 83757,
+        "sha256": "21802376d4f48ca4bce7013c74c710e2324c9520bee3b8114577e7c52f0a940f"
+      }
+    },
+    "temple": {
+      "closed": {
+        "src": "/images/previews/temple-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 148803,
+        "sha256": "9e38b3c16716182f66398144f7acc7f2b622433798cd4582e76a65f1fa44e568"
+      },
+      "open": {
+        "src": "/images/previews/temple-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 114684,
+        "sha256": "739657093cf15401cc5c3689ee5d8738da660c5c530f037446332b94e32af1e1"
+      },
+      "cover": {
+        "src": "/images/previews/temple-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 96796,
+        "sha256": "121a9e8cfb307f56d4d86dac3aab1661702a7716ee241af0774c774d11ce76bf"
+      }
+    },
+    "earthen": {
+      "closed": {
+        "src": "/images/previews/earthen-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 32110,
+        "sha256": "27b4079c02ea0627c45124a9ee00641527291fc2bb925dff8a6dc22ac60800cd"
+      },
+      "open": {
+        "src": "/images/previews/earthen-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 47229,
+        "sha256": "087492377e8f0f70bc671ed0ee837e97bc01810bd9366c3b64ff8d27c2592b48"
+      },
+      "cover": {
+        "src": "/images/previews/earthen-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 31335,
+        "sha256": "0d404b37508fd77f5e76e972e7fab239d2c5e96dd4617336e77b39c2fe4045ea"
+      }
+    },
+    "moon": {
+      "closed": {
+        "src": "/images/previews/moon-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 89616,
+        "sha256": "2c4769f76456f38d9a90eaa9a42de4200185d76840aa688e83a4e4400d593e80"
+      },
+      "open": {
+        "src": "/images/previews/moon-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 67028,
+        "sha256": "ca5c61991c354ecd3a39e2e2f450394d4d068f1cdf03ccdadf127b72684c98a9"
+      },
+      "cover": {
+        "src": "/images/previews/moon-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 53024,
+        "sha256": "88eb67be67673b24893768b9be16f46413138001a554ad7b22f85768223d6652"
+      }
+    },
+    "tapestry": {
+      "closed": {
+        "src": "/images/previews/tapestry-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 114436,
+        "sha256": "b7b4c03fa807e58702ea5a2fbf2f77d10bcfc4dbcc8ec74b4fa201649629d00a"
+      },
+      "open": {
+        "src": "/images/previews/tapestry-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 85936,
+        "sha256": "ec64c8e71b59c7635c703895b9e0024c995869de771e6c57f7ae77c4602e8d67"
+      },
+      "cover": {
+        "src": "/images/previews/tapestry-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 70837,
+        "sha256": "d89466b0dfe6910c0c9c1fbdc0705b9e91d0ebaf016078759b796da9a44b01e5"
+      }
+    },
+    "silk": {
+      "closed": {
+        "src": "/images/previews/silk-closed.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 38626,
+        "sha256": "5520aedd1ab74dece419693918718070c905ae9d958e2f9b4268473dae6f2142"
+      },
+      "open": {
+        "src": "/images/previews/silk-open.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 82696,
+        "sha256": "3e7841d204453082f0972dea1b778ccbb885455537d862e4dafa582d3b1bb90a"
+      },
+      "cover": {
+        "src": "/images/previews/silk-cover.jpg",
+        "width": 390,
+        "height": 618,
+        "bytes": 63393,
+        "sha256": "3912307cd7caff7084c39f995483694fc0658042aaa2515f07e364b8412ccab2"
+      }
+    }
+  }
+}

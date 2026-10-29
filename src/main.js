@@ -32,7 +32,7 @@ import "./studio-home.css";
 import "./editorial-home.css";
 import "./quality.css";
 import "./foundation-home.css";
-import {drawing as homeDrawing} from "./craft-art.js";
+import previewShots from "../public/images/previews/manifest.json";
 import craftCSS from "./craft.css?raw";
 import "@fontsource/parisienne/latin-400.css";
 import "@fontsource/cinzel/latin-400.css";
@@ -73,8 +73,9 @@ function nav() {
 function footer() {
   return `<footer><div><a class="wordmark" href="#/" aria-label="Vow &amp; Verse home">${wordmark}</a><p>For the moments that become your story.</p></div><div><a href="#collection">Explore the collection ${arrow}</a><a href="#/privacy">Privacy & local drafts</a><span>Designed with intention. Shared with love.</span></div><p class="footer-bottom">© ${new Date().getFullYear()} Vow & Verse <span>An independent design studio · Frontend edition</span></p></footer>`;
 }
-function miniature(t, lazy=false){return `<div class="invitation crafted-invitation ${t.layout}" data-template="${t.id}" aria-hidden="true">${sceneCover(t,t.sample,{lazy}).replaceAll('<h1','<h3').replaceAll('</h1>','</h3>')}</div>`}
-function card(t,i){const paintedHome=["courtyard","letters","dawn","lake","temple"].includes(t.id);const closed=paintedHome?`<img src="/images/craft/${t.id}-closed.webp" alt="" loading="lazy" decoding="async" width="1024" height="1536">`:homeDrawing(t.id,"closed");return `<article class="design-card editorial-design" data-design="${t.id}" style="--design-ink:${t.color};--design-paper:${t.paper}"><a class="design-preview craft-preview" href="#/invitation/${t.id}" aria-label="Preview ${t.name}"><span class="design-mat"><span class="catalog-phone phone-behind">${miniature(t,true)}</span><span class="catalog-phone phone-front"><span class="phone-closed" aria-hidden="true">${closed}<span class="phone-seal">${escapeHTML(t.sample.name1[0])} &amp; ${escapeHTML(t.sample.name2[0])}</span></span>${miniature(t,true)}</span></span><span class="preview-call">Open the full invitation ${arrow}</span></a><div class="card-info"><span class="design-index">${t.edition}</span><div><span class="eyebrow">${t.category}</span><h3><a href="#/invitation/${t.id}">${t.name}</a></h3><p>${t.detail}</p></div><a href="#/invitation/${t.id}" class="collection-arrow" aria-label="Preview ${t.name}">${arrow}</a></div></article>`}
+function snapshot(t,state,lazy=true){const shot=previewShots.templates[t.id][state];return `<img class="preview-snapshot" src="${shot.src}" alt="" width="${shot.width}" height="${shot.height}" loading="${lazy?'lazy':'eager'}" decoding="async" data-preview-state="${state}">`}
+function miniature(t,lazy=false){return snapshot(t,'cover',lazy)}
+function card(t,i){return `<article class="design-card editorial-design" data-design="${t.id}" style="--design-ink:${t.color};--design-paper:${t.paper}"><a class="design-preview craft-preview" href="#/invitation/${t.id}" aria-label="Preview ${t.name}"><span class="design-mat"><span class="catalog-phone phone-behind">${snapshot(t,'open')}</span><span class="catalog-phone phone-front"><span class="phone-closed" aria-hidden="true">${snapshot(t,'closed')}</span>${snapshot(t,'open')}</span></span><span class="preview-call">Open the full invitation ${arrow}</span></a><div class="card-info"><span class="design-index">${t.edition}</span><div><span class="eyebrow">${t.category}</span><h3><a href="#/invitation/${t.id}">${t.name}</a></h3><p>${t.detail}</p></div><a href="#/invitation/${t.id}" class="collection-arrow" aria-label="Preview ${t.name}">${arrow}</a></div></article>`}
 function renderCards() {
   const collectionOrder = ["courtyard", "lake", "letters"];
   const items = [...templates].sort((a,b)=>(collectionOrder.includes(a.id)?collectionOrder.indexOf(a.id):3+templates.indexOf(a))-(collectionOrder.includes(b.id)?collectionOrder.indexOf(b.id):3+templates.indexOf(b))).filter(

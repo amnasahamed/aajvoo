@@ -23,7 +23,7 @@ The current brief calls for a joyful creative studio, not muted plum or luxury p
 - A coral seal on yellow, cobalt footer and white footer lettering.
 - Collection surfaces use a deliberate three-colour shop palette: yellow `#f5e76c`, cobalt `#2855d9` and coral `#ff9478`. Black or white captions keep contrast strong. The invitation artwork inside each phone retains its original palette.
 
-A concise centered headline leads to collection and full-demo actions. Garden, Lake and Letter form the initial visual selection. On narrow phones the subordinate side specimens intentionally crop; the main Garden specimen stays complete. The gallery uses two columns above700px and one below. Paired phone frames show opening and interior states; a full-preview action and clear collection name sit within the same material surface.
+A concise centered headline leads to collection and full-demo actions. Garden, Lake and Letter form the initial visual selection. On narrow phones the subordinate side specimens intentionally crop; the main Garden specimen stays complete. The gallery uses two columns above700px and one below. Paired phone frames show actual-renderer screenshots of opening and interior states; a full-preview action and clear collection name sit within the same material surface.
 
 Keep the three-step studio process, a compact native-disclosure FAQ and one coral closing action. Do not add feature filler, repeated promotional banners, ornamental particles or extra typography styles. Maintain comfortable white space and readable supporting copy.
 
@@ -32,3 +32,5 @@ Keep the three-step studio process, a compact native-disclosure FAQ and one cora
 All eleven designs remain available through filters and search. Retain focus outlines, selected-filter states, empty recovery, full-preview/back/scroll restoration and reserved image geometry. Hover or keyboard focus dissolves a card cover; touch opens the complete invitation directly. No idle animation. Reduced motion makes the state change immediate and disables the slight lift.
 
 The studio handles personalisation. WhatsApp remains unconfigured until a real recipient is supplied. No invented pricing, timing, hosting/revision promises, customer proof or payment flow. No customer editor, external fonts, trackers or embeds.
+
+Homepage preview imagery must come from the actual-renderer snapshots described in [PREVIEW-ASSETS.md](docs/PREVIEW-ASSETS.md), not a separately styled miniature or generic seal. Preserve source image proportions and keep link captions outside the hero artwork.
