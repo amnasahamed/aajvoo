@@ -1,32 +1,34 @@
-# Vow & Verse — invitation-first homepage
+# Vow & Verse homepage
 
-## Scope and current direction
+## Direction and scope
 
-The `.foundation-home` root scopes this system to the public landing page. The class name is retained for compatibility; the previous Claude-inspired editorial layout is superseded by the user's newer request for [Aavjoo homepage](https://aavjoo.in/) inspiration. Do not change invitation designs, motion, staff UI or backend contracts to match the homepage.
+A white, confident invitation shop with a clear sans-serif hierarchy, colourful invitation scenes and a joyful cobalt/coral/yellow studio identity. [Aavjoo](https://aavjoo.in/) is the visual reference for the strong type, restrained interface and paired invitation previews. This is an independent interpretation using Vow & Verse's own artwork, wording and brand. No reference assets, offers, testimonials or proprietary code are used.
 
-Reference reviewed on 28 October 2026: centered bold sans-serif headline with small stationery accents, paired phone scenes in a two-column gallery, illustrated three-step explanation, soft FAQ panels and a dark closing invitation. No reference assets, code, offers, contact details or claims were copied.
+`src/foundation-home.css` is the complete current homepage system. Its selectors are scoped to `.foundation-home.editorial-home`; the existing root name is retained for compatibility. It replaces earlier editorial rules rather than adding successive redesign overrides. Invitation canvases, motion, staff interfaces and backend contracts have independent systems and must not inherit homepage changes.
 
-Our adaptation uses Vow & Verse's existing original invitation artwork, local licensed Manrope and Cormorant Garamond, warm-white canvas and ink/plum identity. The earlier [Claude design analysis](https://getdesign.md/claude/design-md) informed a prior iteration only; its split-hero and three-column rules are no longer current. Neither reference implies affiliation.
+## Typography
 
-## Composition
+Locally hosted **Geist** is the homepage interface voice: weight600 for display,500–600 for actions,400 for body. Desktop hero76px/1.02 with -.04em tracking; section headings50px/1.05 with -.035em tracking; body19px/1.5 in the hero and14–15px elsewhere. Phone hero34–39px, body14px; controls remain at least44px high. Avoid faux-bold fonts, extreme tracking and decorative italic words in every heading.
 
-Center the short, confident headline above two clear pill actions: collection and a complete live demo. A small original botanical wax-seal drawing is a typographic accent. Three readable invitation specimens show the breadth of the collection; Garden is central, Lake and Letter flank it without covering its lettering. On phone, subordinate side specimens intentionally extend beyond the hero crop while the complete central specimen and its action remain visible. Reserve image geometry before loading.
+The original Cormorant wordmark remains. Collection names borrow from their actual invitation typography: correspondence/floral script, architectural classical lettering, embroidered folk lettering and literary serif. Those distinctions belong to the products; Geist keeps navigation, explanations and actions coherent.
 
-The collection is a two-column scene gallery above700px and one column below. Each scene shows two dark phone frames: the opening artwork and the interior names composition. Focus/hover gently dissolves the front cover into the invitation. This is an honest visual sample; tapping opens the real full-screen invitation. No idle animations, autoplay or full invitation interaction modules inside thumbnails. Each card has a44px full-preview strip and descriptive accessible links. Search and category filters retain all eleven designs. Garden, Lake and Letter lead without invented popularity claims.
+Geist is distributed under SIL Open Font License1.1. The unmodified Latin variable font and license are in `public/fonts/geist/`. Source: [Geist Project](https://github.com/vercel/geist-font), distributed through [Fontsource Geist](https://fontsource.org/fonts/geist), package `@fontsource-variable/geist`5.3.0. All font requests are same-origin. The distinct family alias `VV Geist` avoids changing invitation font resolution.
 
-Three illustrated process panels explain discovery, conversation and studio personalisation. Illustrations are clearly schematic, not fabricated customer messages. Follow with native FAQ disclosures and one plum closing panel; no additional feature filler.
+## Palette and composition
 
-## Tokens and hierarchy
+The current brief calls for a joyful creative studio, not muted plum or luxury positioning. Colour blocks should feel deliberate and confident, with real invitation artwork as their focal point. No Figma branding or graphics are used.
 
-- Canvas `#fffefa`; ink `#292429`; muted text `#686167`; hairline `#e5ded8`.
-- Plum `#684450`; dark closing `#392b34`; supporting surfaces derived quietly from existing artwork palettes.
-- Hero: local Manrope600,33–80px, compact letter spacing; section headings31–48px. Cormorant is reserved for invitation names, selected italic accents and card titles.
-- Body14–16px; metadata11–12px. At the narrowest320px viewport the short hero subtitle is13px. Keep text contrast and44px controls rather than shrinking interactive labels excessively.
-- Navigation and controls use pill shapes; scene cards14px corners, process16px, closing24px. Avoid borders/shadows inside artwork beyond the deliberate phone framing.
-- Wide content1160px plus side padding. Gallery gaps28px wide/32px vertical phone. Clear section transitions without oversized introductory blocks.
+- White canvas, `#141414` primary type, neutral grey supporting text.
+- Black primary actions and quiet grey secondary actions.
+- A coral seal on yellow, cobalt footer and white footer lettering.
+- Collection surfaces use a deliberate three-colour shop palette: yellow `#f5e76c`, cobalt `#2855d9` and coral `#ff9478`. Black or white captions keep contrast strong. The invitation artwork inside each phone retains its original palette.
 
-## Behaviour and boundaries
+A concise centered headline leads to collection and full-demo actions. Garden, Lake and Letter form the initial visual selection. On narrow phones the subordinate side specimens intentionally crop; the main Garden specimen stays complete. The gallery uses two columns above700px and one below. Paired phone frames show opening and interior states; a full-preview action and clear collection name sit within the same material surface.
 
-Keep category `aria-pressed`, labelled search, empty recovery, visible keyboard outlines, preview/back/filter/scroll restoration and native disclosure controls. Reduced motion removes transition/lift; cover state changes immediately on focus/hover. No continuous decorative motion or new pause requirement on the homepage. All assets are local; lower artwork is lazy-loaded. Existing full invitation controls and their pause behaviour are unchanged.
+Keep the three-step studio process, a compact native-disclosure FAQ and one coral closing action. Do not add feature filler, repeated promotional banners, ornamental particles or extra typography styles. Maintain comfortable white space and readable supporting copy.
 
-State that the studio handles editing. WhatsApp remains honestly unconfigured until a real recipient is supplied. Do not invent price, timing, hosting/revision commitments, customer proof, phone, domain or payment flow. No trackers, remote fonts or embeds. No customer DIY form.
+## Interaction and content boundaries
+
+All eleven designs remain available through filters and search. Retain focus outlines, selected-filter states, empty recovery, full-preview/back/scroll restoration and reserved image geometry. Hover or keyboard focus dissolves a card cover; touch opens the complete invitation directly. No idle animation. Reduced motion makes the state change immediate and disables the slight lift.
+
+The studio handles personalisation. WhatsApp remains unconfigured until a real recipient is supplied. No invented pricing, timing, hosting/revision promises, customer proof or payment flow. No customer editor, external fonts, trackers or embeds.
